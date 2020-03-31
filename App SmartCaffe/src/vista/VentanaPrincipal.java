@@ -151,5 +151,4 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 	}
-	//SI jala bien XD
 }
