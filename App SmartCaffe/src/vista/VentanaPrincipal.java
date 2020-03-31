@@ -26,6 +26,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.BevelBorder;
+import javax.swing.JMenuItem;
+import java.awt.Color;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -101,30 +103,18 @@ public class VentanaPrincipal extends JFrame {
 		panel.add(lblNewLabel, gbc_lblNewLabel);
 		
 		JPanel panelIzquierda = new JPanel();
-		panelIzquierda.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), "TIPO", TitledBorder.CENTER, TitledBorder.TOP, null, null));
+		panelIzquierda.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), "GENERAL", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		contentPane.add(panelIzquierda, BorderLayout.WEST);
 		panelIzquierda.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Tostado y Molido");
-		panelIzquierda.add(rdbtnNewRadioButton_1);
+		JMenu mnNewMenu_3 = new JMenu("Bebidas");
+		panelIzquierda.add(mnNewMenu_3);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Tostado en Grano");
-		panelIzquierda.add(rdbtnNewRadioButton_2);
+		JMenu mnNewMenu_4 = new JMenu("Postres");
+		panelIzquierda.add(mnNewMenu_4);
 		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Soluble");
-		panelIzquierda.add(rdbtnNewRadioButton_3);
-		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Cápsulas");
-		panelIzquierda.add(rdbtnNewRadioButton);
-		
-		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Tés e infusiones");
-		panelIzquierda.add(rdbtnNewRadioButton_4);
-		
-		JRadioButton rdbtnNewRadioButton_6 = new JRadioButton("Promociones");
-		panelIzquierda.add(rdbtnNewRadioButton_6);
-		
-		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("Souvenirs");
-		panelIzquierda.add(rdbtnNewRadioButton_5);
+		JMenu mnNewMenu_5 = new JMenu("");
+		panelIzquierda.add(mnNewMenu_5);
 		
 		JPanel panelDerecha = new JPanel();
 		contentPane.add(panelDerecha, BorderLayout.EAST);

@@ -11,7 +11,7 @@ public class PruebaBaseDatos {
 	private static final String URL_CONEXION = "jdbc:mysql://localhost:3306/smartcafe";
 	public static void main(String args[]) throws SQLException {
 		final String usuario = "root";
-		final String password = "toor";
+		final String password = "serrato33";
 		Connection dbConnection = null;
 		Statement statement = null;
 		try {
