@@ -108,7 +108,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 	
 	public void conectarDB() {
-		baseDatos = new BaseDatos("smartcafe", "root", "toor");
+		baseDatos = new BaseDatos("smartcafe", "root", "serrato33");
 		baseDatos.setDriver("com.mysql.jdbc.Driver");
 		baseDatos.setProtocolo("jdbc:mysql://localhost:3306/");
 		

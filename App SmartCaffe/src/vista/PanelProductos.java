@@ -7,6 +7,10 @@ import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.BevelBorder;
 import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import javax.swing.BoxLayout;
+import java.awt.CardLayout;
 
 public class PanelProductos extends JPanel {
 	private JPanel panelCategoria;
@@ -22,18 +26,15 @@ public class PanelProductos extends JPanel {
 		panelCategoria = new JPanel();
 		panelCategoria.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), "Tipo Producto", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		add(panelCategoria);
+		panelCategoria.setLayout(null);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("New radio button");
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Bebidas");
+		rdbtnNewRadioButton.setBounds(26, 23, 80, 23);
 		panelCategoria.add(rdbtnNewRadioButton);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("New radio button");
+		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Postres");
+		rdbtnNewRadioButton_2.setBounds(28, 104, 78, 23);
 		panelCategoria.add(rdbtnNewRadioButton_2);
-		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("New radio button");
-		panelCategoria.add(rdbtnNewRadioButton_3);
-		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("New radio button");
-		panelCategoria.add(rdbtnNewRadioButton_1);
 		
 		panelProducto = new JPanel();
 		add(panelProducto);
