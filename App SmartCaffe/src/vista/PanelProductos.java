@@ -18,6 +18,10 @@ public class PanelProductos extends JPanel {
 	private JPanel panelCategoria;
 	private JPanel panelProducto;
 	private JPanel panelCarrito;
+	private JRadioButton comboBoxCafes;
+	private JRadioButton comboBoxPasteles;
+	private JRadioButton comboBoxLicuados;
+	private JRadioButton comboBoxTe;
 
 	/**
 	 * Create the panel.
@@ -31,29 +35,29 @@ public class PanelProductos extends JPanel {
 		add(panelCategoria);
 		panelCategoria.setLayout(null);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Cafés");
-		rdbtnNewRadioButton.setHorizontalAlignment(SwingConstants.LEFT);
-		rdbtnNewRadioButton.setIcon(new ImageIcon(PanelProductos.class.getResource("/recursos/512_black_18_44087.png")));
-		rdbtnNewRadioButton.setBounds(26, 23, 141, 37);
-		panelCategoria.add(rdbtnNewRadioButton);
+		comboBoxCafes = new JRadioButton("Cafés");
+		comboBoxCafes.setHorizontalAlignment(SwingConstants.LEFT);
+		comboBoxCafes.setIcon(new ImageIcon(PanelProductos.class.getResource("/recursos/512_black_18_44087.png")));
+		comboBoxCafes.setBounds(26, 23, 141, 37);
+		panelCategoria.add(comboBoxCafes);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Pasteles");
-		rdbtnNewRadioButton_2.setIcon(new ImageIcon(PanelProductos.class.getResource("/recursos/cake.png")));
-		rdbtnNewRadioButton_2.setHorizontalAlignment(SwingConstants.LEFT);
-		rdbtnNewRadioButton_2.setBounds(26, 72, 139, 37);
-		panelCategoria.add(rdbtnNewRadioButton_2);
+		comboBoxPasteles = new JRadioButton("Pasteles");
+		comboBoxPasteles.setIcon(new ImageIcon(PanelProductos.class.getResource("/recursos/cake.png")));
+		comboBoxPasteles.setHorizontalAlignment(SwingConstants.LEFT);
+		comboBoxPasteles.setBounds(26, 72, 139, 37);
+		panelCategoria.add(comboBoxPasteles);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Licuados");
-		rdbtnNewRadioButton_1.setIcon(new ImageIcon(PanelProductos.class.getResource("/recursos/malteada(1).png")));
-		rdbtnNewRadioButton_1.setHorizontalAlignment(SwingConstants.LEFT);
-		rdbtnNewRadioButton_1.setBounds(26, 121, 141, 37);
-		panelCategoria.add(rdbtnNewRadioButton_1);
+		comboBoxLicuados = new JRadioButton("Licuados");
+		comboBoxLicuados.setIcon(new ImageIcon(PanelProductos.class.getResource("/recursos/malteada(1).png")));
+		comboBoxLicuados.setHorizontalAlignment(SwingConstants.LEFT);
+		comboBoxLicuados.setBounds(26, 121, 141, 37);
+		panelCategoria.add(comboBoxLicuados);
 		
-		JRadioButton rdbtnT = new JRadioButton("Té");
-		rdbtnT.setIcon(new ImageIcon(PanelProductos.class.getResource("/recursos/relajante.png")));
-		rdbtnT.setHorizontalAlignment(SwingConstants.LEFT);
-		rdbtnT.setBounds(26, 174, 141, 37);
-		panelCategoria.add(rdbtnT);
+		comboBoxTe = new JRadioButton("Té");
+		comboBoxTe.setIcon(new ImageIcon(PanelProductos.class.getResource("/recursos/relajante.png")));
+		comboBoxTe.setHorizontalAlignment(SwingConstants.LEFT);
+		comboBoxTe.setBounds(26, 174, 141, 37);
+		panelCategoria.add(comboBoxTe);
 		
 		panelProducto = new JPanel();
 		add(panelProducto);
