@@ -2,11 +2,14 @@ package vista;
 
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.sql.Connection;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import modelo.TablaProducto;
 
 public class PanelCapturaProducto extends JPanel {
 	private JPanel panelDatos;
@@ -19,6 +22,8 @@ public class PanelCapturaProducto extends JPanel {
 	private JComboBox<String> comboBoxUMedida;
 	private JLabel textoUMedida;
 	private JLabel textoNombre;
+	
+	private TablaProducto tablaProducto;
 
 	/**
 	 * Create the panel.
@@ -79,6 +84,9 @@ public class PanelCapturaProducto extends JPanel {
 		panelImagen = new JPanel();
 		add(panelImagen);
 		panelImagen.setLayout(null);
-
+	}
+	
+	private void conectarTabla(Connection conexion) {
+		tablaProducto = new TablaProducto(conexion);
 	}
 }
