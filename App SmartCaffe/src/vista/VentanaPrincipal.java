@@ -1,37 +1,34 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.Frame;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
-import java.awt.CardLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JPopupMenu;
 import java.awt.Component;
+import java.awt.EventQueue;
+import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JRadioButton;
-import javax.swing.border.TitledBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.JMenuItem;
-import java.awt.Color;
+import java.sql.Connection;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.border.EmptyBorder;
+
+import dao.BaseDatos;
 
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
+	private JLabel logoEncabezado;
+	private JLabel fondoEncabezado;
+	
+	BaseDatos baseDatos;
+	Connection conexion;
 
 	/**
 	 * Launch the application.
@@ -53,6 +50,8 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
+		
+		conectarDB();
 		setTitle("App Cafetería");
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,52 +75,44 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.NORTH);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{685, 0};
-		gbl_panel.rowHeights = new int[]{150, 0};
-		gbl_panel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
+		JPanel panelEncabezado = new JPanel();
+		contentPane.add(panelEncabezado, BorderLayout.NORTH);
+		GridBagLayout gbl_panelEncabezado = new GridBagLayout();
+		gbl_panelEncabezado.columnWidths = new int[]{685, 0};
+		gbl_panelEncabezado.rowHeights = new int[]{150, 0};
+		gbl_panelEncabezado.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_panelEncabezado.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panelEncabezado.setLayout(gbl_panelEncabezado);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/recursos/logo.png")));
-		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.fill = GridBagConstraints.BOTH;
-		gbc_lblNewLabel_1.gridx = 0;
-		gbc_lblNewLabel_1.gridy = 0;
-		panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+		logoEncabezado = new JLabel("");
+		logoEncabezado.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/recursos/logo.png")));
+		GridBagConstraints gbc_logoEncabezado = new GridBagConstraints();
+		gbc_logoEncabezado.fill = GridBagConstraints.BOTH;
+		gbc_logoEncabezado.gridx = 0;
+		gbc_logoEncabezado.gridy = 0;
+		panelEncabezado.add(logoEncabezado, gbc_logoEncabezado);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/recursos/FondoBarraSuperior.png")));
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.anchor = GridBagConstraints.NORTH;
-		gbc_lblNewLabel.fill = GridBagConstraints.HORIZONTAL;
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 0;
-		panel.add(lblNewLabel, gbc_lblNewLabel);
+		fondoEncabezado = new JLabel("");
+		fondoEncabezado.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/recursos/FondoBarraSuperior.png")));
+		GridBagConstraints gbc_fondoEncabezado = new GridBagConstraints();
+		gbc_fondoEncabezado.anchor = GridBagConstraints.NORTH;
+		gbc_fondoEncabezado.fill = GridBagConstraints.HORIZONTAL;
+		gbc_fondoEncabezado.gridx = 0;
+		gbc_fondoEncabezado.gridy = 0;
+		panelEncabezado.add(fondoEncabezado, gbc_fondoEncabezado);
 		
-		JPanel panelIzquierda = new JPanel();
-		panelIzquierda.setBorder(new TitledBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null), "GENERAL", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		contentPane.add(panelIzquierda, BorderLayout.WEST);
-		panelIzquierda.setLayout(new GridLayout(0, 1, 0, 0));
+		PanelCapturaProducto panelCapturaProducto = new PanelCapturaProducto();
+		contentPane.add(panelCapturaProducto,BorderLayout.CENTER);
+		setVisible(true);
+
+	}
+	
+	public void conectarDB() {
+		baseDatos = new BaseDatos("smartcafe", "root", "toor");
+		baseDatos.setDriver("com.mysql.jdbc.Driver");
+		baseDatos.setProtocolo("jdbc:mysql://localhost:3306/");
 		
-		JMenu mnNewMenu_3 = new JMenu("Bebidas");
-		panelIzquierda.add(mnNewMenu_3);
-		
-		JMenu mnNewMenu_4 = new JMenu("Postres");
-		panelIzquierda.add(mnNewMenu_4);
-		
-		JMenu mnNewMenu_5 = new JMenu("");
-		panelIzquierda.add(mnNewMenu_5);
-		
-		JPanel panelDerecha = new JPanel();
-		contentPane.add(panelDerecha, BorderLayout.EAST);
-		
-		JPanel panelInferior = new JPanel();
-		contentPane.add(panelInferior, BorderLayout.SOUTH);
-		
+		conexion = baseDatos.getConexion();
 	}
 
 	private static void addPopup(Component component, final JPopupMenu popup) {

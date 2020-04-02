@@ -1,21 +1,22 @@
 package vista;
 
-import javax.swing.JPanel;
-import java.awt.GridLayout;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
+import java.awt.GridLayout;
+
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class PanelCapturaProducto extends JPanel {
 	private JPanel panelDatos;
 	private JPanel panelImagen;
 	private JTextField cajaNombre;
 	private JLabel textoTipoProducto;
-	private JComboBox comboBoxTipoProducto;
+	private JComboBox<String> comboBoxTipoProducto;
 	private JTextField cajaContenido;
 	private JLabel textoContenido;
-	private JComboBox comboBoxUMedida;
+	private JComboBox<String> comboBoxUMedida;
 	private JLabel textoUMedida;
 	private JLabel textoNombre;
 
@@ -36,6 +37,7 @@ public class PanelCapturaProducto extends JPanel {
 		panelDatos.add(textoNombre);
 		
 		cajaNombre = new JTextField();
+		cajaNombre.setFont(new Font("Dialog", Font.PLAIN, 16));
 		cajaNombre.setBounds(191, 69, 161, 34);
 		panelDatos.add(cajaNombre);
 		cajaNombre.setColumns(10);
@@ -46,11 +48,13 @@ public class PanelCapturaProducto extends JPanel {
 		textoTipoProducto.setBounds(43, 115, 130, 34);
 		panelDatos.add(textoTipoProducto);
 		
-		comboBoxTipoProducto = new JComboBox();
+		comboBoxTipoProducto = new JComboBox<>();
+		comboBoxTipoProducto.setFont(new Font("Dialog", Font.BOLD, 16));
 		comboBoxTipoProducto.setBounds(191, 115, 161, 34);
 		panelDatos.add(comboBoxTipoProducto);
 		
 		cajaContenido = new JTextField();
+		cajaContenido.setFont(new Font("Dialog", Font.PLAIN, 16));
 		cajaContenido.setColumns(10);
 		cajaContenido.setBounds(191, 161, 161, 34);
 		panelDatos.add(cajaContenido);
@@ -61,7 +65,8 @@ public class PanelCapturaProducto extends JPanel {
 		textoContenido.setBounds(43, 161, 130, 34);
 		panelDatos.add(textoContenido);
 		
-		comboBoxUMedida = new JComboBox();
+		comboBoxUMedida = new JComboBox<>();
+		comboBoxUMedida.setFont(new Font("Dialog", Font.BOLD, 16));
 		comboBoxUMedida.setBounds(191, 207, 161, 34);
 		panelDatos.add(comboBoxUMedida);
 		
