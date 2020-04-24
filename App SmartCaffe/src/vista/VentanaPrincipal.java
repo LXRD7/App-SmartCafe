@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
@@ -108,7 +109,8 @@ public class VentanaPrincipal extends JFrame {
 	}
 	
 	public void conectarDB() {
-		baseDatos = new BaseDatos("smartcafe", "root", "serrato33");
+		String contraseña = JOptionPane.showInputDialog("Contraseña de la BD");
+		baseDatos = new BaseDatos("smartcafe", "root", contraseña);
 		baseDatos.setDriver("com.mysql.jdbc.Driver");
 		baseDatos.setProtocolo("jdbc:mysql://localhost:3306/");
 		
