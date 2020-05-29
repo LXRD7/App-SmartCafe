@@ -9,7 +9,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import modelo.Producto;
+import modelo.ProductoResurtir;
 
 public class TablaProducto {
 private Connection conection;
@@ -35,7 +35,7 @@ return false;
 		return false;
 	}
 }
-public String modificar(Producto p){
+public String modificar(ProductoResurtir p){
 	String sql2 ="SET FOREIGN_KEY_CHECKS=0";
 	String sql3 ="SET FOREIGN_KEY_CHECKS=1";
 String sql = "UPDATE producto SET nom_pro='"+p.getNombreProducto()+"', pre_pro='"+p.getPresentacion()+"', tipo_pro='"+p.getTipo()+"',contenido_pro="+p.getContenido()+",umedida_pro='"+p.getUnidadMedida()+"', marca_pro='"+p.getMarca()+"', utilidad="+p.getUtilidad()+",imagen_pro='"+p.getUrlImage()+"'"+ "WHERE codbar_pro="+p.getCodigoBarras();	
@@ -84,14 +84,14 @@ return "error.";
 		return e.toString();
 	}
 }
-public List<Producto> getProductos(){
+public List<ProductoResurtir> getProductos(){
 	
 	String sql ="select* from producto where codbar_pro";
 	try{
 	ResultSet rs = statement.executeQuery(sql);
-	List<Producto> lista = new ArrayList<Producto>();
+	List<ProductoResurtir> lista = new ArrayList<ProductoResurtir>();
 	while (rs.next()) {
-		Producto p = new Producto();
+		ProductoResurtir p = new ProductoResurtir();
 		p.setCodigoBarras(rs.getString("codbar_pro"));
 		p.setNombreProducto(rs.getString("nom_pro"));
 		p.setTipo(rs.getString("tipo_pro"));
@@ -108,14 +108,14 @@ public List<Producto> getProductos(){
 		return null;
 	}
 }
-public List<Producto> getFiltro(String filtro){
+public List<ProductoResurtir> getFiltro(String filtro){
 //	SELECT* from producto where codbar_pro like 'perro%';
 	String sql ="select* from producto where codbar_pro like '"+filtro+"%'";
 	try{
 	ResultSet rs = statement.executeQuery(sql);
-	List<Producto> lista = new ArrayList<Producto>();
+	List<ProductoResurtir> lista = new ArrayList<ProductoResurtir>();
 	while (rs.next()) {
-		Producto p = new Producto();
+		ProductoResurtir p = new ProductoResurtir();
 		p.setCodigoBarras(rs.getString("codbar_pro"));
 		p.setNombreProducto(rs.getString("nom_pro"));
 		p.setTipo(rs.getString("tipo_pro"));
@@ -134,12 +134,12 @@ public List<Producto> getFiltro(String filtro){
 		return null;
 	}
 }
-public Producto getProducto(String codigoBarras){
+public ProductoResurtir getProducto(String codigoBarras){
 	String sql ="select* from producto where codbar_pro='"+codigoBarras+"'";
 	try{
 	ResultSet rs = statement.executeQuery(sql);
 	if (rs.next()) {
-		Producto p = new Producto();
+		ProductoResurtir p = new ProductoResurtir();
 		p.setCodigoBarras(rs.getString("codbar_pro"));
 		p.setNombreProducto(rs.getString("nom_pro"));
 		p.setTipo(rs.getString("tipo_pro"));
@@ -159,7 +159,7 @@ return null;
 		return null;
 	}
 }
-public String guardar (Producto p){
+public String guardar (ProductoResurtir p){
 	System.out.println(p.getUrlImage());
 	String sql = "insert into producto values('"+p.getCodigoBarras()+"','"+p.getNombreProducto()+"','"+p.getTipo()+"','"+p.getPresentacion()+"','"+p.getContenido()+"','"+p.getUnidadMedida()+"','"+p.getMarca()+"','"+p.getUtilidad()+"','"+p.getUrlImage()+"')";
 try {
