@@ -1,53 +1,22 @@
 package modelo;
 
 public class Producto {
-	
-	private String codigoBarras;
-	private String nombreProducto;
-	private String marca;
-	private String unidadMedida;
-	private double contenido;
+	private int clave;
+	private String nombre;
 	private String tipo;
-	private String presentacion;
-	private String descripcion;
-	private double utilidad;
-	private String urlImage;
-
-	public String getCodigoBarras() {
-		return codigoBarras;
+	private String marca;
+	
+	public int getClave() {
+		return clave;
 	}
-	public void setCodigoBarras(String codigoBarras) {
-		this.codigoBarras = codigoBarras;
+	public void setClave(int clave) {
+		this.clave = clave;
 	}
-	public String getNombreProducto() {
-		return nombreProducto;
+	public String getNombre() {
+		return nombre;
 	}
-	public void setNombreProducto(String nombreProducto) {
-		this.nombreProducto = nombreProducto;
-	}
-	public String getMarca() {
-		return marca;
-	}
-	public void setMarca(String marca) {
-		this.marca = marca;
-	}
-	public String getUnidadMedida() {
-		return unidadMedida;
-	}
-	public void setUnidadMedida(String unidadMedida) {
-		this.unidadMedida = unidadMedida;
-	}
-	public double getContenido() {
-		return contenido;
-	}
-	public void setContenido(double contenido) {
-		this.contenido = contenido;
-	}
-	public double getUtilidad() {
-		return utilidad;
-	}
-	public void setUtilidad(double utilidad) {
-		this.utilidad = utilidad;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	public String getTipo() {
 		return tipo;
@@ -55,32 +24,11 @@ public class Producto {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public String getPresentacion() {
-		return presentacion;
+	public String getMarca() {
+		return marca;
 	}
-	public void setPresentacion(String presentacion) {
-		this.presentacion = presentacion;
-	}
-	public String getDescripcion() {
-		return descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	
-	@Override
-	public String toString() {
-		return "Producto [codigoBarras=" + codigoBarras + ", nombreProducto=" + nombreProducto + ", marca=" + marca
-				+ ", unidadMedida=" + unidadMedida + ", contenido=" + contenido + ", tipo=" + tipo + ", presentacion="
-				+ presentacion + ", descripcion=" + descripcion + "]";
+	public void setMarca(String marca) {
+		this.marca = marca;
 	}
 
-	public String getUrlImage() {
-		return urlImage;
-	}
-
-	public void setUrlImage(String urlImage) {
-		this.urlImage = urlImage;
-	}
-	
 }

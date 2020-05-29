@@ -27,8 +27,8 @@ public class VentanaPrincipal extends JFrame {
 	private JLabel logoEncabezado;
 	private JLabel fondoEncabezado;
 	
-	BaseDatos baseDatos;
-	Connection conexion;
+	private BaseDatos baseDatos;
+	private Connection conexion;
 
 	/**
 	 * Launch the application.
