@@ -2,13 +2,14 @@ package modelo;
 
 import enumeraciones.EnumCategoria;
 import enumeraciones.Presentacion;
-import enumeraciones.Tamaño;
+import enumeraciones.Tamanio;
+import enumeraciones.Tamanio;
 
 public class ProductoVenta {
 	private int claveVenta;
 	private EnumCategoria categoria;
 	private int precio;
-	private Tamaño tamaño;
+	private Tamanio tamanio;
 	private Presentacion presentacion;
 	private String urlImage;
 	public int getClaveVenta() {
@@ -29,11 +30,11 @@ public class ProductoVenta {
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
-	public Tamaño getTamaño() {
-		return tamaño;
+	public Tamanio getTamanio() {
+		return tamanio;
 	}
-	public void setTamaño(Tamaño tamaño) {
-		this.tamaño = tamaño;
+	public void setTamanio(Tamanio tamanio) {
+		this.tamanio = tamanio;
 	}
 	public Presentacion getPresentacion() {
 		return presentacion;
@@ -50,7 +51,7 @@ public class ProductoVenta {
 	@Override
 	public String toString() {
 		return "ProductoVenta [claveVenta=" + claveVenta + ", categoria=" + categoria + ", precio=" + precio
-				+ ", tamaño=" + tamaño + ", presentacion=" + presentacion + ", urlImage=" + urlImage + "]";
+				+ ", tamanio=" + tamanio + ", presentacion=" + presentacion + ", urlImage=" + urlImage + "]";
 	}
 
 	
