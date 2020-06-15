@@ -3,7 +3,6 @@ package modelo;
 import enumeraciones.EnumCategoria;
 import enumeraciones.Presentacion;
 import enumeraciones.Tamanio;
-import enumeraciones.Tamanio;
 
 public class ProductoVenta {
 	private int claveVenta;
