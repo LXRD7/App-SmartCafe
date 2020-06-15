@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import modelo.TablaProducto;
+import dao.TablaProducto;
 
 public class PanelCapturaProducto extends JPanel {
 	private JPanel panelDatos;

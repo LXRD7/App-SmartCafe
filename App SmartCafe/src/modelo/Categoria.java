@@ -1,15 +1,14 @@
 package modelo;
 
 public class Categoria {
-	private int clave;
+	private int claveCategoria;
 	private String nombreCategoria;
 	
-	
-	public int getClave() {
-		return clave;
+	public int getClaveCategoria() {
+		return claveCategoria;
 	}
-	public void setClave(int clave) {
-		this.clave = clave;
+	public void setClaveCategoria(int claveCategoria) {
+		this.claveCategoria = claveCategoria;
 	}
 	public String getNombreCategoria() {
 		return nombreCategoria;
@@ -17,5 +16,8 @@ public class Categoria {
 	public void setNombreCategoria(String nombreCategoria) {
 		this.nombreCategoria = nombreCategoria;
 	}
+	
+	
+
 	
 }
