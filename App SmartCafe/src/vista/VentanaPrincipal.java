@@ -163,7 +163,7 @@ public class VentanaPrincipal extends JFrame {
 	
 	public void conectarDB() {
 //		String contraseña = JOptionPane.showInputDialog("Contraseña de la BD");
-		baseDatos = new BaseDatos("smartcafe", "toor", "serrato33");
+		baseDatos = new BaseDatos("smartcafe", "root", "serrato33");
 		baseDatos.setDriver("com.mysql.jdbc.Driver");
 		baseDatos.setProtocolo("jdbc:mysql://localhost:3306/");
 		
