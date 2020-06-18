@@ -5,6 +5,10 @@ import java.awt.GridLayout;
 import javax.swing.border.TitledBorder;
 
 public class PanelVenta extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5437918703192405849L;
 	private JPanel panelTipoProducto;
 	private JPanel panelInformacion;
 

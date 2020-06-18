@@ -1,12 +1,12 @@
 package modelo;
 
-import enumeraciones.EnumCategoria;
+import enumeraciones.Categoria;
 import enumeraciones.Presentacion;
 import enumeraciones.Tamanio;
 
 public class ProductoVenta {
 	private int claveVenta;
-	private EnumCategoria categoria;
+	private Categoria categoria;
 	private int precio;
 	private Tamanio tamanio;
 	private Presentacion presentacion;
@@ -17,10 +17,10 @@ public class ProductoVenta {
 	public void setClaveVenta(int claveVenta) {
 		this.claveVenta = claveVenta;
 	}
-	public EnumCategoria getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(EnumCategoria categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 	public int getPrecio() {

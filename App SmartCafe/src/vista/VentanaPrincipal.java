@@ -1,39 +1,64 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import dao.BaseDatos;
+import enumeraciones.TipoProductoInventario;
+import enumeraciones.UnidadMedida;
 
 public class VentanaPrincipal extends JFrame {
 
+	private static final long serialVersionUID = 4196183864480321960L;
 	private JPanel contentPane;
+	
+	private PanelMenuPrincipal panelMenuPrincipal;
+	private PanelMenuInventario panelMenuInventario;
+	private PanelCapturaProductoInventario panelCapturaProductoInventario;
+	
 	private JLabel logoEncabezado;
 	private JLabel fondoEncabezado;
+	
+	private JButton botonVentas;
+	private JButton botonCatalogo;
+	private JButton botonInventario;
+	
+	private JButton botonRegistrar;
+	private JButton botonModificar;
+	private JButton botonBuscar;
+	private JButton botonEliminar;
+	private JButton botonResurtir;
+	
+	private JComboBox<TipoProductoInventario> comboBoxTipoProducto;
+	private JTextField cajaNombre;
+	private JComboBox<UnidadMedida> comboBoxUnidadMedida;
+	private JTextField cajaMarca;
+	private JTextField cajaContenido;
+	private JTextField cajaCodigoBarras;
+	
+	private Color colorPrincipal = new Color(175, 193, 11);
+	private Color colorSecundario = new Color(75, 44, 14);
 	
 	BaseDatos baseDatos;
 	Connection conexion;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -47,9 +72,6 @@ public class VentanaPrincipal extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public VentanaPrincipal() {
 		
 		conectarDB();
@@ -62,15 +84,6 @@ public class VentanaPrincipal extends JFrame {
 		menuBar.setBorder(new EmptyBorder(0, 0, 0, 0));
 		menuBar.setBorderPainted(false);
 		setJMenuBar(menuBar);
-		
-		JMenu mnNewMenu = new JMenu("Control de Inventario");
-		menuBar.add(mnNewMenu);
-		
-		JMenu mnNewMenu_1 = new JMenu("Almacén");
-		menuBar.add(mnNewMenu_1);
-		
-		JMenu mnNewMenu_2 = new JMenu("Control ");
-		menuBar.add(mnNewMenu_2);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -102,36 +115,58 @@ public class VentanaPrincipal extends JFrame {
 		gbc_fondoEncabezado.gridy = 0;
 		panelEncabezado.add(fondoEncabezado, gbc_fondoEncabezado);
 		
-		PanelCapturaProducto panelCapturaProducto = new PanelCapturaProducto();
-		contentPane.add(panelCapturaProducto,BorderLayout.CENTER);
+		panelMenuPrincipal = new PanelMenuPrincipal();
+		panelMenuPrincipal.getBotonVentas().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		botonVentas = panelMenuPrincipal.getBotonVentas();
+		botonVentas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		botonCatalogo = panelMenuPrincipal.getBotonCatalogo();
+		botonCatalogo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		botonInventario = panelMenuPrincipal.getBotonInventario();
+		botonInventario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				panelMenuInventario = new PanelMenuInventario();
+				botonRegistrar = panelMenuInventario.getBotonRegistrar();
+				botonRegistrar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						panelCapturaProductoInventario = new PanelCapturaProductoInventario();
+						cajaCodigoBarras = panelCapturaProductoInventario.getCajaCodigoBarras();
+						cajaNombre = panelCapturaProductoInventario.getCajaNombre();
+						comboBoxTipoProducto = panelCapturaProductoInventario.getComboBoxTipoProducto();
+						comboBoxUnidadMedida = panelCapturaProductoInventario.getComboBoxUnidadMedida();
+						cajaMarca = panelCapturaProductoInventario.getCajaMarca();
+						cajaContenido = panelCapturaProductoInventario.getCajaContenido();
+						contentPane.add(panelCapturaProductoInventario,BorderLayout.CENTER);
+						setVisible(true);
+					}
+				});
+				botonModificar = panelMenuInventario.getBotonModificar();
+				botonBuscar = panelMenuInventario.getBotonBuscar();
+				botonEliminar = panelMenuInventario.getBotonEliminar();
+				botonResurtir = panelMenuInventario.getBotonResurtir();
+				contentPane.add(panelMenuInventario,BorderLayout.WEST);
+				setVisible(true);
+			}
+		});
+		contentPane.add(panelMenuPrincipal,BorderLayout.SOUTH);
 		setVisible(true);
 
 	}
 	
 	public void conectarDB() {
-		String contraseña = JOptionPane.showInputDialog("Contraseña de la BD");
-		baseDatos = new BaseDatos("smartcafe", "root", "serrato33");
+//		String contraseña = JOptionPane.showInputDialog("Contraseña de la BD");
+		baseDatos = new BaseDatos("smartcafe", "toor", "serrato33");
 		baseDatos.setDriver("com.mysql.jdbc.Driver");
 		baseDatos.setProtocolo("jdbc:mysql://localhost:3306/");
 		
 		conexion = baseDatos.getConexion();
-	}
-
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
 	}
 }
