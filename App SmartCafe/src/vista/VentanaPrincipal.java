@@ -21,8 +21,11 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import dao.BaseDatos;
+import dao.FuenteDatos;
+import dao.TablaProductoInventario;
 import enumeraciones.TipoProductoInventario;
 import enumeraciones.UnidadMedida;
+import modelo.ProductoInventario;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -52,6 +55,9 @@ public class VentanaPrincipal extends JFrame {
 	private JTextField cajaMarca;
 	private JTextField cajaContenido;
 	private JTextField cajaCodigoBarras;
+	
+	private JButton botonAceptar;
+	private JButton botonSalir;
 	
 	private Color colorPrincipal = new Color(175, 193, 11);
 	private Color colorSecundario = new Color(75, 44, 14);
@@ -145,6 +151,23 @@ public class VentanaPrincipal extends JFrame {
 						cajaMarca = panelCapturaProductoInventario.getCajaMarca();
 						cajaContenido = panelCapturaProductoInventario.getCajaContenido();
 						contentPane.add(panelCapturaProductoInventario,BorderLayout.CENTER);
+						PanelOpciones panelOpciones = new PanelOpciones();
+						botonAceptar = panelOpciones.getBotonAceptar();
+						botonAceptar.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent arg0) {
+								TablaProductoInventario tablaProductoInventario = new TablaProductoInventario(FuenteDatos.getBaseDatos().getConexion());
+								ProductoInventario p = new ProductoInventario();
+								p.setCodigoBarras(cajaCodigoBarras.getText());
+								p.setNombreProducto(cajaNombre.getText());
+								p.setTipoProducto(comboBoxTipoProducto.getItemAt(comboBoxTipoProducto.getSelectedIndex()));
+								p.setMarca(cajaMarca.getText());
+								p.setContenido(Double.parseDouble(cajaContenido.getText()));
+								p.setUnidadMedida(comboBoxUnidadMedida.getItemAt(comboBoxUnidadMedida.getSelectedIndex()));
+								System.out.println(tablaProductoInventario.registrarProductoInventario(p));
+							}
+						});
+						botonSalir = panelOpciones.getBotonSalir();
+						contentPane.add(panelOpciones,BorderLayout.EAST);
 						setVisible(true);
 					}
 				});

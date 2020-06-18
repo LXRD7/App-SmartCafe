@@ -21,7 +21,7 @@ public TablaProductoInventario(Connection conection) {
 	e.toString();
 	}
 }
-public boolean existe(String codigoBarras){
+public boolean existeProductoInventario(String codigoBarras){
 	String sql ="select* from producto_inv where cve_pin='"+codigoBarras+"'";
 	try{
 	ResultSet rs = statement.executeQuery(sql);
@@ -34,7 +34,7 @@ return false;
 		return false;
 	}
 }
-public String modificar(ProductoInventario p){
+public String modificarProductoInventario(ProductoInventario p){
 	String sql2 ="SET FOREIGN_KEY_CHECKS=0";
 	String sql3 ="SET FOREIGN_KEY_CHECKS=1";
 String sql = "UPDATE producto_inv SET nom_pin='"+p.getNombreProducto()+"', tipo_pin='"+p.getTipoProducto()+"', marca_pin='"+p.getMarca()+"',contenido_pin='"+p.getContenido()+"',umedida_pin='"+p.getUnidadMedida()+ "' WHERE cve_pin='"+p.getCodigoBarras();	
@@ -58,7 +58,7 @@ return "error.";
 		return e.toString();
 	}
 }
-public String eliminar(String codigoBarras){
+public String eliminarProductoInventario(String codigoBarras){
 	String sql2 ="SET FOREIGN_KEY_CHECKS=0";
 	String sql3 ="SET FOREIGN_KEY_CHECKS=1";
 	String sql ="delete from producto_inv where cve_pin="+codigoBarras;
@@ -83,7 +83,7 @@ return "error.";
 		return e.toString();
 	}
 }
-public List<ProductoInventario> getProductos(){
+public List<ProductoInventario> getProductosInventario(){
 	
 	String sql ="select * from producto_inv where cve_pin";
 	try{
@@ -126,7 +126,7 @@ public List<ProductoInventario> getFiltro(String filtro){
 		return null;
 	}
 }
-public ProductoInventario getProducto(String codigoBarras){
+public ProductoInventario getProductoInventario(String codigoBarras){
 	String sql ="select* from producto_inv where cve_pin='"+codigoBarras+"'";
 	try{
 	ResultSet rs = statement.executeQuery(sql);
@@ -147,7 +147,7 @@ return null;
 		return null;
 	}
 }
-public String guardar (ProductoInventario p){
+public String registrarProductoInventario(ProductoInventario p){
 	String sql = "insert into producto_inv values('"+p.getCodigoBarras()+"','"+p.getNombreProducto()+"','"+p.getTipoProducto()+"','"+p.getMarca()+"','"+p.getContenido()+"','"+p.getUnidadMedida()+"')";
 try {
 	statement.executeUpdate(sql);

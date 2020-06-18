@@ -37,9 +37,6 @@ public class PanelMenuPrincipal extends JPanel {
 		botonInventario.setBackground(colorPrincipal);
 		botonInventario.setFont(new Font("Droid Sans", Font.BOLD, 20));
 		add(botonInventario);
-
-		
-		
 	}
 
 	public JButton getBotonVentas() {
