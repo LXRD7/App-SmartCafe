@@ -26,6 +26,9 @@ import dao.TablaProductoInventario;
 import enumeraciones.TipoProducto;
 import enumeraciones.UnidadMedida;
 import modelo.ProductoInventario;
+import javax.swing.UIManager;
+import java.awt.Toolkit;
+import java.awt.Component;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -80,6 +83,8 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public VentanaPrincipal() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPrincipal.class.getResource("/recursos/frappe.png")));
+		setBackground(UIManager.getColor("Button.darkShadow"));
 		
 		conectarDB();
 		setTitle("App Cafetería");
@@ -106,6 +111,7 @@ public class VentanaPrincipal extends JFrame {
 		panelEncabezado.setLayout(gbl_panelEncabezado);
 		
 		logoEncabezado = new JLabel("");
+		logoEncabezado.setAlignmentY(Component.TOP_ALIGNMENT);
 		logoEncabezado.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/recursos/logo.png")));
 		GridBagConstraints gbc_logoEncabezado = new GridBagConstraints();
 		gbc_logoEncabezado.fill = GridBagConstraints.BOTH;
