@@ -69,40 +69,29 @@ public class PanelMenuInventario extends JPanel {
 		return botonRegistrar;
 	}
 
-	public void setBotonRegistrar(JButton botonRegistrar) {
-		this.botonRegistrar = botonRegistrar;
-	}
-
 	public JButton getBotonModificar() {
 		return botonModificar;
-	}
-
-	public void setBotonModificar(JButton botonModificar) {
-		this.botonModificar = botonModificar;
 	}
 
 	public JButton getBotonBuscar() {
 		return botonBuscar;
 	}
 
-	public void setBotonBuscar(JButton botonBuscar) {
-		this.botonBuscar = botonBuscar;
-	}
-
 	public JButton getBotonEliminar() {
 		return botonEliminar;
-	}
-
-	public void setBotonEliminar(JButton botonEliminar) {
-		this.botonEliminar = botonEliminar;
 	}
 
 	public JButton getBotonResurtir() {
 		return botonResurtir;
 	}
 
-	public void setBotonResurtir(JButton botonResurtir) {
-		this.botonResurtir = botonResurtir;
+	public Color getColorPrincipal() {
+		return colorPrincipal;
 	}
 
+	public Color getColorSecundario() {
+		return colorSecundario;
+	}
+	
+	
 }

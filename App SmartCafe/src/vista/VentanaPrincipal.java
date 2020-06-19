@@ -23,7 +23,7 @@ import javax.swing.border.EmptyBorder;
 import dao.BaseDatos;
 import dao.FuenteDatos;
 import dao.TablaProductoInventario;
-import enumeraciones.TipoProductoInventario;
+import enumeraciones.TipoProducto;
 import enumeraciones.UnidadMedida;
 import modelo.ProductoInventario;
 
@@ -49,12 +49,13 @@ public class VentanaPrincipal extends JFrame {
 	private JButton botonEliminar;
 	private JButton botonResurtir;
 	
-	private JComboBox<TipoProductoInventario> comboBoxTipoProducto;
+	private JComboBox<TipoProducto> comboBoxTipoProducto;
 	private JTextField cajaNombre;
 	private JComboBox<UnidadMedida> comboBoxUnidadMedida;
 	private JTextField cajaMarca;
 	private JTextField cajaContenido;
 	private JTextField cajaCodigoBarras;
+	private JTextField cajaPrecio;
 	
 	private JButton botonAceptar;
 	private JButton botonSalir;
@@ -150,12 +151,12 @@ public class VentanaPrincipal extends JFrame {
 						comboBoxUnidadMedida = panelCapturaProductoInventario.getComboBoxUnidadMedida();
 						cajaMarca = panelCapturaProductoInventario.getCajaMarca();
 						cajaContenido = panelCapturaProductoInventario.getCajaContenido();
+						cajaPrecio = panelCapturaProductoInventario.getCajaPrecio();
 						contentPane.add(panelCapturaProductoInventario,BorderLayout.CENTER);
 						PanelOpciones panelOpciones = new PanelOpciones();
 						botonAceptar = panelOpciones.getBotonAceptar();
 						botonAceptar.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent arg0) {
-								TablaProductoInventario tablaProductoInventario = new TablaProductoInventario(FuenteDatos.getBaseDatos().getConexion());
 								ProductoInventario p = new ProductoInventario();
 								p.setCodigoBarras(cajaCodigoBarras.getText());
 								p.setNombreProducto(cajaNombre.getText());
@@ -163,7 +164,6 @@ public class VentanaPrincipal extends JFrame {
 								p.setMarca(cajaMarca.getText());
 								p.setContenido(Double.parseDouble(cajaContenido.getText()));
 								p.setUnidadMedida(comboBoxUnidadMedida.getItemAt(comboBoxUnidadMedida.getSelectedIndex()));
-								System.out.println(tablaProductoInventario.registrarProductoInventario(p));
 							}
 						});
 						botonSalir = panelOpciones.getBotonSalir();

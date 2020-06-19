@@ -1,19 +1,19 @@
 package conversores;
 
-import enumeraciones.TipoProductoInventario;
+import enumeraciones.TipoProducto;
 import enumeraciones.UnidadMedida;
 
 public class Conversor {
-	public static TipoProductoInventario convertirATipoProductoIventario(String tipoProducto) {
+	public static TipoProducto convertirATipoProductoIventario(String tipoProducto) {
 		switch (tipoProducto) {
 		case "cafe":
-			return TipoProductoInventario.CAFE;
+			return TipoProducto.CAFE;
 		case "postre":
-			return TipoProductoInventario.POSTRE;
+			return TipoProducto.POSTRE;
 		case "endulzante":
-			return TipoProductoInventario.ENDULZANTE;
+			return TipoProducto.ENDULZANTE;
 		case "otro":
-			return TipoProductoInventario.OTRO;
+			return TipoProducto.OTRO;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + tipoProducto);
 		}
