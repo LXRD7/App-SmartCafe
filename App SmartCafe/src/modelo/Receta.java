@@ -6,6 +6,7 @@ public class Receta {
 	private int claveReceta;
 	private int cantidad;
 	private UnidadMedida unidadMedida;
+	
 	public int getClaveReceta() {
 		return claveReceta;
 	}

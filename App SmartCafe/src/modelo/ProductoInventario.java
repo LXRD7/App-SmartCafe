@@ -11,6 +11,7 @@ public class ProductoInventario{
 	private String marca;
 	private double contenido;
 	private UnidadMedida unidadMedida;
+	
 	public String getCodigoBarras() {
 		return codigoBarras;
 	}

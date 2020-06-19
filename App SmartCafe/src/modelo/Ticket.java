@@ -7,6 +7,7 @@ public class Ticket {
 	private LocalDate fecha;
 	private String descripcion;
 	private int total;
+	
 	public int getClaveTicket() {
 		return claveTicket;
 	}
