@@ -1,8 +1,10 @@
 package modelo;
 
+import java.time.LocalDate;
+
 public class Precio {
 	private int clavePrecio;
-	private int fechaPrecio;
+	private LocalDate fechaPrecio;
 	private int precio;
 	
 	public int getClavePrecio() {
@@ -11,10 +13,10 @@ public class Precio {
 	public void setClavePrecio(int clavePrecio) {
 		this.clavePrecio = clavePrecio;
 	}
-	public int getFechaPrecio() {
+	public LocalDate getFechaPrecio() {
 		return fechaPrecio;
 	}
-	public void setFechaPrecio(int fechaPrecio) {
+	public void setFechaPrecio(LocalDate fechaPrecio) {
 		this.fechaPrecio = fechaPrecio;
 	}
 	public int getPrecio() {
@@ -23,4 +25,6 @@ public class Precio {
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
+	
+	
 }

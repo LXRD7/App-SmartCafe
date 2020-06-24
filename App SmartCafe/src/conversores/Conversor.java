@@ -1,5 +1,7 @@
 package conversores;
 
+import java.time.LocalDate;
+
 import enumeraciones.TipoProducto;
 import enumeraciones.UnidadMedida;
 
@@ -18,7 +20,7 @@ public class Conversor {
 			throw new IllegalArgumentException("Unexpected value: " + tipoProducto);
 		}
 	}
-	
+
 	public static UnidadMedida convertirAUnidadMedida(String unidadMedida) {
 		switch (unidadMedida) {
 		case "unidad":
@@ -36,5 +38,8 @@ public class Conversor {
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + unidadMedida);
 		}
+	}
+	public static LocalDate convertirAFecha(String fecha) {
+		return LocalDate.parse(fecha);
 	}
 }

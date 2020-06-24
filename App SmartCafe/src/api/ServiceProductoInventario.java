@@ -10,4 +10,5 @@ public interface ServiceProductoInventario {
 	 List<ProductoInventario> getProductos();
 	 int eliminar(String cve);
 	 String modificar(ProductoInventario producto);
+	 
 }
