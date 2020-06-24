@@ -130,7 +130,7 @@ public class TablaProductoVenta {
 			return null;
 		}
 	}
-
+//hola
 	public String registrarProductoVenta(ProductoVenta p){
 		String sql = "insert into producto_ven values('"+p.getCodigoBarras()+"','"+p.getNombreProducto()+"','"+p.getTipoProducto()+"',precio_pve='"+p.getPrecio()+"','"+p.getContenido()+"','"+p.getUnidadMedida()+"')";
 		try {
