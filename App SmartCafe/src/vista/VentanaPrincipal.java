@@ -20,12 +20,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import api.ServiceProductoInventario;
 import dao.BaseDatos;
 import dao.FuenteDatos;
 import dao.TablaProductoInventario;
 import enumeraciones.TipoProducto;
 import enumeraciones.UnidadMedida;
+import modelo.Precio;
 import modelo.ProductoInventario;
+import services.ServiceProductoInventarioImpl;
+
 import javax.swing.UIManager;
 import java.awt.Toolkit;
 import java.awt.Component;
@@ -33,6 +37,9 @@ import java.awt.Component;
 public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 4196183864480321960L;
+	
+	private ServiceProductoInventario serviceProductoInventario;
+	
 	private JPanel contentPane;
 	
 	private PanelMenuPrincipal panelMenuPrincipal;
@@ -170,6 +177,9 @@ public class VentanaPrincipal extends JFrame {
 								p.setMarca(cajaMarca.getText());
 								p.setContenido(Double.parseDouble(cajaContenido.getText()));
 								p.setUnidadMedida(comboBoxUnidadMedida.getItemAt(comboBoxUnidadMedida.getSelectedIndex()));
+
+								serviceProductoInventario = new ServiceProductoInventarioImpl();
+								serviceProductoInventario.registrar(p);
 							}
 						});
 						botonSalir = panelOpciones.getBotonSalir();
