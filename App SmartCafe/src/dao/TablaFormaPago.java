@@ -121,7 +121,7 @@ public class TablaFormaPago {
 			return null;
 		}
 	}
-
+//HOLA
 	public String registrarFormaPago(FormaPago p){
 		String sql = "insert into formapago values('"+p.getClaveFormaPago()+"','"+p.getTipoFormaPago()+"')";
 		try {
