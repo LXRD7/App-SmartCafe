@@ -11,6 +11,8 @@ public class ProductoVenta{
 	private double precio;
 	private double contenido;
 	private UnidadMedida unidadMedida;
+	
+	
 	public String getCodigoBarras() {
 		return codigoBarras;
 	}

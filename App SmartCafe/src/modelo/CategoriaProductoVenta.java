@@ -4,7 +4,6 @@ public class CategoriaProductoVenta {
 	private int numProductoVenta;
 	
 	
-	
 	public int getNumProductoVenta() {
 		return numProductoVenta;
 	}

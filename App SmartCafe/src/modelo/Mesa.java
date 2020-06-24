@@ -4,6 +4,7 @@ public class Mesa {
 	private int claveMesa;
 	private String tipoMesa;
 	private String statusMesa;
+	
 	public int getClaveMesa() {
 		return claveMesa;
 	}

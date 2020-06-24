@@ -8,25 +8,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import conversores.Conversor;
-import modelo.FormaPago;
+import modelo.Mesa;
 import modelo.ProductoInventario;
 
-public class TablaFormaPago {
+public class TablaMesa {
 	private Connection conexion;
 	private Statement statement;
 
-	public TablaFormaPago(Connection conexion) {
+	public TablaMesa(Connection conexion) {
 		this.conexion = conexion;
 		try {
 			statement = conexion.createStatement();
 		} catch (SQLException e) {
-			System.out.println("Error en TablaFormaPago");
+			System.out.println("Error en TablaMesa");
 			e.printStackTrace();
 		}
 	}
 
-	public boolean existeProducto(int claveFormaPago){
-		String sql ="select* from producto_inv where cve_fop='"+claveFormaPago+"'";
+	public boolean existeMesa(int claveMesa){
+		String sql ="select* from mesa where cve_mes='"+claveMesa+"'";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
 			if (rs.next()) {
@@ -39,10 +39,10 @@ public class TablaFormaPago {
 		}
 	}
 
-	public String modificarProducto(FormaPago p){
+	public String modificarMesa(Mesa p){
 		String sql2 ="SET FOREIGN_KEY_CHECKS=0";
 		String sql3 ="SET FOREIGN_KEY_CHECKS=1";
-		String sql = "UPDATE formapago SET tipopago_fop='"+p.getTipoFormaPago()+ "' WHERE cve_fop='"+p.getClaveFormaPago();	
+		String sql = "UPDATE mesa SET tipo_mesa='"+p.getTipoMesa()+"', status_mes='"+p.getStatusMesa()+ "' WHERE cve_mes='"+p.getClaveMesa();	
 		try{
 			statement.executeUpdate(sql2);
 			int n = statement.executeUpdate(sql);
@@ -63,10 +63,10 @@ public class TablaFormaPago {
 		}
 	}
 
-	public int eliminarFormaPago(int claveFormaPago){
+	public int eliminarMesa(int claveMesa){
 		String sql2 ="SET FOREIGN_KEY_CHECKS=0";
 		String sql3 ="SET FOREIGN_KEY_CHECKS=1";
-		String sql ="delete from formapago where cve_fop="+claveFormaPago;
+		String sql ="delete from mesa where cve_mes="+claveMesa;
 		try{
 			statement.executeUpdate(sql2);
 			int n = statement.executeUpdate(sql);
@@ -87,15 +87,17 @@ public class TablaFormaPago {
 			return 0;
 		}
 	}
-	public List<FormaPago> getFormaPago(){
-		String sql ="select * from forma_pag where cve_fop";
+
+	public List<Mesa> getMesa(){
+		String sql ="select * from mesa where cve_mes";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
-			List<FormaPago> lista = new ArrayList<FormaPago>();
+			List<Mesa> lista = new ArrayList<Mesa>();
 			while (rs.next()) {
-				FormaPago p = new FormaPago();
-				p.setClaveFormaPago(rs.getInt("cve_fop"));
-				p.setTipoFormaPago(rs.getString("nom_pro"));
+				Mesa p = new Mesa();
+				p.setClaveMesa(rs.getInt("cve_mes"));
+				p.setTipoMesa(rs.getString("tipo_mes"));
+				p.setStatusMesa(rs.getString("status_mesa"));
 				lista.add(p);
 			} 
 			return lista;
@@ -104,14 +106,15 @@ public class TablaFormaPago {
 		}
 	}
 
-	public FormaPago getFormaPago(int claveFormaPago){
-		String sql ="select* from formapago where cve_fop='"+claveFormaPago+"'";
+	public Mesa getMesa(int claveMesa){
+		String sql ="select* from mesa where cve_mes='"+claveMesa+"'";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
 			if (rs.next()) {
-				FormaPago p = new FormaPago();
-				p.setClaveFormaPago(rs.getInt("cve_fop"));
-				p.setTipoFormaPago(rs.getString("nom_pro"));
+				Mesa p = new Mesa();
+				p.setClaveMesa(rs.getInt("cve_mes"));
+				p.setTipoMesa(rs.getString("tipo_mes"));
+				p.setStatusMesa(rs.getString("status_mes"));
 				return p;
 			} else {
 				return null;
@@ -121,11 +124,12 @@ public class TablaFormaPago {
 			return null;
 		}
 	}
-	public String registrarFormaPago(FormaPago p){
-		String sql = "insert into formapago values('"+p.getClaveFormaPago()+"','"+p.getTipoFormaPago()+"')";
+
+	public String registrarMesa(Mesa p){
+		String sql = "insert into mesa values('"+p.getClaveMesa()+"','"+p.getTipoMesa()+"')";
 		try {
 			statement.executeUpdate(sql);
-			return "Forma de Pago registrada.";
+			return "Mesa registrada.";
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			return e.toString();
