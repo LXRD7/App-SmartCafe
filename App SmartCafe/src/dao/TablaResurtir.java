@@ -130,7 +130,7 @@ public class TablaResurtir {
 			return null;
 		}
 	}
-/hola
+
 	public String registrarResurtir(Resurtir p){
 		String sql = "insert into resurtir values('"+p.getNumResurtir()+"','"+p.getFechaResurtir()+"','"+p.getPrecioUnidad()+"','"+p.getFechaCaducidad()+"','"+p.getLote()+"','"+p.getBaja()+"')";
 		try {
