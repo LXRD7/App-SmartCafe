@@ -45,7 +45,7 @@ public class PanelCapturaProductoInventario extends JPanel {
 		add(panelDatos);
 		panelDatos.setLayout(null);
 
-		textoCodigoBarras = new JLabel("Codigo de Barras");
+		textoCodigoBarras = new JLabel("Código de Barras");
 		textoCodigoBarras.setForeground(colorSecundario);
 		textoCodigoBarras.setBounds(250, 125, 150, 35);
 		textoCodigoBarras.setHorizontalAlignment(SwingConstants.RIGHT);

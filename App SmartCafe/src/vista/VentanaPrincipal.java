@@ -95,7 +95,7 @@ public class VentanaPrincipal extends JFrame {
 		setBackground(UIManager.getColor("Button.darkShadow"));
 		
 		conectarDB();
-		setTitle("App Cafetería");
+		setTitle("App Gestión Cafetería");
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 695, 358);
@@ -180,7 +180,7 @@ public class VentanaPrincipal extends JFrame {
 								p.setUnidadMedida(comboBoxUnidadMedida.getItemAt(comboBoxUnidadMedida.getSelectedIndex()));
 
 								serviceProductoInventario = new ServiceProductoInventarioImpl();
-								serviceProductoInventario.registrar(p);
+								serviceProductoInventario.registrarProducto(p);
 								JOptionPane.showMessageDialog(null, "Producto Registrado");
 							}
 						});

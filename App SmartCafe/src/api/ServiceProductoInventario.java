@@ -5,10 +5,10 @@ import java.util.List;
 import modelo.ProductoInventario;
 
 public interface ServiceProductoInventario {
-	 String registrar(ProductoInventario producto);
-	 ProductoInventario getProducto(String cve);
+	 String registrarProducto(ProductoInventario producto);
+	 ProductoInventario getProducto(String codigoBarras);
 	 List<ProductoInventario> getProductos();
-	 int eliminar(String cve);
-	 String modificar(ProductoInventario producto);
+	 int eliminarProducto(String codigoBarras);
+	 String modificarProducto(ProductoInventario producto);
 	 
 }
