@@ -1,15 +1,16 @@
 package modelo;
 
 public class TicketMesa {
-	private int claveTicketMesa;
+	private int numTicketMesa;
 
-	public int getClaveTicketMesa() {
-		return claveTicketMesa;
+	public int getNumTicketMesa() {
+		return numTicketMesa;
 	}
 
-	public void setClaveTicketMesa(int claveTicketMesa) {
-		this.claveTicketMesa = claveTicketMesa;
+	public void setNumTicketMesa(int numTicketMesa) {
+		this.numTicketMesa = numTicketMesa;
 	}
+
 	
 	
 }
