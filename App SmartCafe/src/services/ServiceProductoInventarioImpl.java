@@ -15,13 +15,13 @@ public class ServiceProductoInventarioImpl implements ServiceProductoInventario{
 	}
 
 	@Override
-	public String registrar(ProductoInventario producto) {
+	public String registrarProducto(ProductoInventario producto) {
 		return tablaProductoInventario.registrarProducto(producto);
 	}
 
 	@Override
-	public ProductoInventario getProducto(String cve) {
-		return tablaProductoInventario.getProducto(cve);
+	public ProductoInventario getProducto(String codigoBarras) {
+		return tablaProductoInventario.getProducto(codigoBarras);
 	}
 
 	@Override
@@ -30,12 +30,12 @@ public class ServiceProductoInventarioImpl implements ServiceProductoInventario{
 	}
 
 	@Override
-	public int eliminar(String cve) {
-		return tablaProductoInventario.eliminarProducto(cve);
+	public int eliminarProducto(String codigoBarras) {
+		return tablaProductoInventario.eliminarProducto(codigoBarras);
 	}
 
 	@Override
-	public String modificar(ProductoInventario producto) {
+	public String modificarProducto(ProductoInventario producto) {
 		if(tablaProductoInventario.existeProducto(producto.getCodigoBarras()))
 			return tablaProductoInventario.modificarProducto(producto);
 		else

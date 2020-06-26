@@ -6,10 +6,10 @@ import modelo.Categoria;
 import modelo.ProductoInventario;
 
 public interface ServiceCategoria {
-	String registrar(Categoria categoria);
+	String registrarCategoria(Categoria categoria);
 	 Categoria getCategoria(int claveCategoria);
-	 List<Categoria> getProductos();
-	 int eliminar(int claveCategoria);
-	 String modificar(Categoria categoria);
+	 List<Categoria> getCategorias();
+	 int eliminarCategoria(int claveCategoria);
+	 String modificarCategoria(Categoria categoria);
 	 
 }

@@ -39,7 +39,7 @@ public class TablaProductoVenta {
 		}
 	}
 
-	public String modificarProducto(ProductoVenta p){
+	public String modificarProductoVenta(ProductoVenta p){
 		String sql2 ="SET FOREIGN_KEY_CHECKS=0";
 		String sql3 ="SET FOREIGN_KEY_CHECKS=1";
 		String sql = "UPDATE producto_ven SET nom_pve='"+p.getNombreProducto()+"', tipo_pve='"+p.getTipoProducto()+"',precio_pve='"+p.getPrecio()+"',contenido_pve='"+p.getContenido()+"',umedida_pve='"+p.getUnidadMedida()+ "' WHERE cve_pve='"+p.getCodigoBarras();	
@@ -63,7 +63,7 @@ public class TablaProductoVenta {
 		}
 	}
 
-	public int eliminarProducto(String codigoBarras){
+	public int eliminarProductoVenta(String codigoBarras){
 		String sql2 ="SET FOREIGN_KEY_CHECKS=0";
 		String sql3 ="SET FOREIGN_KEY_CHECKS=1";
 		String sql ="delete from producto_ven where cve_pve="+codigoBarras;
@@ -88,7 +88,7 @@ public class TablaProductoVenta {
 		}
 	}
 
-	public List<ProductoVenta> getProductos(){
+	public List<ProductoVenta> getProductosVenta(){
 		String sql ="select * from producto_ven where cve_ven";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
@@ -109,7 +109,7 @@ public class TablaProductoVenta {
 		}
 	}
 
-	public ProductoVenta getProducto(String codigoBarras){
+	public ProductoVenta getProductoVenta(String codigoBarras){
 		String sql ="select* from producto_ven where cve_pve='"+codigoBarras+"'";
 		try{
 			ResultSet rs = statement.executeQuery(sql);

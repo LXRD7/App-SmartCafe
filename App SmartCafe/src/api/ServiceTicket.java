@@ -1,7 +1,6 @@
 package api;
 
 import java.util.List;
-
 import modelo.Ticket;
 
 public interface ServiceTicket {

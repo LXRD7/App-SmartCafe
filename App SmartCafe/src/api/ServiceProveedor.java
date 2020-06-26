@@ -6,8 +6,8 @@ import modelo.Proveedor;
 
 public interface ServiceProveedor {
 	String registrarProveedor(Proveedor proveedor);
-	Proveedor getProveedor(String claveProveedor);
+	Proveedor getProveedor(int claveProveedor);
 	List<Proveedor> getProveedor();
-	int eliminarProveedor(String claveProveedor);
+	int eliminarProveedor(int claveProveedor);
 	String modificarProveedor(Proveedor proveedor);
 }

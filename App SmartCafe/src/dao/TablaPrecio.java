@@ -89,7 +89,7 @@ public class TablaPrecio {
 		}
 	}
 
-	public List<Precio> getPrecio(){
+	public List<Precio> getPrecios(){
 		String sql ="select * from precio where cve_pre";
 		try{
 			ResultSet rs = statement.executeQuery(sql);

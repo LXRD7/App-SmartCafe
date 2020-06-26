@@ -18,7 +18,7 @@ public class PanelMenuPrincipal extends JPanel {
 	private Color colorSecundario = new Color(75, 44, 14);
 
 	public PanelMenuPrincipal() {
-		setLayout(new GridLayout(1, 0, 0, 0));
+		setLayout(new GridLayout(0, 3, 50, 0));
 		
 		botonVentas = new JButton("Ventas");
 		botonVentas.setForeground(colorSecundario);
