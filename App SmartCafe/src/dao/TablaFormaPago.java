@@ -87,7 +87,7 @@ public class TablaFormaPago {
 			return 0;
 		}
 	}
-	public List<FormaPago> getFormaPago(){
+	public List<FormaPago> getFormaPagos(){
 		String sql ="select * from forma_pag where cve_fop";
 		try{
 			ResultSet rs = statement.executeQuery(sql);

@@ -88,7 +88,7 @@ public class TablaMesa {
 		}
 	}
 
-	public List<Mesa> getMesa(){
+	public List<Mesa> getMesas(){
 		String sql ="select * from mesa where cve_mes";
 		try{
 			ResultSet rs = statement.executeQuery(sql);

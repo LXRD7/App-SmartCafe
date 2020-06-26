@@ -49,7 +49,6 @@ public class VentanaPrincipal extends JFrame {
 
 	private JLabel logoEncabezado;
 	private JLabel fondoEncabezado;
-
 	private JButton botonVentas;
 	private JButton botonCatalogo;
 	private JButton botonInventario;
