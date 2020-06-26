@@ -15,7 +15,7 @@ public class ServiceProductoInventarioImpl implements ServiceProductoInventario{
 	}
 
 	@Override
-	public String registrar(ProductoInventario producto) {
+	public String registrarProducto(ProductoInventario producto) {
 		return tablaProductoInventario.registrarProducto(producto);
 	}
 
@@ -30,12 +30,12 @@ public class ServiceProductoInventarioImpl implements ServiceProductoInventario{
 	}
 
 	@Override
-	public int eliminar(String cve) {
+	public int eliminarProducto(String cve) {
 		return tablaProductoInventario.eliminarProducto(cve);
 	}
 
 	@Override
-	public String modificar(ProductoInventario producto) {
+	public String modificarProducto(ProductoInventario producto) {
 		if(tablaProductoInventario.existeProducto(producto.getCodigoBarras()))
 			return tablaProductoInventario.modificarProducto(producto);
 		else
