@@ -9,76 +9,54 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
+import java.awt.CardLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
 
 public class PanelMenuInventario extends JPanel {
 
 	private static final long serialVersionUID = 2602178953576391994L;
-	private JButton botonRegistrar;
-	private JButton botonModificar;
-	private JButton botonBuscar;
-	private JButton botonEliminar;
+	private JButton botonProductos;
+	private JButton botonProveedores;
 	private JButton botonResurtir;
 	
 	private Color colorPrincipal = new Color(175, 193, 11);
 	private Color colorSecundario = new Color(75, 44, 14);
 
 	public PanelMenuInventario() {
-		setLayout(new GridLayout(5, 1, 0, 0));
 
-		botonRegistrar = new JButton("Registrar");
-		botonRegistrar.setBorder(new LineBorder(colorSecundario, 1, true));
-		botonRegistrar.setForeground(colorSecundario);
-		botonRegistrar.setBackground(colorPrincipal);
-		botonRegistrar.setFont(new Font("Noto Sans", Font.BOLD, 18));
-		add(botonRegistrar);
+		botonProductos = new JButton("Productos");
+		botonProductos.setBorder(new LineBorder(colorSecundario, 1, true));
+		botonProductos.setForeground(colorSecundario);
+		botonProductos.setBackground(colorPrincipal);
+		botonProductos.setFont(new Font("Noto Sans", Font.BOLD, 18));
 
-		botonBuscar = new JButton("Buscar");
-		botonBuscar.setBorder(new LineBorder(colorSecundario, 1, true));
-		botonBuscar.setForeground(colorSecundario);
-		botonBuscar.setBackground(colorPrincipal);
-		botonBuscar.setFont(new Font("Noto Sans", Font.BOLD, 18));
-		botonBuscar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		add(botonBuscar);
-
-		botonModificar = new JButton("Modificar");
-		botonModificar.setBorder(new LineBorder(colorSecundario, 1, true));
-		botonModificar.setForeground(colorSecundario);
-		botonModificar.setBackground(colorPrincipal);
-		botonModificar.setFont(new Font("Noto Sans", Font.BOLD, 18));
-		add(botonModificar);
-
-		botonEliminar = new JButton("Eliminar");
-		botonEliminar.setBorder(new LineBorder(colorSecundario, 1, true));
-		botonEliminar.setForeground(colorSecundario);
-		botonEliminar.setBackground(colorPrincipal);
-		botonEliminar.setFont(new Font("Noto Sans", Font.BOLD, 18));
-		add(botonEliminar);
+		botonProveedores = new JButton("Proveedores");
+		botonProveedores.setBorder(new LineBorder(colorSecundario, 1, true));
+		botonProveedores.setForeground(colorSecundario);
+		botonProveedores.setBackground(colorPrincipal);
+		botonProveedores.setFont(new Font("Noto Sans", Font.BOLD, 18));
 
 		botonResurtir = new JButton("Resurtir");
 		botonResurtir.setBorder(new LineBorder(colorSecundario, 1, true));
 		botonResurtir.setForeground(colorSecundario);
 		botonResurtir.setBackground(Color.GREEN);
 		botonResurtir.setFont(new Font("Noto Sans", Font.BOLD, 18));
-		add(botonResurtir);	
+		setLayout(new GridLayout(3, 1, 5, 50));
+		add(botonProductos);
+		add(botonProveedores);
+		add(botonResurtir);
 	}
 
-	public JButton getBotonRegistrar() {
-		return botonRegistrar;
+	public JButton getBotonProductos() {
+		return botonProductos;
 	}
 
-	public JButton getBotonModificar() {
-		return botonModificar;
-	}
-
-	public JButton getBotonBuscar() {
-		return botonBuscar;
-	}
-
-	public JButton getBotonEliminar() {
-		return botonEliminar;
+	public JButton getBotonProveedores() {
+		return botonProveedores;
 	}
 
 	public JButton getBotonResurtir() {
@@ -92,6 +70,6 @@ public class PanelMenuInventario extends JPanel {
 	public Color getColorSecundario() {
 		return colorSecundario;
 	}
-	
+
 	
 }
