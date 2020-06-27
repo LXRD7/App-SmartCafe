@@ -34,6 +34,8 @@ import services.ServiceProductoInventarioImpl;
 import javax.swing.UIManager;
 import java.awt.Toolkit;
 import java.awt.Component;
+import javax.swing.JTabbedPane;
+import java.awt.Font;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -42,10 +44,8 @@ public class VentanaPrincipal extends JFrame {
 	private ServiceProductoInventario serviceProductoInventario;
 
 	private JPanel contentPane;
-
-	private PanelMenuPrincipal panelMenuPrincipal;
 	private PanelMenuInventario panelMenuInventario;
-	private PanelProductoInventario panelProductoInventario;
+	private PanelProductoInventario paneInventario;
 
 	private JLabel logoEncabezado;
 	private JLabel fondoEncabezado;
@@ -80,6 +80,9 @@ public class VentanaPrincipal extends JFrame {
 
 	BaseDatos baseDatos;
 	Connection conexion;
+	private JTabbedPane tabbedPane;
+	private JPanel panelVenta;
+	private JPanel panelCatalogo;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -102,11 +105,6 @@ public class VentanaPrincipal extends JFrame {
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 695, 358);
-
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBorder(new EmptyBorder(0, 0, 0, 0));
-		menuBar.setBorderPainted(false);
-		setJMenuBar(menuBar);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -138,73 +136,25 @@ public class VentanaPrincipal extends JFrame {
 		gbc_fondoEncabezado.gridx = 0;
 		gbc_fondoEncabezado.gridy = 0;
 		panelEncabezado.add(fondoEncabezado, gbc_fondoEncabezado);
-
-		panelMenuPrincipal = new PanelMenuPrincipal();
-
-		botonVentas = panelMenuPrincipal.getBotonVentas();
-		botonVentas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		botonCatalogo = panelMenuPrincipal.getBotonCatalogo();
-		botonCatalogo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		botonInventario = panelMenuPrincipal.getBotonInventario();
-		botonInventario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				panelMenuInventario = new PanelMenuInventario();
-				contentPane.add(panelMenuInventario,BorderLayout.WEST);
-				
-				botonProductos = panelMenuInventario.getBotonProductos();
-				botonProductos.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						panelProductoInventario = new PanelProductoInventario();
-						cajaCodigoBarras = panelProductoInventario.getCajaCodigoBarras();
-						cajaNombre = panelProductoInventario.getCajaNombre();
-						comboBoxTipoProducto = panelProductoInventario.getComboBoxTipoProducto();
-						comboBoxUnidadMedida = panelProductoInventario.getComboBoxUnidadMedida();
-						cajaMarca = panelProductoInventario.getCajaMarca();
-						cajaContenido = panelProductoInventario.getCajaContenido();
-						cajaPrecio = panelProductoInventario.getCajaPrecio();
-						contentPane.add(panelProductoInventario,BorderLayout.CENTER);
-
-						botonNuevo = panelProductoInventario.getBotonNuevo();
-						
-						botonGuardar = panelProductoInventario.getBotonGuardar();
-						botonGuardar.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent arg0) {
-								botonGuardar.addActionListener(new ActionListener() {
-									public void actionPerformed(ActionEvent arg0) {
-										ProductoInventario p = new ProductoInventario();
-										p.setCodigoBarras(cajaCodigoBarras.getText());
-										p.setNombreProducto(cajaNombre.getText());
-										p.setTipoProducto(comboBoxTipoProducto.getItemAt(comboBoxTipoProducto.getSelectedIndex()));
-										p.setMarca(cajaMarca.getText());
-										p.setContenido(Double.parseDouble(cajaContenido.getText()));
-										p.setUnidadMedida(comboBoxUnidadMedida.getItemAt(comboBoxUnidadMedida.getSelectedIndex()));
-
-										serviceProductoInventario = new ServiceProductoInventarioImpl();
-										serviceProductoInventario.registrarProducto(p);
-										JOptionPane.showMessageDialog(null, "Producto Registrado");
-									}
-								});
-							}
-						});
-						botonEditar = panelProductoInventario.getBotonEditar();
-						botonEliminar = panelProductoInventario.getBotonEliminar();
-						setVisible(true);
-					}
-				});
-				botonProveedores = panelMenuInventario.getBotonProveedores();
-				botonResurtir = panelMenuInventario.getBotonResurtir();
-				contentPane.add(panelMenuInventario,BorderLayout.WEST);
-				setVisible(true);
-			}
-		});
-
-		contentPane.add(panelMenuPrincipal,BorderLayout.SOUTH);
+		
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setOpaque(true);
+		tabbedPane.setFont(new Font("Noto Sans", Font.BOLD, 18));
+		tabbedPane.setBackground(colorSecundario);
+		tabbedPane.setForeground(colorSecundario);
+		
+		panelVenta = new JPanel();
+		tabbedPane.addTab("Venta", null, panelVenta, null);
+		tabbedPane.setBackgroundAt(0, colorPrincipal);
+		
+		panelCatalogo = new JPanel();
+		tabbedPane.addTab("Catalogo", null, panelCatalogo, null);
+		tabbedPane.setBackgroundAt(1, colorPrincipal);
+		paneInventario = new PanelProductoInventario();
+		tabbedPane.add("Inventario",paneInventario);
+		tabbedPane.setBackgroundAt(2, colorPrincipal);
+		contentPane.add(tabbedPane, BorderLayout.CENTER);
+		
 		setVisible(true);
 
 	}

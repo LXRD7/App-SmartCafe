@@ -42,5 +42,10 @@ public class ServiceProductoInventarioImpl implements ServiceProductoInventario{
 			return "El producto no existe";
 			
 	}
+
+	@Override
+	public boolean existe(String codigoBarras) {
+		return tablaProductoInventario.existeProducto(codigoBarras);
+	}
 	
 }

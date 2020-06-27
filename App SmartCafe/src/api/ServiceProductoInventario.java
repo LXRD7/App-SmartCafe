@@ -10,5 +10,5 @@ public interface ServiceProductoInventario {
 	 List<ProductoInventario> getProductos();
 	 int eliminarProducto(String codigoBarras);
 	 String modificarProducto(ProductoInventario producto);
-	 
+	 boolean existe(String codigoBarras);
 }

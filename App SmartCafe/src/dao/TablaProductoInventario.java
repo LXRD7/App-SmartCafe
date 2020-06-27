@@ -25,7 +25,7 @@ public class TablaProductoInventario {
 	}
 
 	public boolean existeProducto(String codigoBarras){
-		String sql ="select* from producto_inv where cve_pin='"+codigoBarras+"'";
+		String sql ="select * from producto_inv where cve_pin='"+codigoBarras+"'";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
 			if (rs.next()) {
