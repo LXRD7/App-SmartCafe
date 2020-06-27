@@ -45,7 +45,7 @@ public class ServiceTicketProductoVentaImpl implements ServiceTicketProductoVent
 			return "El ticket producto venta no existe";
 			
 	}
-
+//LF
 	@Override
 	public boolean existeTicketProductoVenta(int numeroTicket) {
 		return tablaTicketProductoVenta.existeTicketProductoVenta(numeroTicket);
