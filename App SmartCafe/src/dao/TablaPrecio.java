@@ -107,8 +107,8 @@ public class TablaPrecio {
 		}
 	}
 
-	public Precio getPrecio(int clavePrecio){
-		String sql ="select* from precio where cve_pre='"+clavePrecio+"'";
+	public Precio getPrecio(String codigoBarras){
+		String sql ="select * from precio where cve_pin='"+codigoBarras+"'";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
 			if (rs.next()) {

@@ -44,8 +44,7 @@ public class VentanaPrincipal extends JFrame {
 	private ServiceProductoInventario serviceProductoInventario;
 
 	private JPanel contentPane;
-	private PanelMenuInventario panelMenuInventario;
-	private PanelProductoInventario paneInventario;
+	private PanelInventario panelInventario;
 
 	private JLabel logoEncabezado;
 	private JLabel fondoEncabezado;
@@ -149,10 +148,12 @@ public class VentanaPrincipal extends JFrame {
 		panelCatalogo = new JPanel();
 		tabbedPane.addTab("Catalogo", null, panelCatalogo, null);
 		tabbedPane.setBackgroundAt(1, colorPrincipal);
-		paneInventario = new PanelProductoInventario();
-		tabbedPane.add("Inventario",paneInventario);
+		
+		panelInventario = new PanelInventario();
+		tabbedPane.add("Inventario",panelInventario);
 		tabbedPane.setBackgroundAt(2, colorPrincipal);
-		contentPane.add(tabbedPane, BorderLayout.CENTER);
+		
+		contentPane.add(tabbedPane);
 		
 		setVisible(true);
 
