@@ -25,20 +25,20 @@ public class TablaPrecio {
 			e.printStackTrace();
 		}
 	}
-//
-//	public boolean existeProducto(String codigoBarras){
-//		String sql ="select* from producto_inv where cve_pin='"+codigoBarras+"'";
-//		try{
-//			ResultSet rs = statement.executeQuery(sql);
-//			if (rs.next()) {
-//				return true;
-//			} else {
-//				return false;
-//			}
-//		}catch(SQLException e){
-//			return false;
-//		}
-//	}
+
+	public boolean existePrecio(int clavePrecio){
+		String sql ="select* from precio where cve_pre='"+clavePrecio+"'";
+		try{
+			ResultSet rs = statement.executeQuery(sql);
+			if (rs.next()) {
+				return true;
+			} else {
+				return false;
+			}
+		}catch(SQLException e){
+			return false;
+		}
+	}
 
 	public String modificarPrecio(Precio p){
 		String sql2 ="SET FOREIGN_KEY_CHECKS=0";
@@ -64,7 +64,7 @@ public class TablaPrecio {
 		}
 	}
 
-	public int eliminarPrecio(String clavePrecio){
+	public int eliminarPrecio(int clavePrecio){
 		String sql2 ="SET FOREIGN_KEY_CHECKS=0";
 		String sql3 ="SET FOREIGN_KEY_CHECKS=1";
 		String sql ="delete from precio where cve_pre="+clavePrecio;

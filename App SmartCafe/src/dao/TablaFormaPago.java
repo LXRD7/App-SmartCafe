@@ -25,7 +25,7 @@ public class TablaFormaPago {
 		}
 	}
 
-	public boolean existeProducto(int claveFormaPago){
+	public boolean existeFormaPago(int claveFormaPago){
 		String sql ="select* from producto_inv where cve_fop='"+claveFormaPago+"'";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
@@ -39,7 +39,7 @@ public class TablaFormaPago {
 		}
 	}
 
-	public String modificarProducto(FormaPago p){
+	public String modificarFormaPago(FormaPago p){
 		String sql2 ="SET FOREIGN_KEY_CHECKS=0";
 		String sql3 ="SET FOREIGN_KEY_CHECKS=1";
 		String sql = "UPDATE formapago SET tipopago_fop='"+p.getTipoFormaPago()+ "' WHERE cve_fop='"+p.getClaveFormaPago();	
