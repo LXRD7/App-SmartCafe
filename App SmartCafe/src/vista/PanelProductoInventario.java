@@ -62,7 +62,7 @@ public class PanelProductoInventario extends JPanel {
 		textoCodigoBarras.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoCodigoBarras.setForeground(new Color(75, 44, 14));
 		textoCodigoBarras.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoCodigoBarras.setBounds(38, 163, 150, 35);
+		textoCodigoBarras.setBounds(12, 12, 150, 35);
 		add(textoCodigoBarras);
 		
 		cajaCodigoBarras = new JTextField();
@@ -70,7 +70,7 @@ public class PanelProductoInventario extends JPanel {
 		cajaCodigoBarras.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaCodigoBarras.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaCodigoBarras.setBackground(new Color(175, 193, 11));
-		cajaCodigoBarras.setBounds(198, 163, 160, 35);
+		cajaCodigoBarras.setBounds(172, 12, 160, 35);
 		add(cajaCodigoBarras);
 		
 		textoNombre = new JLabel("Nombre");
@@ -78,7 +78,7 @@ public class PanelProductoInventario extends JPanel {
 		textoNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoNombre.setForeground(new Color(75, 44, 14));
 		textoNombre.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoNombre.setBounds(38, 213, 150, 35);
+		textoNombre.setBounds(12, 62, 150, 35);
 		add(textoNombre);
 		
 		cajaNombre = new JTextField();
@@ -87,7 +87,7 @@ public class PanelProductoInventario extends JPanel {
 		cajaNombre.setColumns(10);
 		cajaNombre.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaNombre.setBackground(new Color(175, 193, 11));
-		cajaNombre.setBounds(198, 213, 160, 35);
+		cajaNombre.setBounds(172, 62, 160, 35);
 		add(cajaNombre);
 		
 		textoTipoProducto = new JLabel("Tipo");
@@ -95,7 +95,7 @@ public class PanelProductoInventario extends JPanel {
 		textoTipoProducto.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoTipoProducto.setForeground(new Color(75, 44, 14));
 		textoTipoProducto.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoTipoProducto.setBounds(38, 263, 150, 35);
+		textoTipoProducto.setBounds(12, 112, 150, 35);
 		add(textoTipoProducto);
 		
 		comboBoxTipoProducto = new JComboBox<TipoProducto>();
@@ -105,7 +105,7 @@ public class PanelProductoInventario extends JPanel {
 		comboBoxTipoProducto.setFocusable(false);
 		comboBoxTipoProducto.setBorder(new LineBorder(colorSecundario, 1, true));
 		comboBoxTipoProducto.setBackground(new Color(175, 193, 11));
-		comboBoxTipoProducto.setBounds(198, 263, 160, 35);
+		comboBoxTipoProducto.setBounds(172, 112, 160, 35);
 		add(comboBoxTipoProducto);
 		
 		cajaMarca = new JTextField();
@@ -114,7 +114,7 @@ public class PanelProductoInventario extends JPanel {
 		cajaMarca.setColumns(10);
 		cajaMarca.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaMarca.setBackground(new Color(175, 193, 11));
-		cajaMarca.setBounds(198, 313, 160, 35);
+		cajaMarca.setBounds(172, 162, 160, 35);
 		add(cajaMarca);
 		
 		textoMarca = new JLabel("Marca");
@@ -122,7 +122,7 @@ public class PanelProductoInventario extends JPanel {
 		textoMarca.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoMarca.setForeground(new Color(75, 44, 14));
 		textoMarca.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoMarca.setBounds(38, 313, 150, 35);
+		textoMarca.setBounds(12, 162, 150, 35);
 		add(textoMarca);
 		
 		textoContenido = new JLabel("Contenido");
@@ -130,7 +130,7 @@ public class PanelProductoInventario extends JPanel {
 		textoContenido.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoContenido.setForeground(new Color(75, 44, 14));
 		textoContenido.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoContenido.setBounds(38, 363, 150, 35);
+		textoContenido.setBounds(12, 212, 150, 35);
 		add(textoContenido);
 		
 		cajaContenido = new JTextField();
@@ -139,7 +139,7 @@ public class PanelProductoInventario extends JPanel {
 		cajaContenido.setColumns(10);
 		cajaContenido.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaContenido.setBackground(new Color(175, 193, 11));
-		cajaContenido.setBounds(198, 363, 160, 35);
+		cajaContenido.setBounds(172, 212, 160, 35);
 		add(cajaContenido);
 		
 		textoUnidadMedida = new JLabel("Unidad de Medida");
@@ -147,7 +147,7 @@ public class PanelProductoInventario extends JPanel {
 		textoUnidadMedida.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoUnidadMedida.setForeground(new Color(75, 44, 14));
 		textoUnidadMedida.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoUnidadMedida.setBounds(38, 413, 150, 35);
+		textoUnidadMedida.setBounds(12, 262, 150, 35);
 		add(textoUnidadMedida);
 		
 		comboBoxUnidadMedida = new JComboBox<UnidadMedida>();
@@ -157,7 +157,7 @@ public class PanelProductoInventario extends JPanel {
 		comboBoxUnidadMedida.setFocusable(false);
 		comboBoxUnidadMedida.setBorder(new LineBorder(colorSecundario, 1, true));
 		comboBoxUnidadMedida.setBackground(new Color(175, 193, 11));
-		comboBoxUnidadMedida.setBounds(198, 413, 160, 35);
+		comboBoxUnidadMedida.setBounds(172, 262, 160, 35);
 		add(comboBoxUnidadMedida);
 		
 		textoPrecio = new JLabel("Precio");
@@ -165,7 +165,7 @@ public class PanelProductoInventario extends JPanel {
 		textoPrecio.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoPrecio.setForeground(new Color(75, 44, 14));
 		textoPrecio.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoPrecio.setBounds(38, 460, 150, 35);
+		textoPrecio.setBounds(12, 309, 150, 35);
 		add(textoPrecio);
 		
 		cajaPrecio = new JTextField();
@@ -174,11 +174,11 @@ public class PanelProductoInventario extends JPanel {
 		cajaPrecio.setColumns(10);
 		cajaPrecio.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaPrecio.setBackground(new Color(175, 193, 11));
-		cajaPrecio.setBounds(198, 460, 160, 35);
+		cajaPrecio.setBounds(172, 309, 160, 35);
 		add(cajaPrecio);
 		
 		panelOpcionesGenerales = new PanelOpcionesGenerales();
-		panelOpcionesGenerales.setBounds(408, 231, 128, 217);
+		panelOpcionesGenerales.setBounds(392, 78, 128, 217);
 		add(panelOpcionesGenerales);
 		
 		botonNuevo = panelOpcionesGenerales.getBotonNuevo();
@@ -209,7 +209,7 @@ public class PanelProductoInventario extends JPanel {
 		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
 		
 		table = new JTable();
-		table.setBounds(623, 208, 211, 278);
+		table.setBounds(659, 43, 211, 278);
 		add(table);
 	}
 
