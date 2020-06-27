@@ -25,7 +25,7 @@ public class TablaProveedor {
 		}
 	}
 
-	public boolean existeProovedor(int claveProveedor){
+	public boolean existeProveedor(int claveProveedor){
 		String sql ="select* from proveedor where cve_prov='"+claveProveedor+"'";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
