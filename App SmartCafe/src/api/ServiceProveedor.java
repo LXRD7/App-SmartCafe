@@ -10,4 +10,5 @@ public interface ServiceProveedor {
 	List<Proveedor> getProveedores();
 	int eliminarProveedor(int claveProveedor);
 	String modificarProveedor(Proveedor proveedor);
+	 boolean existeProveedor(int claveProveedor);
 }

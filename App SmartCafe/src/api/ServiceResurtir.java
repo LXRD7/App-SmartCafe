@@ -10,4 +10,5 @@ public interface ServiceResurtir {
 	List<Resurtir> getResurtidos();
 	int eliminarResurtir(int numResurtir);
 	String modificarResurtir(Resurtir resurtir);
+	 boolean existeResurtir(int numResurtir);
 }

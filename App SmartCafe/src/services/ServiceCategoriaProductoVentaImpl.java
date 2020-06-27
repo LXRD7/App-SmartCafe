@@ -43,5 +43,9 @@ public class ServiceCategoriaProductoVentaImpl implements ServiceCategoriaProduc
 			return "La categoria producto no existe.";
 			
 	}
+	@Override
+	public boolean existeCategoriaProductoVenta(int numProductoVenta) {
+		return tablaCategoriaProductoVenta.existeCategoriaProductoVenta(numProductoVenta);
+	}
 	
 }

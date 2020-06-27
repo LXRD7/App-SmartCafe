@@ -10,4 +10,5 @@ public interface ServicePrecio {
 	 List<Precio> getPrecios();
 	 int eliminarPrecio(int clavePrecio);
 	 String modificarPrecio(Precio precio);
+	 boolean existePrecio(int clavePrecio);
 }

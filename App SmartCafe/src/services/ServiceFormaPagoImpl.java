@@ -43,5 +43,9 @@ public class ServiceFormaPagoImpl implements ServiceFormaPago{
 			return "La forma pago no existe";
 
 	}
+	@Override
+	public boolean existeFormaPago(int claveFormaPago) {
+		return tablaFormaPago.existeFormaPago(claveFormaPago);
+	}
 
 }

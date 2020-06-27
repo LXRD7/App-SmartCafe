@@ -10,4 +10,5 @@ public interface ServiceTicketMesa {
 	List<TicketMesa> getTickets();
 	int eliminarTicketMesa(int numTicketMesa);
 	String modificarTicketMesa(TicketMesa ticketMesa);
+	 boolean existeTicketMesa(int numTicketMesa);
 }

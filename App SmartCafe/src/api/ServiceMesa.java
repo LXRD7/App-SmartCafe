@@ -11,4 +11,5 @@ public interface ServiceMesa {
 	 List<Mesa> getMesas();
 	 int eliminarMesa(int claveMesa);
 	 String modificarMesa(Mesa mesa);
+	 boolean existeMesa(int claveMesa);
 }

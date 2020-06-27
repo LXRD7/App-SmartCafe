@@ -42,5 +42,8 @@ public class ServiceProveedorImpl implements ServiceProveedor{
 		else
 			return "El proveedor no existe";
 	}
-
+	@Override
+	public boolean existeProveedor(int claveProveedor) {
+		return tablaProveedor.existeProveedor(claveProveedor);
+	}
 }

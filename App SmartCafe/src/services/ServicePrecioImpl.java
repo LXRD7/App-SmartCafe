@@ -36,5 +36,9 @@ public class ServicePrecioImpl implements ServicePrecio{
 		else
 			return "El precio no existe";
 	}
+	@Override
+	public boolean existePrecio(int clavePrecio) {
+		return tablaPrecio.existePrecio(clavePrecio);
+	}
 
 }

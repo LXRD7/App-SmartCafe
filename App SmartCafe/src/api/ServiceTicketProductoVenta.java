@@ -10,6 +10,7 @@ public interface ServiceTicketProductoVenta {
 	List<TicketProductoVenta> getTicketsProductoVenta();
 	int eliminarTicketProductoVenta (int numeroTicket);
 	String modificarTicketProductoVenta(TicketProductoVenta ticketProductoVenta);
+	 boolean existeTicketProductoVenta(int numeroTicket);
 }
 
 

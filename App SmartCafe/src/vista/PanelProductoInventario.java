@@ -197,7 +197,7 @@ public class PanelProductoInventario extends JPanel {
 				p.setMarca(cajaMarca.getText());
 				p.setContenido(Double.parseDouble(cajaContenido.getText()));
 				p.setUnidadMedida(comboBoxUnidadMedida.getItemAt(comboBoxTipoProducto.getSelectedIndex()));
-				if(!serviceProductoInventario.existe(p.getCodigoBarras()))
+				if(!serviceProductoInventario.existeProducto(p.getCodigoBarras()))
 					serviceProductoInventario.registrarProducto(p);
 				else
 					JOptionPane.showMessageDialog(null, "El codigo de barras ingresado ya existe");

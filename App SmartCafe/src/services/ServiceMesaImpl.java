@@ -43,5 +43,9 @@ public class ServiceMesaImpl implements ServiceMesa{
 		else
 			return "La mesa no existe";
 	}
+	@Override
+	public boolean existeMesa(int claveMesa) {
+		return tablaMesa.existeMesa(claveMesa);
+	}
 
 }

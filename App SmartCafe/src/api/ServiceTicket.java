@@ -9,4 +9,5 @@ public interface ServiceTicket {
 	List<Ticket> getTickets();
 	int eliminarTicket(int claveTicket);
 	String modificarTicket(Ticket ticket);
+	 boolean existeTicket(int claveTicket);
 }

@@ -11,4 +11,5 @@ public interface ServiceFormaPago {
 	 List<FormaPago> getFormaPagos();
 	 int eliminarFormaPago(int claveFormaPago);
 	 String modificarFormaPago(FormaPago formaPago);
+	 boolean existeFormaPago(int claveForma);
 }

@@ -11,4 +11,5 @@ public interface ServiceEstatus {
 	 List<Estatus> getEstatus1();
 	 int eliminarEstatus(int numStatus);
 	 String modificarEstatus(Estatus estatus);
+	 boolean existeEstatus(int numStatus);
 }

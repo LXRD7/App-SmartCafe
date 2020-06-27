@@ -43,4 +43,9 @@ public class ServiceCategoriaImpl implements ServiceCategoria{
 			return "La categoria no existe";
 			
 	}
+
+	@Override
+	public boolean existeCategoria(int claveCategoria) {
+		return tablaCategoria.existeCategoria(claveCategoria);
+	}
 }

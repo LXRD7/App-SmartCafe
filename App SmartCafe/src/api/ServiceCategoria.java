@@ -11,5 +11,6 @@ public interface ServiceCategoria {
 	 List<Categoria> getCategorias();
 	 int eliminarCategoria(int claveCategoria);
 	 String modificarCategoria(Categoria categoria);
+	 boolean existeCategoria(int claveCategoria);
 	 
 }

@@ -44,7 +44,7 @@ public class ServiceProductoInventarioImpl implements ServiceProductoInventario{
 	}
 
 	@Override
-	public boolean existe(String codigoBarras) {
+	public boolean existeProducto(String codigoBarras) {
 		return tablaProductoInventario.existeProducto(codigoBarras);
 	}
 	

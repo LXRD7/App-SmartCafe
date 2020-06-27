@@ -43,4 +43,8 @@ public class ServiceEstatusImpl implements ServiceEstatus{
 		else
 			return "El estatus no existe";
 	}
+	@Override
+	public boolean existeEstatus(int numStatus) {
+		return tablaEstatus.existeEstatus(numStatus);
+	}
 }
