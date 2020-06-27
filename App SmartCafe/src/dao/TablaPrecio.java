@@ -81,7 +81,6 @@ public class TablaPrecio {
 			try {
 				statement.executeUpdate(sql3);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			System.out.println(e.toString());
@@ -90,7 +89,7 @@ public class TablaPrecio {
 	}
 
 	public List<Precio> getPrecios(){
-		String sql ="select * from precio where cve_pre";
+		String sql ="select * from precio";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
 			List<Precio> lista = new ArrayList<Precio>();
@@ -108,13 +107,15 @@ public class TablaPrecio {
 	}
 
 	public Precio getPrecio(String codigoBarras){
-		String sql ="select * from precio where cve_pin='"+codigoBarras+"'";
+		String sql ="select * from precio where cve_pin='"+codigoBarras+"' and fecha_pre=(select max(fecha_pre) from precio where cve_pin='"+codigoBarras+"')";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
 			if (rs.next()) {
 				Precio p = new Precio();
 				p.setClavePrecio(rs.getInt("cve_pre"));
-				p.setFechaPrecio(Conversor.convertirAFecha(rs.getString("fecha_pre")));				p.setPrecio(rs.getInt("cve_pre"));				
+				p.setFechaPrecio(Conversor.convertirAFecha(rs.getString("fecha_pre")));
+				p.setPrecio(rs.getDouble("cve_pre"));				
+				p.setCodigoBarras(rs.getString("cve_pin"));
 				return p;
 			} else {
 				return null;
@@ -126,7 +127,7 @@ public class TablaPrecio {
 	}
 
 	public String registrarPrecio(Precio p){
-		String sql = "insert into precio values('"+p.getClavePrecio()+"','"+p.getFechaPrecio()+"','"+p.getPrecio()+"')";
+		String sql = "insert into precio values('null','"+p.getFechaPrecio()+"',"+p.getPrecio()+",'"+p.getCodigoBarras()+"')";
 		try {
 			statement.executeUpdate(sql);
 			return "Precio registrado.";
