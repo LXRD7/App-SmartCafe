@@ -15,30 +15,12 @@ public class ServicePrecioImpl implements ServicePrecio{
 	}
 
 	@Override
-	public Precio getPrecio(int clavePrecio) {
-		return tablaPrecio.getPrecio(clavePrecio);
+	public Precio getPrecio(String codigoBarras) {
+		return tablaPrecio.getPrecio(codigoBarras);
 	}
 
 	@Override
 	public List<Precio> getPrecios() {
 		return tablaPrecio.getPrecios();
 	}
-
-	@Override
-	public int eliminarPrecio(int clavePrecio) {
-		return tablaPrecio.eliminarPrecio(clavePrecio);
-	}
-
-	@Override
-	public String modificarPrecio(Precio precio) {
-		if(tablaPrecio.existePrecio(precio.getPrecio()))
-			return tablaPrecio.modificarPrecio(precio);
-		else
-			return "El precio no existe";
-	}
-	@Override
-	public boolean existePrecio(int clavePrecio) {
-		return tablaPrecio.existePrecio(clavePrecio);
-	}
-
 }

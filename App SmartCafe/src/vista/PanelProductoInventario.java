@@ -2,9 +2,11 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -17,10 +19,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import api.ServicePrecio;
 import api.ServiceProductoInventario;
 import enumeraciones.TipoProducto;
 import enumeraciones.UnidadMedida;
+import modelo.Precio;
 import modelo.ProductoInventario;
+import services.ServicePrecioImpl;
 import services.ServiceProductoInventarioImpl;
 import javax.swing.JTable;
 
@@ -38,6 +43,8 @@ public class PanelProductoInventario extends JPanel {
 	private Color colorSecundario = new Color(75, 44, 14);
 	
 	private ServiceProductoInventario serviceProductoInventario;
+	private ServicePrecio servicePrecio;
+	
 	private JTextField cajaCodigoBarras;
 	private JTextField cajaNombre;
 	private JTextField cajaMarca;
@@ -56,13 +63,14 @@ public class PanelProductoInventario extends JPanel {
 
 	public PanelProductoInventario() {
 		setLayout(null);
+		setPreferredSize(new Dimension(1000,500));
 		
 		textoCodigoBarras = new JLabel("Codigo de Barras");
 		textoCodigoBarras.setRequestFocusEnabled(false);
 		textoCodigoBarras.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoCodigoBarras.setForeground(new Color(75, 44, 14));
 		textoCodigoBarras.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoCodigoBarras.setBounds(38, 163, 150, 35);
+		textoCodigoBarras.setBounds(179, 154, 150, 35);
 		add(textoCodigoBarras);
 		
 		cajaCodigoBarras = new JTextField();
@@ -70,7 +78,7 @@ public class PanelProductoInventario extends JPanel {
 		cajaCodigoBarras.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaCodigoBarras.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaCodigoBarras.setBackground(new Color(175, 193, 11));
-		cajaCodigoBarras.setBounds(198, 163, 160, 35);
+		cajaCodigoBarras.setBounds(339, 154, 160, 35);
 		add(cajaCodigoBarras);
 		
 		textoNombre = new JLabel("Nombre");
@@ -78,7 +86,7 @@ public class PanelProductoInventario extends JPanel {
 		textoNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoNombre.setForeground(new Color(75, 44, 14));
 		textoNombre.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoNombre.setBounds(38, 213, 150, 35);
+		textoNombre.setBounds(179, 204, 150, 35);
 		add(textoNombre);
 		
 		cajaNombre = new JTextField();
@@ -87,7 +95,7 @@ public class PanelProductoInventario extends JPanel {
 		cajaNombre.setColumns(10);
 		cajaNombre.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaNombre.setBackground(new Color(175, 193, 11));
-		cajaNombre.setBounds(198, 213, 160, 35);
+		cajaNombre.setBounds(339, 204, 160, 35);
 		add(cajaNombre);
 		
 		textoTipoProducto = new JLabel("Tipo");
@@ -95,17 +103,17 @@ public class PanelProductoInventario extends JPanel {
 		textoTipoProducto.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoTipoProducto.setForeground(new Color(75, 44, 14));
 		textoTipoProducto.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoTipoProducto.setBounds(38, 263, 150, 35);
+		textoTipoProducto.setBounds(179, 254, 150, 35);
 		add(textoTipoProducto);
 		
 		comboBoxTipoProducto = new JComboBox<TipoProducto>();
-		comboBoxTipoProducto.setModel(new DefaultComboBoxModel(TipoProducto.values()));
+		comboBoxTipoProducto.setModel(new DefaultComboBoxModel<TipoProducto>(TipoProducto.values()));
 		comboBoxTipoProducto.setForeground(new Color(75, 44, 14));
 		comboBoxTipoProducto.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		comboBoxTipoProducto.setFocusable(false);
 		comboBoxTipoProducto.setBorder(new LineBorder(colorSecundario, 1, true));
 		comboBoxTipoProducto.setBackground(new Color(175, 193, 11));
-		comboBoxTipoProducto.setBounds(198, 263, 160, 35);
+		comboBoxTipoProducto.setBounds(339, 254, 160, 35);
 		add(comboBoxTipoProducto);
 		
 		cajaMarca = new JTextField();
@@ -114,7 +122,7 @@ public class PanelProductoInventario extends JPanel {
 		cajaMarca.setColumns(10);
 		cajaMarca.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaMarca.setBackground(new Color(175, 193, 11));
-		cajaMarca.setBounds(198, 313, 160, 35);
+		cajaMarca.setBounds(339, 304, 160, 35);
 		add(cajaMarca);
 		
 		textoMarca = new JLabel("Marca");
@@ -122,7 +130,7 @@ public class PanelProductoInventario extends JPanel {
 		textoMarca.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoMarca.setForeground(new Color(75, 44, 14));
 		textoMarca.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoMarca.setBounds(38, 313, 150, 35);
+		textoMarca.setBounds(179, 304, 150, 35);
 		add(textoMarca);
 		
 		textoContenido = new JLabel("Contenido");
@@ -130,7 +138,7 @@ public class PanelProductoInventario extends JPanel {
 		textoContenido.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoContenido.setForeground(new Color(75, 44, 14));
 		textoContenido.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoContenido.setBounds(38, 363, 150, 35);
+		textoContenido.setBounds(179, 354, 150, 35);
 		add(textoContenido);
 		
 		cajaContenido = new JTextField();
@@ -139,7 +147,7 @@ public class PanelProductoInventario extends JPanel {
 		cajaContenido.setColumns(10);
 		cajaContenido.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaContenido.setBackground(new Color(175, 193, 11));
-		cajaContenido.setBounds(198, 363, 160, 35);
+		cajaContenido.setBounds(339, 354, 160, 35);
 		add(cajaContenido);
 		
 		textoUnidadMedida = new JLabel("Unidad de Medida");
@@ -147,17 +155,17 @@ public class PanelProductoInventario extends JPanel {
 		textoUnidadMedida.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoUnidadMedida.setForeground(new Color(75, 44, 14));
 		textoUnidadMedida.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoUnidadMedida.setBounds(38, 413, 150, 35);
+		textoUnidadMedida.setBounds(179, 404, 150, 35);
 		add(textoUnidadMedida);
 		
 		comboBoxUnidadMedida = new JComboBox<UnidadMedida>();
-		comboBoxUnidadMedida.setModel(new DefaultComboBoxModel(UnidadMedida.values()));
+		comboBoxUnidadMedida.setModel(new DefaultComboBoxModel<UnidadMedida>(UnidadMedida.values()));
 		comboBoxUnidadMedida.setForeground(new Color(75, 44, 14));
 		comboBoxUnidadMedida.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		comboBoxUnidadMedida.setFocusable(false);
 		comboBoxUnidadMedida.setBorder(new LineBorder(colorSecundario, 1, true));
 		comboBoxUnidadMedida.setBackground(new Color(175, 193, 11));
-		comboBoxUnidadMedida.setBounds(198, 413, 160, 35);
+		comboBoxUnidadMedida.setBounds(339, 404, 160, 35);
 		add(comboBoxUnidadMedida);
 		
 		textoPrecio = new JLabel("Precio");
@@ -165,7 +173,7 @@ public class PanelProductoInventario extends JPanel {
 		textoPrecio.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoPrecio.setForeground(new Color(75, 44, 14));
 		textoPrecio.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoPrecio.setBounds(38, 460, 150, 35);
+		textoPrecio.setBounds(179, 451, 150, 35);
 		add(textoPrecio);
 		
 		cajaPrecio = new JTextField();
@@ -174,12 +182,13 @@ public class PanelProductoInventario extends JPanel {
 		cajaPrecio.setColumns(10);
 		cajaPrecio.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaPrecio.setBackground(new Color(175, 193, 11));
-		cajaPrecio.setBounds(198, 460, 160, 35);
+		cajaPrecio.setBounds(339, 451, 160, 35);
 		add(cajaPrecio);
 		
 		panelOpcionesGenerales = new PanelOpcionesGenerales();
-		panelOpcionesGenerales.setBounds(408, 231, 128, 217);
+		panelOpcionesGenerales.setBounds(511, 211, 128, 217);
 		add(panelOpcionesGenerales);
+		
 		
 		botonNuevo = panelOpcionesGenerales.getBotonNuevo();
 		
@@ -189,16 +198,22 @@ public class PanelProductoInventario extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				serviceProductoInventario = new ServiceProductoInventarioImpl();
+				servicePrecio = new ServicePrecioImpl();
+				ProductoInventario producto = new ProductoInventario();
+				producto.setCodigoBarras(cajaCodigoBarras.getText());
+				producto.setNombreProducto(cajaNombre.getText());
+				producto.setTipoProducto(comboBoxTipoProducto.getItemAt(comboBoxTipoProducto.getSelectedIndex()));
+				producto.setMarca(cajaMarca.getText());
+				producto.setContenido(Double.parseDouble(cajaContenido.getText()));
+				producto.setUnidadMedida(comboBoxUnidadMedida.getItemAt(comboBoxTipoProducto.getSelectedIndex()));
 				
-				ProductoInventario p = new ProductoInventario();
-				p.setCodigoBarras(cajaCodigoBarras.getText());
-				p.setNombreProducto(cajaNombre.getText());
-				p.setTipoProducto(comboBoxTipoProducto.getItemAt(comboBoxTipoProducto.getSelectedIndex()));
-				p.setMarca(cajaMarca.getText());
-				p.setContenido(Double.parseDouble(cajaContenido.getText()));
-				p.setUnidadMedida(comboBoxUnidadMedida.getItemAt(comboBoxTipoProducto.getSelectedIndex()));
-				if(!serviceProductoInventario.existeProducto(p.getCodigoBarras()))
-					serviceProductoInventario.registrarProducto(p);
+				Precio precio = new Precio();
+				precio.setFechaPrecio(LocalDate.now());
+				precio.setPrecio(Double.parseDouble(cajaPrecio.getText()));
+				precio.setCodigoBarras(cajaCodigoBarras.getText());
+				servicePrecio.registrarPrecio(precio);
+				if(!serviceProductoInventario.existeProducto(producto.getCodigoBarras()))
+					serviceProductoInventario.registrarProducto(producto);
 				else
 					JOptionPane.showMessageDialog(null, "El código de barras ingresado ya existe");
 			}
@@ -209,7 +224,7 @@ public class PanelProductoInventario extends JPanel {
 		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
 		
 		table = new JTable();
-		table.setBounds(623, 208, 211, 278);
+		table.setBounds(651, 154, 382, 332);
 		add(table);
 	}
 

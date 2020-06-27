@@ -5,8 +5,15 @@ import java.time.LocalDate;
 public class Precio {
 	private int clavePrecio;
 	private LocalDate fechaPrecio;
-	private int precio;
+	private double precio;
+	private String codigoBarras;
 	
+	public String getCodigoBarras() {
+		return codigoBarras;
+	}
+	public void setCodigoBarras(String codigoBarras) {
+		this.codigoBarras = codigoBarras;
+	}
 	public int getClavePrecio() {
 		return clavePrecio;
 	}
@@ -19,10 +26,10 @@ public class Precio {
 	public void setFechaPrecio(LocalDate fechaPrecio) {
 		this.fechaPrecio = fechaPrecio;
 	}
-	public int getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
-	public void setPrecio(int precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
 	
