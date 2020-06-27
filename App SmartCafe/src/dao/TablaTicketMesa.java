@@ -25,7 +25,7 @@ public class TablaTicketMesa {
 		}
 	}
 
-	public boolean existeTickeMesa(int numTicketMesa){
+	public boolean existeTicketMesa(int numTicketMesa){
 		String sql ="select* from  ticket_mesa where num_tm='"+numTicketMesa+"'";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
@@ -88,7 +88,7 @@ public class TablaTicketMesa {
 		}
 	}
 
-	public List<TicketMesa> getTickets(){
+	public List<TicketMesa> getTicketsMesa1(){
 		String sql ="select * from  ticket_mesa where num_tm";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
@@ -104,7 +104,7 @@ public class TablaTicketMesa {
 		}
 	}
 
-	public TicketMesa getTicket(int numTicketMesa){
+	public TicketMesa getTicketMesa(int numTicketMesa){
 		String sql ="select* from  ticket_mesa where num_tm='"+numTicketMesa+"'";
 		try{
 			ResultSet rs = statement.executeQuery(sql);

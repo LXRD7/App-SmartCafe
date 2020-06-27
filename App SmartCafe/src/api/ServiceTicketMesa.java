@@ -6,8 +6,8 @@ import modelo.TicketMesa;
 
 public interface ServiceTicketMesa {
 	String registrarTicketMesa(TicketMesa ticketMesa);
-	TicketMesa getTicket(int numTicketMesa);
-	List<TicketMesa> getTickets();
+	TicketMesa getTicketMesa(int numTicketMesa);
+	List<TicketMesa> getTicketsMesa1();
 	int eliminarTicketMesa(int numTicketMesa);
 	String modificarTicketMesa(TicketMesa ticketMesa);
 	 boolean existeTicketMesa(int numTicketMesa);
