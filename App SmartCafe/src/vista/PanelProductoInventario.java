@@ -22,6 +22,7 @@ import enumeraciones.TipoProducto;
 import enumeraciones.UnidadMedida;
 import modelo.ProductoInventario;
 import services.ServiceProductoInventarioImpl;
+import javax.swing.JTable;
 
 public class PanelProductoInventario extends JPanel {
 
@@ -51,6 +52,7 @@ public class PanelProductoInventario extends JPanel {
 	private JLabel textoPrecio;
 	private JLabel textoNombre;
 	private JLabel textoContenido;
+	private JTable table;
 
 	public PanelProductoInventario() {
 		setLayout(null);
@@ -97,6 +99,7 @@ public class PanelProductoInventario extends JPanel {
 		add(textoTipoProducto);
 		
 		comboBoxTipoProducto = new JComboBox<TipoProducto>();
+		comboBoxTipoProducto.setModel(new DefaultComboBoxModel(TipoProducto.values()));
 		comboBoxTipoProducto.setForeground(new Color(75, 44, 14));
 		comboBoxTipoProducto.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		comboBoxTipoProducto.setFocusable(false);
@@ -148,6 +151,7 @@ public class PanelProductoInventario extends JPanel {
 		add(textoUnidadMedida);
 		
 		comboBoxUnidadMedida = new JComboBox<UnidadMedida>();
+		comboBoxUnidadMedida.setModel(new DefaultComboBoxModel(UnidadMedida.values()));
 		comboBoxUnidadMedida.setForeground(new Color(75, 44, 14));
 		comboBoxUnidadMedida.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		comboBoxUnidadMedida.setFocusable(false);
@@ -203,6 +207,10 @@ public class PanelProductoInventario extends JPanel {
 		botonEditar = panelOpcionesGenerales.getBotonEditar();
 		
 		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
+		
+		table = new JTable();
+		table.setBounds(623, 208, 211, 278);
+		add(table);
 	}
 
 	public JButton getBotonNuevo() {
