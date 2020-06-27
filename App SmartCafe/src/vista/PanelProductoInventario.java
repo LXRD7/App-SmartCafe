@@ -200,7 +200,7 @@ public class PanelProductoInventario extends JPanel {
 				if(!serviceProductoInventario.existeProducto(p.getCodigoBarras()))
 					serviceProductoInventario.registrarProducto(p);
 				else
-					JOptionPane.showMessageDialog(null, "El codigo de barras ingresado ya existe");
+					JOptionPane.showMessageDialog(null, "El código de barras ingresado ya existe");
 			}
 		});
 		

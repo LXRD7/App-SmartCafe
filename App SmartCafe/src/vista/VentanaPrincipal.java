@@ -106,11 +106,13 @@ public class VentanaPrincipal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 695, 358);
 		contentPane = new JPanel();
+		contentPane.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
 		JPanel panelEncabezado = new JPanel();
+		panelEncabezado.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		contentPane.add(panelEncabezado, BorderLayout.NORTH);
 		GridBagLayout gbl_panelEncabezado = new GridBagLayout();
 		gbl_panelEncabezado.columnWidths = new int[]{685, 0};
@@ -138,7 +140,7 @@ public class VentanaPrincipal extends JFrame {
 		panelEncabezado.add(fondoEncabezado, gbc_fondoEncabezado);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setFont(new Font("Noto Sans", Font.BOLD, 18));
+		tabbedPane.setFont(new Font("Dialog", Font.BOLD, 17));
 		tabbedPane.setBackground(colorSecundario);
 		tabbedPane.setForeground(colorSecundario);
 		
