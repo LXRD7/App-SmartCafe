@@ -138,7 +138,6 @@ public class VentanaPrincipal extends JFrame {
 		panelEncabezado.add(fondoEncabezado, gbc_fondoEncabezado);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setOpaque(true);
 		tabbedPane.setFont(new Font("Noto Sans", Font.BOLD, 18));
 		tabbedPane.setBackground(colorSecundario);
 		tabbedPane.setForeground(colorSecundario);
