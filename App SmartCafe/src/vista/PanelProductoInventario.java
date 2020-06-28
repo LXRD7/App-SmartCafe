@@ -190,7 +190,11 @@ public class PanelProductoInventario extends JPanel {
 		add(cajaPrecio);
 		
 		panelOpcionesGenerales = new PanelOpcionesGenerales();
-		panelOpcionesGenerales.setBounds(511, 211, 128, 217);
+		panelOpcionesGenerales.getBotonNuevo().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panelOpcionesGenerales.setBounds(511, 211, 135, 217);
 		add(panelOpcionesGenerales);
 		
 		
@@ -228,7 +232,7 @@ public class PanelProductoInventario extends JPanel {
 		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
 		
 		table = new JTable();
-		table.setBounds(651, 154, 382, 332);
+		table.setBounds(661, 154, 372, 332);
 		add(table);
 	}
 

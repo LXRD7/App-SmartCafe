@@ -24,6 +24,7 @@ public class PanelInventario extends JPanel {
 
 		panelMenuInventario = new PanelMenuInventario();
 		panelProductoInventario = new PanelProductoInventario();
+		
 		setLayout(new BorderLayout(0, 0));
 
 		botonProductos = panelMenuInventario.getBotonProductos();
