@@ -27,6 +27,7 @@ public class PanelMenuInventario extends JPanel {
 	private Color colorSecundario = new Color(75, 44, 14);
 
 	public PanelMenuInventario() {
+		setOpaque(false);
 
 		botonProductos = new JButton("Productos");
 		botonProductos.setBorder(new LineBorder(colorSecundario, 1, true));

@@ -20,6 +20,7 @@ public class PanelOpcionesGenerales extends JPanel {
 	private Color colorSecundario = new Color(75, 44, 14);
 
 	public PanelOpcionesGenerales() {
+		setOpaque(false);
 		setLayout(new GridLayout(0, 1, 0, 0));
 		
 		botonNuevo = new JButton("Añadir");

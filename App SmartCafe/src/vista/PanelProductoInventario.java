@@ -64,6 +64,7 @@ public class PanelProductoInventario extends JPanel {
 	private JTable table;
 
 	public PanelProductoInventario() {
+		setOpaque(false);
 		
 		setLayout(null);
 		setPreferredSize(new Dimension(1000,500));
