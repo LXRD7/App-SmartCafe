@@ -128,7 +128,7 @@ public class PanelProveedorInventario extends JPanel {
 				proveedor.setClaveProveedor(Integer.parseInt(cajaClave.getText()));
 				proveedor.setRazonSocial(cajaRazonSocial.getText());
 				proveedor.setCalle(cajaCalle.getText());
-				proveedor.setTelefono(Integer.parseInt(cajaTelefono.getText()));
+				proveedor.setTelefono(cajaTelefono.getText());
 				proveedor.setEmail(cajaEmail.getText());
 				
 				if(!serviceProveedor.existeProveedor(proveedor.getClaveProveedor()))

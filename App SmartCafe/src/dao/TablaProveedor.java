@@ -98,7 +98,7 @@ public class TablaProveedor {
 				p.setClaveProveedor(rs.getInt("cve_prov"));
 				p.setRazonSocial(rs.getString("razonsoc_prov"));
 				p.setCalle(rs.getString("calle_prov"));
-				p.setTelefono(rs.getInt("tel_prov"));
+				p.setTelefono(rs.getString("tel_prov"));
 				p.setEmail(rs.getString("email_prov"));
 				lista.add(p);
 			} 
@@ -117,7 +117,7 @@ public class TablaProveedor {
 				p.setClaveProveedor(rs.getInt("cve_prov"));
 				p.setRazonSocial(rs.getString("razonsoc_prov"));
 				p.setCalle(rs.getString("calle_prov"));
-				p.setTelefono(rs.getInt("tel_prov"));
+				p.setTelefono(rs.getString("tel_prov"));
 				p.setEmail(rs.getString("email_prov"));
 				return p;
 			} else {

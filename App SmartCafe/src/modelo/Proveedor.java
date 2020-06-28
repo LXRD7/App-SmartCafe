@@ -4,7 +4,7 @@ public class Proveedor {
 	private int claveProveedor;
 	private String razonSocial;
 	private String calle;
-	private int telefono;
+	private String telefono;
 	private String email;
 	
 	public int getClaveProveedor() {
@@ -25,10 +25,10 @@ public class Proveedor {
 	public void setCalle(String calle) {
 		this.calle = calle;
 	}
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 	public String getEmail() {
