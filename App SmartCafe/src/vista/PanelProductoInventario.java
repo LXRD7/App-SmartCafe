@@ -1,20 +1,22 @@
 package vista;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
@@ -27,7 +29,6 @@ import modelo.Precio;
 import modelo.ProductoInventario;
 import services.ServicePrecioImpl;
 import services.ServiceProductoInventarioImpl;
-import javax.swing.JTable;
 
 public class PanelProductoInventario extends JPanel {
 
@@ -44,6 +45,7 @@ public class PanelProductoInventario extends JPanel {
 	
 	private ServiceProductoInventario serviceProductoInventario;
 	private ServicePrecio servicePrecio;
+	
 	
 	private JTextField cajaCodigoBarras;
 	private JTextField cajaNombre;
@@ -62,6 +64,7 @@ public class PanelProductoInventario extends JPanel {
 	private JTable table;
 
 	public PanelProductoInventario() {
+		
 		setLayout(null);
 		setPreferredSize(new Dimension(1000,500));
 		
@@ -228,6 +231,7 @@ public class PanelProductoInventario extends JPanel {
 		add(table);
 	}
 
+
 	public JButton getBotonNuevo() {
 		return panelOpcionesGenerales.getBotonNuevo();
 	}
@@ -271,4 +275,6 @@ public class PanelProductoInventario extends JPanel {
 	public JTextField getCajaPrecio() {
 		return cajaPrecio;
 	}
+	
+	
 }

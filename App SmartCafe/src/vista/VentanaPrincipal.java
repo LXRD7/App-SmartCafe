@@ -2,12 +2,14 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Frame;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Toolkit;
 import java.sql.Connection;
 
 import javax.swing.ImageIcon;
@@ -15,27 +17,16 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenuBar;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import api.ServiceProductoInventario;
 import dao.BaseDatos;
-import dao.FuenteDatos;
-import dao.TablaProductoInventario;
 import enumeraciones.TipoProducto;
 import enumeraciones.UnidadMedida;
-import modelo.Precio;
-import modelo.ProductoInventario;
-import services.ServiceProductoInventarioImpl;
-
-import javax.swing.UIManager;
-import java.awt.Toolkit;
-import java.awt.Component;
-import javax.swing.JTabbedPane;
-import java.awt.Font;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -99,12 +90,12 @@ public class VentanaPrincipal extends JFrame {
 	public VentanaPrincipal() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPrincipal.class.getResource("/recursos/frappe.png")));
 		setBackground(UIManager.getColor("Button.darkShadow"));
-
 		setTitle("App Cafetería");
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 695, 358);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -137,16 +128,16 @@ public class VentanaPrincipal extends JFrame {
 		gbc_fondoEncabezado.gridx = 0;
 		gbc_fondoEncabezado.gridy = 0;
 		panelEncabezado.add(fondoEncabezado, gbc_fondoEncabezado);
-		
+
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setFont(new Font("Dialog", Font.BOLD, 17));
 		tabbedPane.setBackground(colorSecundario);
 		tabbedPane.setForeground(colorSecundario);
-		
+
 		panelVenta = new JPanel();
 		tabbedPane.addTab("Venta", null, panelVenta, null);
 		tabbedPane.setBackgroundAt(0, colorPrincipal);
-		
+
 		panelCatalogo = new JPanel();
 		tabbedPane.addTab("Catalogo", null, panelCatalogo, null);
 		tabbedPane.setBackgroundAt(1, colorPrincipal);
@@ -154,10 +145,9 @@ public class VentanaPrincipal extends JFrame {
 		panelInventario = new PanelInventario();
 		tabbedPane.add("Inventario",panelInventario);
 		tabbedPane.setBackgroundAt(2, colorPrincipal);
-		
 		contentPane.add(tabbedPane);
-		
 		setVisible(true);
 
 	}
+
 }
