@@ -19,11 +19,14 @@ public class PanelInventario extends JPanel {
 	private JButton botonResurtir;
 
 	private PanelProductoInventario panelProductoInventario;
+	private PanelProveedorInventario panelProveedorInventario;
 
 	public PanelInventario() {
 
 		panelMenuInventario = new PanelMenuInventario();
+		
 		panelProductoInventario = new PanelProductoInventario();
+		panelProveedorInventario = new PanelProveedorInventario();
 		
 		setLayout(new BorderLayout(0, 0));
 
@@ -32,12 +35,30 @@ public class PanelInventario extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				removeAll();
+				add(panelMenuInventario,BorderLayout.WEST);
 				add(panelProductoInventario,BorderLayout.CENTER);
 				setVisible(true);
 				revalidate();
+				repaint();
 			}
 		});
 		botonProductos.doClick();
+		
+		botonProveedores = panelMenuInventario.getBotonProveedores();
+		botonProveedores.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {				
+				removeAll();
+				add(panelMenuInventario,BorderLayout.WEST);
+				add(panelProveedorInventario,BorderLayout.CENTER);
+				setVisible(true);
+				revalidate();
+				repaint();
+			}
+		});
+		
 		add(panelMenuInventario,BorderLayout.WEST);
 
 		setVisible(true);

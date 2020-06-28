@@ -34,11 +34,13 @@ public class PanelProveedorInventario extends JPanel {
 	private JLabel textoCalle;
 	private JLabel textoRazonSocial;
 	private JLabel textoClave;
-	private JPanel panelOpcionesGenerales;
-	private JButton getBotonNuevo;
-	private JButton getBotonGuardar;
-	private JButton getBotonEditar;
-	private JButton getBotonEliminar;
+	
+	private PanelOpcionesGenerales panelOpcionesGenerales;
+	private JButton botonNuevo;
+	private JButton botonGuardar;
+	private JButton botonEditar;
+	private JButton botonEliminar;
+	
 	private JTable table;
 
 	public PanelProveedorInventario() {
@@ -113,20 +115,13 @@ public class PanelProveedorInventario extends JPanel {
 		cajaEmail.setBounds(332, 337, 160, 35);
 		add(cajaEmail);
 		cajaEmail.setColumns(10);
-		
-		panelOpcionesGenerales = new JPanel();
-		panelOpcionesGenerales.setBounds(535, 157, 135, 216);
+		panelOpcionesGenerales = new PanelOpcionesGenerales();
+		panelOpcionesGenerales.setBounds(529, 154, 135, 217);
 		add(panelOpcionesGenerales);
-		panelOpcionesGenerales.setLayout(new GridLayout(0, 1, 0, 0));
+		botonNuevo = panelOpcionesGenerales.getBotonNuevo();
 		
-		getBotonNuevo = new JButton("Añadir");
-		getBotonNuevo.setFont(new Font("Dialog", Font.BOLD, 18));
-		getBotonNuevo.setIcon(new ImageIcon(PanelProveedorInventario.class.getResource("/recursos/iconos/anadir.png")));
-		getBotonNuevo.setToolTipText("Añadir");
-		panelOpcionesGenerales.add(getBotonNuevo);
-		
-		getBotonGuardar = new JButton("Guardar");
-		getBotonGuardar.addActionListener(new ActionListener() {
+		botonGuardar = panelOpcionesGenerales.getBotonGuardar();
+		botonGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				serviceProveedor = new ServiceProveedorImpl();
 				Proveedor proveedor = new Proveedor();
@@ -143,22 +138,10 @@ public class PanelProveedorInventario extends JPanel {
 			}	
 			
 		});
-		getBotonGuardar.setFont(new Font("Dialog", Font.BOLD, 18));
-		getBotonGuardar.setIcon(new ImageIcon(PanelProveedorInventario.class.getResource("/recursos/iconos/salvar.png")));
-		getBotonGuardar.setToolTipText("Guardar");
-		panelOpcionesGenerales.add(getBotonGuardar);
 		
-		getBotonEditar = new JButton("Editar");
-		getBotonEditar.setIcon(new ImageIcon(PanelProveedorInventario.class.getResource("/recursos/iconos/lapiz.png")));
-		getBotonEditar.setFont(new Font("Dialog", Font.BOLD, 18));
-		getBotonEditar.setToolTipText("Editar");
-		panelOpcionesGenerales.add(getBotonEditar);
+		botonEditar = panelOpcionesGenerales.getBotonEditar();
 		
-		getBotonEliminar = new JButton("Eliminar");
-		getBotonEliminar.setIcon(new ImageIcon(PanelProveedorInventario.class.getResource("/recursos/iconos/eliminar.png")));
-		getBotonEliminar.setFont(new Font("Dialog", Font.BOLD, 18));
-		getBotonEliminar.setToolTipText("Eliminar");
-		panelOpcionesGenerales.add(getBotonEliminar);
+		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
 		
 		table = new JTable();
 		table.setGridColor(new Color(255, 255, 255));

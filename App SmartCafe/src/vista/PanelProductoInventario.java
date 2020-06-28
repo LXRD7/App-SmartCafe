@@ -190,10 +190,7 @@ public class PanelProductoInventario extends JPanel {
 		add(cajaPrecio);
 		
 		panelOpcionesGenerales = new PanelOpcionesGenerales();
-		panelOpcionesGenerales.getBotonNuevo().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		
 		panelOpcionesGenerales.setBounds(511, 211, 135, 217);
 		add(panelOpcionesGenerales);
 		
