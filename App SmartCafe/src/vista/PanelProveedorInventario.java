@@ -6,22 +6,31 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import api.ServiceProveedor;
+import modelo.ProductoInventario;
 import modelo.Proveedor;
 import services.ServiceProveedorImpl;
 
 public class PanelProveedorInventario extends JPanel {
+	
 	private ServiceProveedor serviceProveedor;
 
 	private JTextField cajaClave;
@@ -41,11 +50,18 @@ public class PanelProveedorInventario extends JPanel {
 	private JButton botonEditar;
 	private JButton botonEliminar;
 
-	private JTable table;
+	private JScrollPane scrollPane;
+	private JTable tabla;
+	private JTableHeader encabezado;
+	private DefaultTableModel modelo;
 
 	private Color colorPrincipal = new Color(175, 193, 11);
 	private Color colorSecundario = new Color(75, 44, 14);
 	private Color colorFuente = Color.WHITE;
+
+	private boolean editando;
+	
+	List<Proveedor> proveedores;
 
 	public PanelProveedorInventario() {
 		setOpaque(false);
@@ -141,9 +157,26 @@ public class PanelProveedorInventario extends JPanel {
 		cajaEmail.setColumns(10);
 
 		panelOpcionesGenerales = new PanelOpcionesGenerales();
+
+
 		panelOpcionesGenerales.setBounds(529, 154, 135, 217);
 		add(panelOpcionesGenerales);
 		botonNuevo = panelOpcionesGenerales.getBotonNuevo();
+		botonNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editando=false;
+				cajaClave.setEditable(true);
+				cajaClave.setText("");
+				cajaRazonSocial.setEditable(true);
+				cajaRazonSocial.setText("");
+				cajaCalle.setEditable(true);
+				cajaCalle.setText("");
+				cajaTelefono.setEditable(true);
+				cajaTelefono.setText("");
+				cajaEmail.setEditable(true);
+				cajaEmail.setText("");
+			}
+		});
 
 		botonGuardar = panelOpcionesGenerales.getBotonGuardar();
 		botonGuardar.addActionListener(new ActionListener() {
@@ -168,11 +201,76 @@ public class PanelProveedorInventario extends JPanel {
 
 		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
 
-		table = new JTable();
-		table.setGridColor(new Color(255, 255, 255));
-		table.setBackground(new Color(240, 248, 255));
-		table.setBounds(687, 388, 307, -258);
-		add(table);
 
+
+
+		modelo = new DefaultTableModel() {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		String[] columnas = new String[] {"ClaveProveedor","RazonSocial","Calle","Telefono","Email"};
+		modelo.setColumnIdentifiers(columnas);
+
+		tabla = new JTable(modelo);
+		
+		tabla.addMouseListener(new MouseAdapter() 
+		{
+			public void mouseClicked(MouseEvent e) 
+			{
+				int fila = tabla.rowAtPoint(e.getPoint());
+				int columna = tabla.columnAtPoint(e.getPoint());
+				if (fila > -1) {
+					editando=false;
+					Proveedor p = serviceProveedor.getProveedor(Integer.parseInt(modelo.getValueAt(fila, 0).toString()));
+					cajaClave.setEditable(false);
+					cajaClave.setText(p.getClaveProveedor()+"");
+					cajaRazonSocial.setEditable(false);
+					cajaRazonSocial.setText(p.getRazonSocial());
+					cajaCalle.setEditable(false);
+					cajaCalle.setText(p.getCalle());
+					cajaTelefono.setEditable(false);
+					cajaTelefono.setText(p.getTelefono()+"");
+					cajaEmail.setEditable(false);
+					cajaEmail.setText(p.getEmail());
+				}
+			}
+		});
+		
+		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		tabla.setFont(new Font("Noto Sans", Font.PLAIN, 16));
+		tabla.setForeground(colorSecundario);
+		tabla.setRowHeight(30);
+		tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tabla.setGridColor(new Color(255, 255, 255));
+		tabla.setBackground(new Color(240, 248, 255));
+		tabla.setBounds(687, 388, 307, -258);
+		add(tabla);
+		
+		encabezado = tabla.getTableHeader();
+		encabezado.setBackground(colorPrincipal);
+		encabezado.setForeground(colorSecundario);
+		encabezado.setFont(new Font("Noto Sans", Font.BOLD, 16));
+
+		scrollPane = new JScrollPane(tabla);
+		scrollPane.setBounds(661, 154, 800, 332);
+		add(scrollPane);
+		
+	}
+	public JButton getBotonNuevo() {
+		return panelOpcionesGenerales.getBotonNuevo();
+	}
+
+	public JButton getBotonGuardar() {
+		return panelOpcionesGenerales.getBotonGuardar();
+	}
+
+	public JButton getBotonEditar() {
+		return panelOpcionesGenerales.getBotonEditar();
+	}
+
+	public JButton getBotonEliminar() {
+		return panelOpcionesGenerales.getBotonEliminar();
 	}
 }
