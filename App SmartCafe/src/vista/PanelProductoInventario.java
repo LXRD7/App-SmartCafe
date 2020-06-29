@@ -221,8 +221,10 @@ public class PanelProductoInventario extends JPanel {
 				precio.setPrecio(Double.parseDouble(cajaPrecio.getText()));
 				precio.setCodigoBarras(cajaCodigoBarras.getText());
 //				servicePrecio.registrarPrecio(precio);
-				if(!serviceProductoInventario.existeProducto(producto.getCodigoBarras()))
+				if(!serviceProductoInventario.existeProducto(producto.getCodigoBarras())) {
 					serviceProductoInventario.registrarProducto(producto);
+					JOptionPane.showMessageDialog(null, "Producto registrado");
+				}
 				else
 					JOptionPane.showMessageDialog(null, "El código de barras ingresado ya existe");
 			}
