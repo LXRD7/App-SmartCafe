@@ -268,12 +268,15 @@ public class PanelProductoInventario extends JPanel {
 				if(editando) {
 					serviceProductoInventario.modificarProducto(producto);
 					JOptionPane.showMessageDialog(null, "Producto Modificado");
+					modelo.removeRow(tabla.getSelectedRow());
+					modelo.fireTableDataChanged();
 				}
 				else {
 					if(!serviceProductoInventario.existeProducto(producto.getCodigoBarras())) {
 						serviceProductoInventario.registrarProducto(producto);
 						modelo.addRow(new Object[] {producto.getCodigoBarras(),producto.getNombreProducto(),producto.getTipoProducto().toString(),producto.getMarca(),producto.getContenido(),producto.getUnidadMedida().toString()});
 						JOptionPane.showMessageDialog(null, "Producto Registrado");
+						modelo.fireTableDataChanged();
 					}
 					else
 						JOptionPane.showMessageDialog(null, "El código de barras ingresado ya existe");
@@ -299,17 +302,18 @@ public class PanelProductoInventario extends JPanel {
 
 		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
 		botonEliminar.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String codigoBarras = cajaCodigoBarras.getText();
 				if(serviceProductoInventario.existeProducto(codigoBarras)) {
-				serviceProductoInventario.eliminarProducto(codigoBarras);
-				JOptionPane.showMessageDialog(null, "Producto Eliminado");
+					serviceProductoInventario.eliminarProducto(codigoBarras);
+					JOptionPane.showMessageDialog(null, "Producto Eliminado");
+					modelo.fireTableDataChanged();
 				}
 				else
 					JOptionPane.showMessageDialog(null, "El producto no existe");
-				
+
 			}
 		});
 
@@ -365,7 +369,6 @@ public class PanelProductoInventario extends JPanel {
 		}
 		scrollPane = new JScrollPane(tabla);
 		scrollPane.setBounds(661, 154, 800, 332);
-		modelo.fireTableDataChanged();
 		add(scrollPane);
 	}
 
