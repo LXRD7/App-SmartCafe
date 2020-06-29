@@ -183,6 +183,7 @@ public class PanelProveedorInventario extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				serviceProveedor = new ServiceProveedorImpl();
 				Proveedor proveedor = new Proveedor();
+//				aquí hay pedo 
 				proveedor.setClaveProveedor(Integer.parseInt(cajaClave.getText()));
 				proveedor.setRazonSocial(cajaRazonSocial.getText());
 				proveedor.setCalle(cajaCalle.getText());
