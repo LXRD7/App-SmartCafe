@@ -5,16 +5,21 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import api.ServiceProductoVenta;
 import enumeraciones.TipoProductoVenta;
@@ -23,7 +28,7 @@ import modelo.ProductoVenta;
 import services.ServiceProductoVentaImpl;
 
 public class PanelProductoCatalogo extends JPanel {
-	
+
 	private JLabel textoImagen;
 	private JLabel textoUnidadMedida;
 	private JLabel textoContenido;
@@ -40,7 +45,7 @@ public class PanelProductoCatalogo extends JPanel {
 
 	private Color colorPrincipal = new Color(175, 193, 11);
 	private Color colorSecundario = new Color(75, 44, 14);
-	
+
 	private ServiceProductoVenta serviceProductoVenta;
 
 	private PanelOpcionesGenerales panelOpcionesGenerales;
@@ -48,6 +53,8 @@ public class PanelProductoCatalogo extends JPanel {
 	private JButton botonGuardar;
 	private JButton botonEditar;
 	private JButton botonEliminar;
+	private JTextField cajaImagen;
+	private JButton botonSeleccionar;
 
 	public PanelProductoCatalogo() {
 		setLayout(null);
@@ -157,7 +164,31 @@ public class PanelProductoCatalogo extends JPanel {
 		textoImagen.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoImagen.setBounds(321, 383, 150, 35);
 		add(textoImagen);
-		
+
+		cajaImagen = new JTextField();
+		cajaImagen.setForeground(new Color(75, 44, 14));
+		cajaImagen.setFont(new Font("Droid Sans", Font.PLAIN, 16));
+		cajaImagen.setBorder(new LineBorder(colorSecundario, 1, true));
+		cajaImagen.setBackground(new Color(175, 193, 11));
+		cajaImagen.setBounds(480, 384, 160, 35);
+		add(cajaImagen);
+		cajaImagen.setColumns(10);
+
+		botonSeleccionar = new JButton("Seleccionar");
+		botonSeleccionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser jf=new JFileChooser();
+				jf.showOpenDialog(jf);
+				File archivo=jf.getSelectedFile();
+				if(archivo!=null) {
+					cajaImagen.setText(archivo.getAbsolutePath());
+				}
+			}
+		});
+		botonSeleccionar.setBounds(648, 389, 106, 25);
+		add(botonSeleccionar);
+
+
 		panelOpcionesGenerales = new PanelOpcionesGenerales();
 		panelOpcionesGenerales.setBounds(680, 115, 135, 217);
 		add(panelOpcionesGenerales);
@@ -178,11 +209,23 @@ public class PanelProductoCatalogo extends JPanel {
 				if(!serviceProductoVenta.existeProductoVenta(venta.getCodigoBarras()))
 					serviceProductoVenta.registrarProductoVenta(venta);
 				else
-					JOptionPane.showMessageDialog(null, "La clave del proveedor ingresada ya existe");
+					JOptionPane.showMessageDialog(null, "La clave del producto ingresada ya existe");
 			}	
 
 		});
 
 	}
-	
+	private static String dialogo(String entrada, boolean[][] matriz)
+			throws IOException {
+		JFileChooser ventana = new JFileChooser(entrada);
+		ventana.setDialogTitle("Guardar");
+		ventana.setFileFilter(new FileNameExtensionFilter("Texto (txt)","txt"));
+		if (ventana.showDialog(null,"Guardar") == JFileChooser.APPROVE_OPTION) {
+			File archivo = ventana.getSelectedFile();
+			FileWriter archivo_escribe=new FileWriter(archivo);
+			archivo_escribe.write('c');
+			archivo_escribe.close();
+		}
+		return entrada;
+	}
 }
