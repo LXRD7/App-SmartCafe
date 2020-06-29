@@ -159,6 +159,11 @@ public class PanelProductoCatalogo extends JPanel {
 		textoImagen.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoImagen.setBounds(321, 383, 150, 35);
 		add(textoImagen);
+		
+		panelOpcionesGenerales = new PanelOpcionesGenerales();
+		
+		panelOpcionesGenerales.setBounds(680, 115, 135, 217);
+		add(panelOpcionesGenerales);
 
 		botonGuardar = panelOpcionesGenerales.getBotonGuardar();
 		botonGuardar.addActionListener(new ActionListener() {
@@ -180,11 +185,6 @@ public class PanelProductoCatalogo extends JPanel {
 			}	
 
 		});
-
-		panelOpcionesGenerales = new PanelOpcionesGenerales();
-		panelOpcionesGenerales.setBounds(680, 115, 135, 217);
-		add(panelOpcionesGenerales);
-
 
 	}
 	

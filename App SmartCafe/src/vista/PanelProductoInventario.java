@@ -231,22 +231,22 @@ public class PanelProductoInventario extends JPanel {
 		
 		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
 		
-		DefaultTableModel modelo = new DefaultTableModel();
-		String[] columnas = new String[] {"CodigoBarra","Nombre","Tipo","Marca","Precio","Contenido","UnidadMedida"};
-		
-		modelo.setColumnIdentifiers(columnas);
-		table = new JTable(modelo);
-		
-		productos = serviceProductoInventario.getProductos();
-		for (ProductoInventario p : productos) {
-			System.out.println(p.getCodigoBarras());
-			System.out.println(servicePrecio);
-			modelo.addRow(new Object[] {p.getCodigoBarras(),p.getNombreProducto(),p.getTipoProducto().toString(),p.getMarca(),servicePrecio.getPrecio(p.getCodigoBarras()),p.getContenido(),p.getUnidadMedida().toString()});
-		}
-		
-		table.setBounds(661, 154, 372, 332);
-		
-		add(table);
+//		DefaultTableModel modelo = new DefaultTableModel();
+//		String[] columnas = new String[] {"CodigoBarra","Nombre","Tipo","Marca","Precio","Contenido","UnidadMedida"};
+//		
+//		modelo.setColumnIdentifiers(columnas);
+//		table = new JTable(modelo);
+//		
+//		productos = serviceProductoInventario.getProductos();
+//		for (ProductoInventario p : productos) {
+//			System.out.println(p.getCodigoBarras());
+//			System.out.println(servicePrecio);
+//			modelo.addRow(new Object[] {p.getCodigoBarras(),p.getNombreProducto(),p.getTipoProducto().toString(),p.getMarca(),servicePrecio.getPrecio(p.getCodigoBarras()),p.getContenido(),p.getUnidadMedida().toString()});
+//		}
+//		
+//		table.setBounds(661, 154, 372, 332);
+//		
+//		add(table);
 	}
 
 
