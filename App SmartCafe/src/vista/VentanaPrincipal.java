@@ -29,7 +29,7 @@ import enumeraciones.TipoProducto;
 import enumeraciones.UnidadMedida;
 
 public class VentanaPrincipal extends JFrame {
-	
+
 	private static final long serialVersionUID = 4196183864480321960L;
 
 	private ServiceProductoInventario serviceProductoInventario;
