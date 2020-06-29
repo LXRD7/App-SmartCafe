@@ -246,21 +246,21 @@ public class PanelProductoInventario extends JPanel {
 		modelo.setColumnIdentifiers(columnas);
 		tabla = new JTable(modelo);
 		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		tabla.setFont(new Font("Noto Sans", Font.PLAIN, 18));
+		tabla.setFont(new Font("Noto Sans", Font.PLAIN, 16));
 		tabla.setForeground(colorSecundario);
 		tabla.setRowHeight(30);
 		
 		JTableHeader encabezado = tabla.getTableHeader();
 		encabezado.setBackground(colorPrincipal);
 		encabezado.setForeground(colorSecundario);
-		encabezado.setFont(new Font("Noto Sans", Font.BOLD, 18));
+		encabezado.setFont(new Font("Noto Sans", Font.BOLD, 16));
 		
 		productos = serviceProductoInventario.getProductos();
 		for (ProductoInventario p : productos) {
 			modelo.addRow(new Object[] {p.getCodigoBarras(),p.getNombreProducto(),p.getTipoProducto().toString(),p.getMarca(),p.getContenido(),p.getUnidadMedida().toString()});
 		}
 		JScrollPane sp = new JScrollPane(tabla);
-		sp.setBounds(661, 154, 900, 332);
+		sp.setBounds(661, 154, 800, 332);
 		
 		add(sp);
 	}
