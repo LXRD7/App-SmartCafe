@@ -7,7 +7,6 @@ import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -16,11 +15,13 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 import api.ServicePrecio;
 import api.ServiceProductoInventario;
@@ -234,19 +235,32 @@ public class PanelProductoInventario extends JPanel {
 		
 		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
 		
-		DefaultTableModel modelo = new DefaultTableModel();
+		DefaultTableModel modelo = new DefaultTableModel() {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		String[] columnas = new String[] {"CodigoBarra","Nombre","Tipo","Marca","Contenido","UnidadMedida"};
 		
 		modelo.setColumnIdentifiers(columnas);
 		tabla = new JTable(modelo);
+		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		tabla.setFont(new Font("Noto Sans", Font.PLAIN, 18));
+		tabla.setForeground(colorSecundario);
+		tabla.setRowHeight(30);
+		
+		JTableHeader encabezado = tabla.getTableHeader();
+		encabezado.setBackground(colorPrincipal);
+		encabezado.setForeground(colorSecundario);
+		encabezado.setFont(new Font("Noto Sans", Font.BOLD, 18));
 		
 		productos = serviceProductoInventario.getProductos();
 		for (ProductoInventario p : productos) {
 			modelo.addRow(new Object[] {p.getCodigoBarras(),p.getNombreProducto(),p.getTipoProducto().toString(),p.getMarca(),p.getContenido(),p.getUnidadMedida().toString()});
 		}
-		ScrollPane sp = new ScrollPane();
-		sp.setBounds(661, 154, 600, 332);
-		sp.add(tabla);
+		JScrollPane sp = new JScrollPane(tabla);
+		sp.setBounds(661, 154, 900, 332);
 		
 		add(sp);
 	}
