@@ -2,10 +2,14 @@ package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PanelInventario extends JPanel {
@@ -22,9 +26,12 @@ public class PanelInventario extends JPanel {
 	private PanelProveedorInventario panelProveedorInventario;
 
 	public PanelInventario() {
+		setOpaque(false);
 		panelMenuInventario = new PanelMenuInventario();
+		panelMenuInventario.setOpaque(false);
 		
 		panelProductoInventario = new PanelProductoInventario();
+		panelProductoInventario.setOpaque(false);
 		panelProveedorInventario = new PanelProveedorInventario();
 		
 		setLayout(new BorderLayout(0, 0));
@@ -62,5 +69,17 @@ public class PanelInventario extends JPanel {
 
 		setVisible(true);
 
+	}
+	
+	public static Image escalarImagen(Image original,int x ,int y) {
+		ImageIcon escalada = new ImageIcon(original.getScaledInstance(x, y, Image.SCALE_SMOOTH));
+		return escalada.getImage();
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		Image fondo = new ImageIcon(PanelInventario.class.getResource("/recursos/ventas.png")).getImage();
+		g.drawImage(escalarImagen(fondo, this.getWidth(), this.getHeight()), 0, 0,this);
+		super.paint(g);
 	}
 }
