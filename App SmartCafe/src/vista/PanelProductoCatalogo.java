@@ -27,8 +27,8 @@ public class PanelProductoCatalogo extends JPanel {
 
 	
 	public PanelProductoCatalogo() {
-		setPreferredSize(new Dimension(1000, 500));
 		setLayout(null);
+		setPreferredSize(new Dimension(1000, 500));
 		
 		textoClave = new JLabel("Clave ");
 		textoClave.setFont(new Font("Dialog", Font.BOLD, 16));

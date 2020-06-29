@@ -22,7 +22,6 @@ public class PanelInventario extends JPanel {
 	private PanelProveedorInventario panelProveedorInventario;
 
 	public PanelInventario() {
-
 		panelMenuInventario = new PanelMenuInventario();
 		
 		panelProductoInventario = new PanelProductoInventario();
@@ -64,5 +63,4 @@ public class PanelInventario extends JPanel {
 		setVisible(true);
 
 	}
-	
 }

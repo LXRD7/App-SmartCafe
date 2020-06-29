@@ -24,6 +24,8 @@ public class PanelCatalogo extends JPanel {
 		panelMenuCatalogo = new PanelMenuCatalogo();
 
 		panelProductoCatalogo= new PanelProductoCatalogo();
+		
+		setLayout(new BorderLayout(0, 0));
 
 		botonProductos = panelMenuCatalogo.getBotonProductos();
 		botonProductos.addActionListener(new ActionListener() {
@@ -40,7 +42,6 @@ public class PanelCatalogo extends JPanel {
 		});
 		botonProductos.doClick();
 
-		add(panelMenuCatalogo,BorderLayout.WEST);
 		setVisible(true);
 	}
 
