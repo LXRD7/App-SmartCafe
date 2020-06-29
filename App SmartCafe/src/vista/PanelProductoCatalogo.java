@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import javax.swing.DefaultComboBoxModel;
+import enumeraciones.TipoProducto;
+import enumeraciones.UnidadMedida;
 
 public class PanelProductoCatalogo extends JPanel {
 	private JLabel textoImagen;
@@ -59,6 +62,7 @@ public class PanelProductoCatalogo extends JPanel {
 		add(textoTipo);
 		
 		comboBoxTipo = new JComboBox();
+		comboBoxTipo.setModel(new DefaultComboBoxModel(TipoProducto.values()));
 		comboBoxTipo.setBounds(480, 180, 160, 35);
 		add(comboBoxTipo);
 		
@@ -91,6 +95,7 @@ public class PanelProductoCatalogo extends JPanel {
 		add(textoUnidadMedida);
 		
 		comboBoxUnidadMedida = new JComboBox();
+		comboBoxUnidadMedida.setModel(new DefaultComboBoxModel(UnidadMedida.values()));
 		comboBoxUnidadMedida.setBounds(480, 337, 160, 35);
 		add(comboBoxUnidadMedida);
 		
