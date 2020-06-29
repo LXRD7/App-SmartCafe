@@ -6,7 +6,7 @@ public class FuenteDatos {
 
 	public static BaseDatos getBaseDatos() {
 		if (baseDatos==null) {
-			baseDatos=new BaseDatos("smartcafe","root", "serrato33");
+			baseDatos=new BaseDatos("smartcafe","adminsmartcafe", "smartcafe");
 			baseDatos.setDriver("com.mysql.jdbc.Driver");
 			baseDatos.setProtocolo("jdbc:mysql://localhost/");
 
