@@ -15,6 +15,7 @@ import java.awt.Font;
 import javax.swing.DefaultComboBoxModel;
 import enumeraciones.TipoProducto;
 import enumeraciones.UnidadMedida;
+import java.awt.Component;
 
 public class PanelProductoCatalogo extends JPanel {
 	private JLabel textoImagen;
@@ -34,6 +35,8 @@ public class PanelProductoCatalogo extends JPanel {
 	private Color colorPrincipal = new Color(175, 193, 11);
 	private Color colorSecundario = new Color(75, 44, 14);
 	
+	private PanelOpcionesGenerales panelOpcionesGenerales;
+
 	public PanelProductoCatalogo() {
 		setLayout(null);
 		setPreferredSize(new Dimension(1000, 500));
@@ -143,7 +146,12 @@ public class PanelProductoCatalogo extends JPanel {
 		textoImagen.setBounds(321, 383, 150, 35);
 		add(textoImagen);
 		
-		JFileChooser fc =new JFileChooser();
+//		JFileChooser fc =new JFileChooser();
+		panelOpcionesGenerales = new PanelOpcionesGenerales();
+		panelOpcionesGenerales.getBotonGuardar().setAlignmentX(Component.RIGHT_ALIGNMENT);
+		panelOpcionesGenerales.setBounds(680, 115, 135, 217);
+		add(panelOpcionesGenerales);
+
 		
 	}
 }
