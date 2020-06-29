@@ -270,12 +270,13 @@ public class PanelProductoInventario extends JPanel {
 					serviceProductoInventario.modificarProducto(producto);
 					JOptionPane.showMessageDialog(null, "Producto Modificado");
 					modelo.removeRow(tabla.getSelectedRow());
+					modelo.addRow(new Object[] {producto.getCodigoBarras(),producto.getNombreProducto(),producto.getTipoProducto().toString(),producto.getMarca(),producto.getContenido(),producto.getUnidadMedida().toString(),producto.getPrecio()});
 					modelo.fireTableDataChanged();
 				}
 				else {
 					if(!serviceProductoInventario.existeProducto(producto.getCodigoBarras())) {
 						serviceProductoInventario.registrarProducto(producto);
-						modelo.addRow(new Object[] {producto.getCodigoBarras(),producto.getNombreProducto(),producto.getTipoProducto().toString(),producto.getMarca(),producto.getContenido(),producto.getUnidadMedida().toString()});
+						modelo.addRow(new Object[] {producto.getCodigoBarras(),producto.getNombreProducto(),producto.getTipoProducto().toString(),producto.getMarca(),producto.getContenido(),producto.getUnidadMedida().toString(),producto.getPrecio()});
 						JOptionPane.showMessageDialog(null, "Producto Registrado");
 						modelo.fireTableDataChanged();
 					}
