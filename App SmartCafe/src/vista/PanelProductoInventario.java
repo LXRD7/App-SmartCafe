@@ -3,6 +3,7 @@ package vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -61,7 +62,7 @@ public class PanelProductoInventario extends JPanel {
 	private JLabel textoPrecio;
 	private JLabel textoNombre;
 	private JLabel textoContenido;
-	private JTable table;
+	private JTable tabla;
 	
 	List<ProductoInventario> productos;
 
@@ -219,7 +220,7 @@ public class PanelProductoInventario extends JPanel {
 				precio.setFechaPrecio(LocalDate.now());
 				precio.setPrecio(Double.parseDouble(cajaPrecio.getText()));
 				precio.setCodigoBarras(cajaCodigoBarras.getText());
-				servicePrecio.registrarPrecio(precio);
+//				servicePrecio.registrarPrecio(precio);
 				if(!serviceProductoInventario.existeProducto(producto.getCodigoBarras()))
 					serviceProductoInventario.registrarProducto(producto);
 				else
@@ -231,22 +232,21 @@ public class PanelProductoInventario extends JPanel {
 		
 		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
 		
-//		DefaultTableModel modelo = new DefaultTableModel();
-//		String[] columnas = new String[] {"CodigoBarra","Nombre","Tipo","Marca","Precio","Contenido","UnidadMedida"};
-//		
-//		modelo.setColumnIdentifiers(columnas);
-//		table = new JTable(modelo);
-//		
-//		productos = serviceProductoInventario.getProductos();
-//		for (ProductoInventario p : productos) {
-//			System.out.println(p.getCodigoBarras());
-//			System.out.println(servicePrecio);
-//			modelo.addRow(new Object[] {p.getCodigoBarras(),p.getNombreProducto(),p.getTipoProducto().toString(),p.getMarca(),servicePrecio.getPrecio(p.getCodigoBarras()),p.getContenido(),p.getUnidadMedida().toString()});
-//		}
-//		
-//		table.setBounds(661, 154, 372, 332);
-//		
-//		add(table);
+		DefaultTableModel modelo = new DefaultTableModel();
+		String[] columnas = new String[] {"CodigoBarra","Nombre","Tipo","Marca","Contenido","UnidadMedida"};
+		
+		modelo.setColumnIdentifiers(columnas);
+		tabla = new JTable(modelo);
+		
+		productos = serviceProductoInventario.getProductos();
+		for (ProductoInventario p : productos) {
+			modelo.addRow(new Object[] {p.getCodigoBarras(),p.getNombreProducto(),p.getTipoProducto().toString(),p.getMarca(),p.getContenido(),p.getUnidadMedida().toString()});
+		}
+		ScrollPane sp = new ScrollPane();
+		sp.setBounds(661, 154, 600, 332);
+		sp.add(tabla);
+		
+		add(sp);
 	}
 
 
