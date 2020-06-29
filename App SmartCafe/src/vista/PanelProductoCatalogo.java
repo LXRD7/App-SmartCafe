@@ -23,7 +23,7 @@ import modelo.ProductoVenta;
 import services.ServiceProductoVentaImpl;
 
 public class PanelProductoCatalogo extends JPanel {
-	
+
 	private JLabel textoImagen;
 	private JLabel textoUnidadMedida;
 	private JLabel textoContenido;
@@ -35,12 +35,14 @@ public class PanelProductoCatalogo extends JPanel {
 	private JTextField cajaNombre;
 	private JTextField cajaPrecio;
 	private JTextField cajaContenido;
-	private JComboBox comboBoxTipo;
-	private JComboBox comboBoxUnidadMedida;
+	
+	
+	private JComboBox<UnidadMedida> comboBoxUnidadMedida;
+	private JComboBox<TipoProducto> comboBoxTipo;
 
 	private Color colorPrincipal = new Color(175, 193, 11);
 	private Color colorSecundario = new Color(75, 44, 14);
-	
+
 	private ServiceProductoVenta serviceProductoVenta;
 
 	private PanelOpcionesGenerales panelOpcionesGenerales;
@@ -170,11 +172,10 @@ public class PanelProductoCatalogo extends JPanel {
 				venta.setContenido(Integer.parseInt(cajaContenido.getText()));
 				venta.setUnidadMedida(comboBoxUnidadMedida.getItemAt(comboBoxTipo.getSelectedIndex()));
 
-
 				if(!serviceProductoVenta.existeProductoVenta(venta.getCodigoBarras()))
 					serviceProductoVenta.registrarProductoVenta(venta);
 				else
-					JOptionPane.showMessageDialog(null, "La clave del proveedor ingresada ya existe");
+					JOptionPane.showMessageDialog(null, "La clave del producto ingresada ya existe");
 			}	
 
 		});
@@ -187,5 +188,8 @@ public class PanelProductoCatalogo extends JPanel {
 	}
 	public JComboBox<TipoProducto> getComboBoxTipo() {
 		return comboBoxTipo;
+	}
+	public JComboBox<UnidadMedida> getComboBoxUnidadMedida() {
+		return comboBoxUnidadMedida;
 	}
 }
