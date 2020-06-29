@@ -3,6 +3,7 @@ package conversores;
 import java.time.LocalDate;
 
 import enumeraciones.TipoProductoInventario;
+import enumeraciones.TipoProductoVenta;
 import enumeraciones.UnidadMedida;
 
 public class Conversor {
@@ -16,6 +17,25 @@ public class Conversor {
 			return TipoProductoInventario.ENDULZANTE;
 		case "otro":
 			return TipoProductoInventario.OTRO;
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + tipoProducto);
+		}
+	}
+	
+	public static TipoProductoVenta convertirATipoProductoVenta(String tipoProducto) {
+		switch (tipoProducto) {
+		case "cafe":
+			return TipoProductoVenta.CAFE;
+		case "té":
+			return TipoProductoVenta.TÉ;
+		case "Tisana":
+			return TipoProductoVenta.TISANA;
+		case "Pastel":
+			return TipoProductoVenta.PASTEL;
+		case "Panecillos":
+			return TipoProductoVenta.PANECILLOS;
+		case "otro":
+			return TipoProductoVenta.OTRO;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + tipoProducto);
 		}

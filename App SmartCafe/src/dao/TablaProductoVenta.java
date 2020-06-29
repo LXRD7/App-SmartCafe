@@ -97,7 +97,7 @@ public class TablaProductoVenta {
 				ProductoVenta p = new ProductoVenta();
 				p.setCodigoBarras(rs.getString("cve_pve"));
 				p.setNombreProducto(rs.getString("nom_pve"));
-				p.setTipoProductoVenta((Conversor.convertirATipoProductoVenta(rs.getString("tipo_pve")));
+				p.setTipoProductoVenta((Conversor.convertirATipoProductoVenta(rs.getString("tipo_pve"))));
 				p.setPrecio(rs.getDouble("precio_pve"));
 				p.setContenido(rs.getDouble("contenido_pve"));
 				p.setUnidadMedida(Conversor.convertirAUnidadMedida(rs.getString("umedida_pve")));
@@ -117,7 +117,7 @@ public class TablaProductoVenta {
 				ProductoVenta p = new ProductoVenta();
 				p.setCodigoBarras(rs.getString("cve_pve"));
 				p.setNombreProducto(rs.getString("nom_pve"));
-				p.setTipoProductoVenta(Conversor.convertirATipoProductoIventario(rs.getString("tipo_pve")));
+				p.setTipoProductoVenta(Conversor.convertirATipoProductoVenta(rs.getString("tipo_pve")));
 				p.setPrecio(rs.getDouble("precio_pve"));
 				p.setContenido(rs.getDouble("contenido_pve"));
 				p.setUnidadMedida(Conversor.convertirAUnidadMedida(rs.getString("umedida_pve")));
