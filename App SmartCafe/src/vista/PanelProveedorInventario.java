@@ -183,7 +183,6 @@ public class PanelProveedorInventario extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				serviceProveedor = new ServiceProveedorImpl();
 				Proveedor proveedor = new Proveedor();
-//				aquí hay pedo 
 				proveedor.setClaveProveedor(Integer.parseInt(cajaClave.getText()));
 				proveedor.setRazonSocial(cajaRazonSocial.getText());
 				proveedor.setCalle(cajaCalle.getText());
@@ -248,6 +247,11 @@ public class PanelProveedorInventario extends JPanel {
 		tabla.setBackground(new Color(240, 248, 255));
 		tabla.setBounds(687, 388, 307, -258);
 		add(tabla);
+		
+//		proveedores = serviceProveedor.getProveedores();
+//		for (Proveedor p : proveedores) {
+//			modelo.addRow(new Object[] {p.getClaveProveedor(),p.getRazonSocial(),p.getCalle().toString(),p.getTelefono(),p.getEmail().toString()});
+//		}
 		
 		encabezado = tabla.getTableHeader();
 		encabezado.setBackground(colorPrincipal);
