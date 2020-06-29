@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
@@ -306,10 +307,10 @@ public class PanelProductoInventario extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String codigoBarras = cajaCodigoBarras.getText();
-				if(serviceProductoInventario.existeProducto(codigoBarras)) {
+				if(serviceProductoInventario.existeProducto(codigoBarras) && tabla.getSelectedRow() != -1) {
 					serviceProductoInventario.eliminarProducto(codigoBarras);
 					JOptionPane.showMessageDialog(null, "Producto Eliminado");
-					modelo.fireTableDataChanged();
+					modelo.removeRow(tabla.getSelectedRow());
 				}
 				else
 					JOptionPane.showMessageDialog(null, "El producto no existe");
@@ -357,6 +358,7 @@ public class PanelProductoInventario extends JPanel {
 		tabla.setFont(new Font("Noto Sans", Font.PLAIN, 16));
 		tabla.setForeground(colorSecundario);
 		tabla.setRowHeight(30);
+		tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		encabezado = tabla.getTableHeader();
 		encabezado.setBackground(colorPrincipal);
