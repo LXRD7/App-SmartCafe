@@ -17,8 +17,6 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import api.ServiceProductoVenta;
-import conversores.Conversor;
-import enumeraciones.TipoProductoInventario;
 import enumeraciones.TipoProductoVenta;
 import enumeraciones.UnidadMedida;
 import modelo.ProductoVenta;
@@ -161,7 +159,6 @@ public class PanelProductoCatalogo extends JPanel {
 		add(textoImagen);
 		
 		panelOpcionesGenerales = new PanelOpcionesGenerales();
-		
 		panelOpcionesGenerales.setBounds(680, 115, 135, 217);
 		add(panelOpcionesGenerales);
 

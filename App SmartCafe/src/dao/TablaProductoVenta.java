@@ -42,7 +42,7 @@ public class TablaProductoVenta {
 	public String modificarProductoVenta(ProductoVenta p){
 		String sql2 ="SET FOREIGN_KEY_CHECKS=0";
 		String sql3 ="SET FOREIGN_KEY_CHECKS=1";
-		String sql = "UPDATE producto_ven SET nom_pve='"+p.getNombreProducto()+"', tipo_pve='"+p.getTipoProducto()+"',precio_pve='"+p.getPrecio()+"',contenido_pve='"+p.getContenido()+"',umedida_pve='"+p.getUnidadMedida()+ "' WHERE cve_pve='"+p.getCodigoBarras();	
+		String sql = "UPDATE producto_ven SET nom_pve='"+p.getNombreProducto()+"', tipo_pve='"+p.getTipoProductoVenta()+"',precio_pve='"+p.getPrecio()+"',contenido_pve='"+p.getContenido()+"',umedida_pve='"+p.getUnidadMedida()+ "' WHERE cve_pve='"+p.getCodigoBarras()+"'";	
 		try{
 			statement.executeUpdate(sql2);
 			int n = statement.executeUpdate(sql);
@@ -97,7 +97,7 @@ public class TablaProductoVenta {
 				ProductoVenta p = new ProductoVenta();
 				p.setCodigoBarras(rs.getString("cve_pve"));
 				p.setNombreProducto(rs.getString("nom_pve"));
-				p.setTipoProducto(Conversor.convertirATipoProductoIventario(rs.getString("tipo_pve")));
+				p.setTipoProductoVenta((Conversor.convertirATipoProductoVenta(rs.getString("tipo_pve")));
 				p.setPrecio(rs.getDouble("precio_pve"));
 				p.setContenido(rs.getDouble("contenido_pve"));
 				p.setUnidadMedida(Conversor.convertirAUnidadMedida(rs.getString("umedida_pve")));
@@ -117,7 +117,7 @@ public class TablaProductoVenta {
 				ProductoVenta p = new ProductoVenta();
 				p.setCodigoBarras(rs.getString("cve_pve"));
 				p.setNombreProducto(rs.getString("nom_pve"));
-				p.setTipoProducto(Conversor.convertirATipoProductoIventario(rs.getString("tipo_pve")));
+				p.setTipoProductoVenta(Conversor.convertirATipoProductoIventario(rs.getString("tipo_pve")));
 				p.setPrecio(rs.getDouble("precio_pve"));
 				p.setContenido(rs.getDouble("contenido_pve"));
 				p.setUnidadMedida(Conversor.convertirAUnidadMedida(rs.getString("umedida_pve")));
@@ -132,7 +132,7 @@ public class TablaProductoVenta {
 	}
 //hola
 	public String registrarProductoVenta(ProductoVenta p){
-		String sql = "insert into producto_ven values('"+p.getCodigoBarras()+"','"+p.getNombreProducto()+"','"+p.getTipoProducto()+"',precio_pve='"+p.getPrecio()+"','"+p.getContenido()+"','"+p.getUnidadMedida()+"')";
+		String sql = "insert into producto_ven values('"+p.getCodigoBarras()+"','"+p.getNombreProducto()+"','"+p.getTipoProductoVenta()+"',precio_pve='"+p.getPrecio()+"','"+p.getContenido()+"','"+p.getUnidadMedida()+"')";
 		try {
 			statement.executeUpdate(sql);
 			return "Producto Venta registrado.";
