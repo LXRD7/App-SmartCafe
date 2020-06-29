@@ -365,7 +365,7 @@ public class PanelProductoInventario extends JPanel {
 		}
 		scrollPane = new JScrollPane(tabla);
 		scrollPane.setBounds(661, 154, 800, 332);
-
+		modelo.fireTableDataChanged();
 		add(scrollPane);
 	}
 
