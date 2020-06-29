@@ -138,7 +138,8 @@ public class VentanaPrincipal extends JFrame {
 		tabbedPane.addTab("Venta", null, panelVenta, null);
 		tabbedPane.setBackgroundAt(0, colorPrincipal);
 
-		panelCatalogo = new JPanel();
+		panelCatalogo = new PanelCatalogo();
+		tabbedPane.add("Catalogo",panelCatalogo);
 		tabbedPane.addTab("Catalogo", null, panelCatalogo, null);
 		tabbedPane.setBackgroundAt(1, colorPrincipal);
 		
