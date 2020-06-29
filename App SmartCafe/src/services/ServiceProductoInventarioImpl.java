@@ -36,16 +36,13 @@ public class ServiceProductoInventarioImpl implements ServiceProductoInventario{
 
 	@Override
 	public String modificarProducto(ProductoInventario producto) {
-		if(tablaProductoInventario.existeProducto(producto.getCodigoBarras()))
-			return tablaProductoInventario.modificarProducto(producto);
-		else
-			return "El producto no existe";
-			
+		return tablaProductoInventario.modificarProducto(producto);
+
 	}
 
 	@Override
 	public boolean existeProducto(String codigoBarras) {
 		return tablaProductoInventario.existeProducto(codigoBarras);
 	}
-	
+
 }

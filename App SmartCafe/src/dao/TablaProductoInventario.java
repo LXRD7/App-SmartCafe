@@ -41,7 +41,7 @@ public class TablaProductoInventario {
 	public String modificarProducto(ProductoInventario p){
 		String sql2 ="SET FOREIGN_KEY_CHECKS=0";
 		String sql3 ="SET FOREIGN_KEY_CHECKS=1";
-		String sql = "UPDATE producto_inv SET nom_pin='"+p.getNombreProducto()+"', tipo_pin='"+p.getTipoProducto()+"', marca_pin='"+p.getMarca()+"',contenido_pin='"+p.getContenido()+"',umedida_pin='"+p.getUnidadMedida()+ "' WHERE cve_pin='"+p.getCodigoBarras();	
+		String sql = "UPDATE producto_inv SET nom_pin='"+p.getNombreProducto()+"', tipo_pin='"+p.getTipoProducto()+"', marca_pin='"+p.getMarca()+"',contenido_pin='"+p.getContenido()+"',umedida_pin='"+p.getUnidadMedida().toString()+ "',precio_pin="+p.getPrecio()+" WHERE cve_pin='"+p.getCodigoBarras()+"'";	
 		try{
 			statement.executeUpdate(sql2);
 			int n = statement.executeUpdate(sql);
@@ -100,6 +100,7 @@ public class TablaProductoInventario {
 				p.setMarca(rs.getString("marca_pin"));
 				p.setContenido(rs.getDouble("contenido_pin"));
 				p.setUnidadMedida(Conversor.convertirAUnidadMedida(rs.getString("umedida_pin")));
+				p.setPrecio(rs.getDouble("precio_pin"));
 				lista.add(p);
 			}
 			return lista;
@@ -120,6 +121,7 @@ public class TablaProductoInventario {
 				p.setMarca(rs.getString("marca_pin"));
 				p.setContenido(rs.getDouble("contenido_pin"));
 				p.setUnidadMedida(Conversor.convertirAUnidadMedida(rs.getString("umedida_pin")));
+				p.setPrecio(rs.getDouble("precio_pin"));
 				return p;
 			} else {
 				return null;

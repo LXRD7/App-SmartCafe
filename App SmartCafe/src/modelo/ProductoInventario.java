@@ -11,7 +11,14 @@ public class ProductoInventario{
 	private String marca;
 	private double contenido;
 	private UnidadMedida unidadMedida;
+	private Double precio;
 	
+	public Double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
 	public String getCodigoBarras() {
 		return codigoBarras;
 	}
