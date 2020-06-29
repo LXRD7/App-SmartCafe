@@ -45,6 +45,7 @@ public class PanelProveedorInventario extends JPanel {
 
 	private Color colorPrincipal = new Color(175, 193, 11);
 	private Color colorSecundario = new Color(75, 44, 14);
+	private Color colorFuente = Color.WHITE;
 
 	public PanelProveedorInventario() {
 		setOpaque(false);
@@ -56,13 +57,13 @@ public class PanelProveedorInventario extends JPanel {
 		textoClave.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoClave.setMinimumSize(new Dimension(106, 16));
 		textoClave.setPreferredSize(new Dimension(106, 16));
-		textoClave.setForeground(new Color(75, 44, 14));
+		textoClave.setForeground(colorFuente);
 		textoClave.setFont(new Font("Droid Sans", Font.BOLD, 16));
 		textoClave.setBounds(178, 154, 150, 35);
 		add(textoClave);
 
 		cajaClave = new JTextField();
-		cajaClave.setForeground(new Color(75, 44, 14));
+		cajaClave.setForeground(colorSecundario);
 		cajaClave.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaClave.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaClave.setBackground(new Color(175, 193, 11));
@@ -72,17 +73,17 @@ public class PanelProveedorInventario extends JPanel {
 		cajaClave.setColumns(10);
 
 		textoRazonSocial = new JLabel("Razón Social");
-		textoRazonSocial.setForeground(new Color(75, 44, 14));
+		textoRazonSocial.setForeground(colorFuente);
 		textoRazonSocial.setFont(new Font("Droid Sans", Font.BOLD, 16));
 		textoRazonSocial.setHorizontalAlignment(SwingConstants.RIGHT);
 		textoRazonSocial.setPreferredSize(new Dimension(106, 16));
 		textoRazonSocial.setMinimumSize(new Dimension(106, 16));
 		textoRazonSocial.setMaximumSize(new Dimension(106, 16));
-		textoRazonSocial.setBounds(178, 201, 150, 35);
+		textoRazonSocial.setBounds(178, 202, 150, 35);
 		add(textoRazonSocial);
 
 		cajaRazonSocial = new JTextField();
-		cajaRazonSocial.setForeground(new Color(75, 44, 14));
+		cajaRazonSocial.setForeground(colorSecundario);
 		cajaRazonSocial.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaRazonSocial.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaRazonSocial.setBackground(new Color(175, 193, 11));
@@ -91,51 +92,51 @@ public class PanelProveedorInventario extends JPanel {
 		cajaRazonSocial.setColumns(10);
 
 		textoCalle = new JLabel("Calle");
-		textoCalle.setForeground(new Color(75, 44, 14));
+		textoCalle.setForeground(colorFuente);
 		textoCalle.setFont(new Font("Droid Sans", Font.BOLD, 16));
 		textoCalle.setHorizontalAlignment(SwingConstants.RIGHT);
-		textoCalle.setBounds(178, 242, 150, 35);
+		textoCalle.setBounds(178, 249, 150, 35);
 		add(textoCalle);
 
 		cajaCalle = new JTextField();
-		cajaCalle.setForeground(new Color(75, 44, 14));
+		cajaCalle.setForeground(colorSecundario);
 		cajaCalle.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaCalle.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaCalle.setBackground(new Color(175, 193, 11));
-		cajaCalle.setBounds(332, 243, 160, 35);
+		cajaCalle.setBounds(332, 249, 160, 35);
 		add(cajaCalle);
 		cajaCalle.setColumns(10);
 
 		textoTelefono = new JLabel("Telefono");
-		textoTelefono.setForeground(new Color(75, 44, 14));
+		textoTelefono.setForeground(colorFuente);
 		textoTelefono.setFont(new Font("Droid Sans", Font.BOLD, 16));
 		textoTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
-		textoTelefono.setBounds(178, 289, 150, 35);
+		textoTelefono.setBounds(178, 296, 150, 35);
 		add(textoTelefono);
 
 		cajaTelefono = new JTextField();
-		cajaTelefono.setForeground(new Color(75, 44, 14));
+		cajaTelefono.setForeground(colorSecundario);
 		cajaTelefono.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaTelefono.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaTelefono.setBackground(new Color(175, 193, 11));
-		cajaTelefono.setBounds(332, 290, 160, 35);
+		cajaTelefono.setBounds(332, 296, 160, 35);
 		add(cajaTelefono);
 		cajaTelefono.setColumns(10);
 
 		textoEmail = new JLabel("Email");
-		textoEmail.setForeground(new Color(75, 44, 14));
+		textoEmail.setForeground(colorFuente);
 		textoEmail.setFont(new Font("Droid Sans", Font.BOLD, 16));
 		textoEmail.setFont(new Font("Dialog", Font.BOLD, 16));
 		textoEmail.setHorizontalAlignment(SwingConstants.RIGHT);
-		textoEmail.setBounds(178, 336, 150, 35);
+		textoEmail.setBounds(178, 342, 150, 35);
 		add(textoEmail);
 
 		cajaEmail = new JTextField();
-		cajaEmail.setForeground(new Color(75, 44, 14));
+		cajaEmail.setForeground(colorSecundario);
 		cajaEmail.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaEmail.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaEmail.setBackground(new Color(175, 193, 11));
-		cajaEmail.setBounds(332, 337, 160, 35);
+		cajaEmail.setBounds(332, 343, 160, 35);
 		add(cajaEmail);
 		cajaEmail.setColumns(10);
 
