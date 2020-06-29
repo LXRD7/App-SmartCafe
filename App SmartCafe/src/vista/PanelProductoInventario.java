@@ -44,6 +44,7 @@ public class PanelProductoInventario extends JPanel {
 	
 	private Color colorPrincipal = new Color(175, 193, 11);
 	private Color colorSecundario = new Color(75, 44, 14);
+	private Color colorFuente = Color.WHITE;
 	
 	private ServiceProductoInventario serviceProductoInventario;
 	private ServicePrecio servicePrecio;
@@ -79,67 +80,67 @@ public class PanelProductoInventario extends JPanel {
 		textoCodigoBarras = new JLabel("Codigo de Barras");
 		textoCodigoBarras.setRequestFocusEnabled(false);
 		textoCodigoBarras.setHorizontalAlignment(SwingConstants.RIGHT);
-		textoCodigoBarras.setForeground(new Color(75, 44, 14));
+		textoCodigoBarras.setForeground(colorFuente);
 		textoCodigoBarras.setFont(new Font("Droid Sans", Font.BOLD, 16));
 		textoCodigoBarras.setBounds(179, 154, 150, 35);
 		add(textoCodigoBarras);
 		
 		cajaCodigoBarras = new JTextField();
-		cajaCodigoBarras.setForeground(new Color(75, 44, 14));
+		cajaCodigoBarras.setForeground(colorSecundario);
 		cajaCodigoBarras.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaCodigoBarras.setBorder(new LineBorder(colorSecundario, 1, true));
-		cajaCodigoBarras.setBackground(new Color(175, 193, 11));
+		cajaCodigoBarras.setBackground(colorPrincipal);
 		cajaCodigoBarras.setBounds(339, 154, 160, 35);
 		add(cajaCodigoBarras);
 		
 		textoNombre = new JLabel("Nombre");
 		textoNombre.setRequestFocusEnabled(false);
 		textoNombre.setHorizontalAlignment(SwingConstants.RIGHT);
-		textoNombre.setForeground(new Color(75, 44, 14));
+		textoNombre.setForeground(colorFuente);
 		textoNombre.setFont(new Font("Droid Sans", Font.BOLD, 16));
 		textoNombre.setBounds(179, 204, 150, 35);
 		add(textoNombre);
 		
 		cajaNombre = new JTextField();
-		cajaNombre.setForeground(new Color(75, 44, 14));
+		cajaNombre.setForeground(colorSecundario);
 		cajaNombre.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaNombre.setColumns(10);
 		cajaNombre.setBorder(new LineBorder(colorSecundario, 1, true));
-		cajaNombre.setBackground(new Color(175, 193, 11));
+		cajaNombre.setBackground(colorPrincipal);
 		cajaNombre.setBounds(339, 204, 160, 35);
 		add(cajaNombre);
 		
 		textoTipoProducto = new JLabel("Tipo");
 		textoTipoProducto.setRequestFocusEnabled(false);
 		textoTipoProducto.setHorizontalAlignment(SwingConstants.RIGHT);
-		textoTipoProducto.setForeground(new Color(75, 44, 14));
+		textoTipoProducto.setForeground(colorFuente);
 		textoTipoProducto.setFont(new Font("Droid Sans", Font.BOLD, 16));
 		textoTipoProducto.setBounds(179, 254, 150, 35);
 		add(textoTipoProducto);
 		
 		comboBoxTipoProducto = new JComboBox<TipoProductoInventario>();
 		comboBoxTipoProducto.setModel(new DefaultComboBoxModel<TipoProductoInventario>(TipoProductoInventario.values()));
-		comboBoxTipoProducto.setForeground(new Color(75, 44, 14));
+		comboBoxTipoProducto.setForeground(colorSecundario);
 		comboBoxTipoProducto.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		comboBoxTipoProducto.setFocusable(false);
 		comboBoxTipoProducto.setBorder(new LineBorder(colorSecundario, 1, true));
-		comboBoxTipoProducto.setBackground(new Color(175, 193, 11));
+		comboBoxTipoProducto.setBackground(colorPrincipal);
 		comboBoxTipoProducto.setBounds(339, 254, 160, 35);
 		add(comboBoxTipoProducto);
 		
 		cajaMarca = new JTextField();
-		cajaMarca.setForeground(new Color(75, 44, 14));
+		cajaMarca.setForeground(colorSecundario);
 		cajaMarca.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaMarca.setColumns(10);
 		cajaMarca.setBorder(new LineBorder(colorSecundario, 1, true));
-		cajaMarca.setBackground(new Color(175, 193, 11));
+		cajaMarca.setBackground(colorPrincipal);
 		cajaMarca.setBounds(339, 304, 160, 35);
 		add(cajaMarca);
 		
 		textoMarca = new JLabel("Marca");
 		textoMarca.setRequestFocusEnabled(false);
 		textoMarca.setHorizontalAlignment(SwingConstants.RIGHT);
-		textoMarca.setForeground(new Color(75, 44, 14));
+		textoMarca.setForeground(colorFuente);
 		textoMarca.setFont(new Font("Droid Sans", Font.BOLD, 16));
 		textoMarca.setBounds(179, 304, 150, 35);
 		add(textoMarca);
@@ -147,52 +148,52 @@ public class PanelProductoInventario extends JPanel {
 		textoContenido = new JLabel("Contenido");
 		textoContenido.setRequestFocusEnabled(false);
 		textoContenido.setHorizontalAlignment(SwingConstants.RIGHT);
-		textoContenido.setForeground(new Color(75, 44, 14));
+		textoContenido.setForeground(colorFuente);
 		textoContenido.setFont(new Font("Droid Sans", Font.BOLD, 16));
 		textoContenido.setBounds(179, 354, 150, 35);
 		add(textoContenido);
 		
 		cajaContenido = new JTextField();
-		cajaContenido.setForeground(new Color(75, 44, 14));
+		cajaContenido.setForeground(colorSecundario);
 		cajaContenido.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaContenido.setColumns(10);
 		cajaContenido.setBorder(new LineBorder(colorSecundario, 1, true));
-		cajaContenido.setBackground(new Color(175, 193, 11));
+		cajaContenido.setBackground(colorPrincipal);
 		cajaContenido.setBounds(339, 354, 160, 35);
 		add(cajaContenido);
 		
 		textoUnidadMedida = new JLabel("Unidad de Medida");
 		textoUnidadMedida.setRequestFocusEnabled(false);
 		textoUnidadMedida.setHorizontalAlignment(SwingConstants.RIGHT);
-		textoUnidadMedida.setForeground(new Color(75, 44, 14));
+		textoUnidadMedida.setForeground(colorFuente);
 		textoUnidadMedida.setFont(new Font("Droid Sans", Font.BOLD, 16));
 		textoUnidadMedida.setBounds(179, 404, 150, 35);
 		add(textoUnidadMedida);
 		
 		comboBoxUnidadMedida = new JComboBox<UnidadMedida>();
 		comboBoxUnidadMedida.setModel(new DefaultComboBoxModel<UnidadMedida>(UnidadMedida.values()));
-		comboBoxUnidadMedida.setForeground(new Color(75, 44, 14));
+		comboBoxUnidadMedida.setForeground(colorSecundario);
 		comboBoxUnidadMedida.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		comboBoxUnidadMedida.setFocusable(false);
 		comboBoxUnidadMedida.setBorder(new LineBorder(colorSecundario, 1, true));
-		comboBoxUnidadMedida.setBackground(new Color(175, 193, 11));
+		comboBoxUnidadMedida.setBackground(colorPrincipal);
 		comboBoxUnidadMedida.setBounds(339, 404, 160, 35);
 		add(comboBoxUnidadMedida);
 		
 		textoPrecio = new JLabel("Precio");
 		textoPrecio.setRequestFocusEnabled(false);
 		textoPrecio.setHorizontalAlignment(SwingConstants.RIGHT);
-		textoPrecio.setForeground(new Color(75, 44, 14));
+		textoPrecio.setForeground(colorFuente);
 		textoPrecio.setFont(new Font("Droid Sans", Font.BOLD, 16));
 		textoPrecio.setBounds(179, 451, 150, 35);
 		add(textoPrecio);
 		
 		cajaPrecio = new JTextField();
-		cajaPrecio.setForeground(new Color(75, 44, 14));
+		cajaPrecio.setForeground(colorSecundario);
 		cajaPrecio.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaPrecio.setColumns(10);
 		cajaPrecio.setBorder(new LineBorder(colorSecundario, 1, true));
-		cajaPrecio.setBackground(new Color(175, 193, 11));
+		cajaPrecio.setBackground(colorPrincipal);
 		cajaPrecio.setBounds(339, 451, 160, 35);
 		add(cajaPrecio);
 		

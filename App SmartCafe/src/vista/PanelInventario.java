@@ -78,7 +78,7 @@ public class PanelInventario extends JPanel {
 	
 	@Override
 	public void paint(Graphics g) {
-		Image fondo = new ImageIcon(PanelInventario.class.getResource("/recursos/ventas.png")).getImage();
+		Image fondo = new ImageIcon(PanelInventario.class.getResource("/recursos/cafeteria fondo.png")).getImage();
 		g.drawImage(escalarImagen(fondo, this.getWidth(), this.getHeight()), 0, 0,this);
 		super.paint(g);
 	}

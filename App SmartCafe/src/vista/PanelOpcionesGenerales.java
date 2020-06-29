@@ -17,7 +17,7 @@ public class PanelOpcionesGenerales extends JPanel {
 	private JButton botonEliminar;
 	
 	private Color colorPrincipal = new Color(175, 193, 11);
-	private Color colorSecundario = new Color(75, 44, 14);
+	private Color colorFuente = Color.WHITE;
 
 	public PanelOpcionesGenerales() {
 		setOpaque(false);
@@ -26,7 +26,7 @@ public class PanelOpcionesGenerales extends JPanel {
 		botonNuevo = new JButton("Añadir");
 		botonNuevo.setBorder(null);
 		botonNuevo.setFont(new Font("Noto Sans", Font.BOLD, 18));
-		botonNuevo.setForeground(colorSecundario);
+		botonNuevo.setForeground(colorFuente);
 		botonNuevo.setToolTipText("Añadir");
 		botonNuevo.setIcon(new ImageIcon(PanelOpcionesGenerales.class.getResource("/recursos/iconos/anadir.png")));
 		botonNuevo.setContentAreaFilled(false);
@@ -35,7 +35,7 @@ public class PanelOpcionesGenerales extends JPanel {
 		botonGuardar = new JButton("Guardar");
 		botonGuardar.setBorder(null);
 		botonGuardar.setFont(new Font("Noto Sans", Font.BOLD, 18));
-		botonGuardar.setForeground(colorSecundario);
+		botonGuardar.setForeground(colorFuente);
 		botonGuardar.setToolTipText("Guardar");
 		botonGuardar.setContentAreaFilled(false);
 		botonGuardar.setIcon(new ImageIcon(PanelOpcionesGenerales.class.getResource("/recursos/iconos/salvar.png")));
@@ -44,7 +44,7 @@ public class PanelOpcionesGenerales extends JPanel {
 		botonEditar = new JButton("Editar");
 		botonEditar.setBorder(null);
 		botonEditar.setFont(new Font("Noto Sans", Font.BOLD, 18));
-		botonEditar.setForeground(colorSecundario);
+		botonEditar.setForeground(colorFuente);
 		botonEditar.setIcon(new ImageIcon(PanelOpcionesGenerales.class.getResource("/recursos/iconos/lapiz.png")));
 		botonEditar.setToolTipText("Editar");
 		botonEditar.setContentAreaFilled(false);
@@ -53,7 +53,7 @@ public class PanelOpcionesGenerales extends JPanel {
 		botonEliminar = new JButton("Eliminar");
 		botonEliminar.setBorder(null);
 		botonEliminar.setFont(new Font("Noto Sans", Font.BOLD, 18));
-		botonEliminar.setForeground(colorSecundario);
+		botonEliminar.setForeground(colorFuente);
 		botonEliminar.setIcon(new ImageIcon(PanelOpcionesGenerales.class.getResource("/recursos/iconos/eliminar.png")));
 		botonEliminar.setToolTipText("Eliminar");
 		botonEliminar.setContentAreaFilled(false);
