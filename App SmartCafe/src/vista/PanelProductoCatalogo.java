@@ -17,7 +17,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import api.ServiceProductoVenta;
-import enumeraciones.TipoProducto;
+import conversores.Conversor;
+import enumeraciones.TipoProductoInventario;
+import enumeraciones.TipoProductoVenta;
 import enumeraciones.UnidadMedida;
 import modelo.ProductoVenta;
 import services.ServiceProductoVentaImpl;
@@ -35,8 +37,8 @@ public class PanelProductoCatalogo extends JPanel {
 	private JTextField cajaNombre;
 	private JTextField cajaPrecio;
 	private JTextField cajaContenido;
-	private JComboBox comboBoxTipo;
-	private JComboBox comboBoxUnidadMedida;
+	private JComboBox<TipoProductoVenta> comboBoxTipo;
+	private JComboBox<UnidadMedida> comboBoxUnidadMedida;
 
 	private Color colorPrincipal = new Color(175, 193, 11);
 	private Color colorSecundario = new Color(75, 44, 14);
@@ -92,8 +94,8 @@ public class PanelProductoCatalogo extends JPanel {
 		textoTipo.setBounds(321, 179, 150, 35);
 		add(textoTipo);
 
-		comboBoxTipo = new JComboBox();
-		comboBoxTipo.setModel(new DefaultComboBoxModel<TipoProducto>(TipoProducto.values()));
+		comboBoxTipo = new JComboBox<TipoProductoVenta>();
+		comboBoxTipo.setModel(new DefaultComboBoxModel<TipoProductoVenta>(TipoProductoVenta.values()));
 		comboBoxTipo.setForeground(new Color(75, 44, 14));
 		comboBoxTipo.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		comboBoxTipo.setFocusable(false);
@@ -165,7 +167,7 @@ public class PanelProductoCatalogo extends JPanel {
 				ProductoVenta venta = new ProductoVenta();
 				venta.setCodigoBarras(cajaCodigoBarras.getText());
 				venta.setNombreProducto(cajaNombre.getText());
-				venta.setTipoProducto(comboBoxTipo.getItemAt(comboBoxTipo.getSelectedIndex()));
+				venta.setTipoProductoVenta(comboBoxTipo.getItemAt(comboBoxTipo.getSelectedIndex()));
 				venta.setPrecio(Integer.parseInt(cajaPrecio.getText()));
 				venta.setContenido(Integer.parseInt(cajaContenido.getText()));
 				venta.setUnidadMedida(comboBoxUnidadMedida.getItemAt(comboBoxTipo.getSelectedIndex()));
@@ -185,7 +187,5 @@ public class PanelProductoCatalogo extends JPanel {
 
 
 	}
-	public JComboBox<TipoProducto> getComboBoxTipo() {
-		return comboBoxTipo;
-	}
+	
 }

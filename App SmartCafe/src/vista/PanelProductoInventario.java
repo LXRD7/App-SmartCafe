@@ -3,14 +3,13 @@ package vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -20,10 +19,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import api.ServicePrecio;
 import api.ServiceProductoInventario;
-import enumeraciones.TipoProducto;
+import enumeraciones.TipoProductoInventario;
 import enumeraciones.UnidadMedida;
 import modelo.Precio;
 import modelo.ProductoInventario;
@@ -53,7 +53,7 @@ public class PanelProductoInventario extends JPanel {
 	private JTextField cajaContenido;
 	private JTextField cajaPrecio;
 	private JComboBox<UnidadMedida> comboBoxUnidadMedida;
-	private JComboBox<TipoProducto> comboBoxTipoProducto;
+	private JComboBox<TipoProductoInventario> comboBoxTipoProducto;
 	private JLabel textoCodigoBarras;
 	private JLabel textoTipoProducto;
 	private JLabel textoMarca;
@@ -62,12 +62,17 @@ public class PanelProductoInventario extends JPanel {
 	private JLabel textoNombre;
 	private JLabel textoContenido;
 	private JTable table;
+	
+	List<ProductoInventario> productos;
 
 	public PanelProductoInventario() {
 		setOpaque(false);
 		
 		setLayout(null);
 		setPreferredSize(new Dimension(1000,500));
+		
+		serviceProductoInventario = new ServiceProductoInventarioImpl();
+		servicePrecio = new ServicePrecioImpl();
 		
 		textoCodigoBarras = new JLabel("Codigo de Barras");
 		textoCodigoBarras.setRequestFocusEnabled(false);
@@ -110,8 +115,8 @@ public class PanelProductoInventario extends JPanel {
 		textoTipoProducto.setBounds(179, 254, 150, 35);
 		add(textoTipoProducto);
 		
-		comboBoxTipoProducto = new JComboBox<TipoProducto>();
-		comboBoxTipoProducto.setModel(new DefaultComboBoxModel<TipoProducto>(TipoProducto.values()));
+		comboBoxTipoProducto = new JComboBox<TipoProductoInventario>();
+		comboBoxTipoProducto.setModel(new DefaultComboBoxModel<TipoProductoInventario>(TipoProductoInventario.values()));
 		comboBoxTipoProducto.setForeground(new Color(75, 44, 14));
 		comboBoxTipoProducto.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		comboBoxTipoProducto.setFocusable(false);
@@ -202,8 +207,6 @@ public class PanelProductoInventario extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				serviceProductoInventario = new ServiceProductoInventarioImpl();
-				servicePrecio = new ServicePrecioImpl();
 				ProductoInventario producto = new ProductoInventario();
 				producto.setCodigoBarras(cajaCodigoBarras.getText());
 				producto.setNombreProducto(cajaNombre.getText());
@@ -228,8 +231,21 @@ public class PanelProductoInventario extends JPanel {
 		
 		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
 		
-		table = new JTable();
+		DefaultTableModel modelo = new DefaultTableModel();
+		String[] columnas = new String[] {"CodigoBarra","Nombre","Tipo","Marca","Precio","Contenido","UnidadMedida"};
+		
+		modelo.setColumnIdentifiers(columnas);
+		table = new JTable(modelo);
+		
+		productos = serviceProductoInventario.getProductos();
+		for (ProductoInventario p : productos) {
+			System.out.println(p.getCodigoBarras());
+			System.out.println(servicePrecio);
+			modelo.addRow(new Object[] {p.getCodigoBarras(),p.getNombreProducto(),p.getTipoProducto().toString(),p.getMarca(),servicePrecio.getPrecio(p.getCodigoBarras()),p.getContenido(),p.getUnidadMedida().toString()});
+		}
+		
 		table.setBounds(661, 154, 372, 332);
+		
 		add(table);
 	}
 
@@ -250,7 +266,7 @@ public class PanelProductoInventario extends JPanel {
 		return panelOpcionesGenerales.getBotonEliminar();
 	}
 
-	public JComboBox<TipoProducto> getComboBoxTipoProducto() {
+	public JComboBox<TipoProductoInventario> getComboBoxTipoProducto() {
 		return comboBoxTipoProducto;
 	}
 

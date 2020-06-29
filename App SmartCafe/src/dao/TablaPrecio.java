@@ -108,6 +108,7 @@ public class TablaPrecio {
 
 	public Precio getPrecio(String codigoBarras){
 		String sql ="select * from precio where cve_pin='"+codigoBarras+"' and fecha_pre=(select max(fecha_pre) from precio where cve_pin='"+codigoBarras+"')";
+		System.out.println(sql);
 		try{
 			ResultSet rs = statement.executeQuery(sql);
 			if (rs.next()) {
@@ -116,6 +117,7 @@ public class TablaPrecio {
 				p.setFechaPrecio(Conversor.convertirAFecha(rs.getString("fecha_pre")));
 				p.setPrecio(rs.getDouble("cve_pre"));				
 				p.setCodigoBarras(rs.getString("cve_pin"));
+				System.out.println(p.getClavePrecio());
 				return p;
 			} else {
 				return null;

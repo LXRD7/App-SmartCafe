@@ -1,13 +1,13 @@
 package modelo;
 
-import enumeraciones.TipoProducto;
+import enumeraciones.TipoProductoInventario;
 import enumeraciones.UnidadMedida;
 
 public class ProductoInventario{
 	
 	private String codigoBarras;
 	private String nombreProducto;
-	private TipoProducto tipoProducto;
+	private TipoProductoInventario tipoProducto;
 	private String marca;
 	private double contenido;
 	private UnidadMedida unidadMedida;
@@ -24,10 +24,10 @@ public class ProductoInventario{
 	public void setNombreProducto(String nombreProducto) {
 		this.nombreProducto = nombreProducto;
 	}
-	public TipoProducto getTipoProducto() {
+	public TipoProductoInventario getTipoProducto() {
 		return tipoProducto;
 	}
-	public void setTipoProducto(TipoProducto tipoProducto) {
+	public void setTipoProducto(TipoProductoInventario tipoProducto) {
 		this.tipoProducto = tipoProducto;
 	}
 	public String getMarca() {

@@ -88,20 +88,20 @@ public class TablaProductoInventario {
 	}
 
 	public List<ProductoInventario> getProductos(){
-		String sql ="select * from producto_inv where cve_pin";
+		String sql ="select * from producto_inv";
 		try{
 			ResultSet rs = statement.executeQuery(sql);
-			List<ProductoInventario> lista = new ArrayList<ProductoInventario>();
+			List<ProductoInventario> lista = new ArrayList<>();
 			while (rs.next()) {
 				ProductoInventario p = new ProductoInventario();
-				p.setCodigoBarras(rs.getString("cve_pro"));
-				p.setNombreProducto(rs.getString("nom_pro"));
-				p.setTipoProducto(Conversor.convertirATipoProductoIventario(rs.getString("tipo_pro")));
-				p.setMarca(rs.getString("pre_pro"));
-				p.setContenido(rs.getDouble("contenido_pro"));
-				p.setUnidadMedida(Conversor.convertirAUnidadMedida(rs.getString("umedida_pro")));
+				p.setCodigoBarras(rs.getString("cve_pin"));
+				p.setNombreProducto(rs.getString("nom_pin"));
+				p.setTipoProducto(Conversor.convertirATipoProductoIventario(rs.getString("tipo_pin")));
+				p.setMarca(rs.getString("marca_pin"));
+				p.setContenido(rs.getDouble("contenido_pin"));
+				p.setUnidadMedida(Conversor.convertirAUnidadMedida(rs.getString("umedida_pin")));
 				lista.add(p);
-			} 
+			}
 			return lista;
 		}catch(SQLException e){
 			return null;
@@ -114,12 +114,12 @@ public class TablaProductoInventario {
 			ResultSet rs = statement.executeQuery(sql);
 			if (rs.next()) {
 				ProductoInventario p = new ProductoInventario();
-				p.setCodigoBarras(rs.getString("cve_pro"));
-				p.setNombreProducto(rs.getString("nom_pro"));
-				p.setTipoProducto(Conversor.convertirATipoProductoIventario(rs.getString("tipo_pro")));
-				p.setMarca(rs.getString("pre_pro"));
-				p.setContenido(rs.getDouble("contenido_pro"));
-				p.setUnidadMedida(Conversor.convertirAUnidadMedida(rs.getString("umedida_pro")));
+				p.setCodigoBarras(rs.getString("cve_pin"));
+				p.setNombreProducto(rs.getString("nom_pin"));
+				p.setTipoProducto(Conversor.convertirATipoProductoIventario(rs.getString("tipo_pin")));
+				p.setMarca(rs.getString("marca_pin"));
+				p.setContenido(rs.getDouble("contenido_pin"));
+				p.setUnidadMedida(Conversor.convertirAUnidadMedida(rs.getString("umedida_pin")));
 				return p;
 			} else {
 				return null;

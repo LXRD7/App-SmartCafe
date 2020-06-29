@@ -2,20 +2,20 @@ package conversores;
 
 import java.time.LocalDate;
 
-import enumeraciones.TipoProducto;
+import enumeraciones.TipoProductoInventario;
 import enumeraciones.UnidadMedida;
 
 public class Conversor {
-	public static TipoProducto convertirATipoProductoIventario(String tipoProducto) {
+	public static TipoProductoInventario convertirATipoProductoIventario(String tipoProducto) {
 		switch (tipoProducto) {
 		case "cafe":
-			return TipoProducto.CAFE;
+			return TipoProductoInventario.CAFE;
 		case "postre":
-			return TipoProducto.POSTRE;
+			return TipoProductoInventario.POSTRE;
 		case "endulzante":
-			return TipoProducto.ENDULZANTE;
+			return TipoProductoInventario.ENDULZANTE;
 		case "otro":
-			return TipoProducto.OTRO;
+			return TipoProductoInventario.OTRO;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + tipoProducto);
 		}

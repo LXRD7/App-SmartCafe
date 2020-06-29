@@ -25,7 +25,7 @@ import javax.swing.border.EmptyBorder;
 
 import api.ServiceProductoInventario;
 import dao.BaseDatos;
-import enumeraciones.TipoProducto;
+import enumeraciones.TipoProductoInventario;
 import enumeraciones.UnidadMedida;
 
 public class VentanaPrincipal extends JFrame {
@@ -54,7 +54,7 @@ public class VentanaPrincipal extends JFrame {
 	private JButton botonEditar;
 	private JButton botonEliminar;
 
-	private JComboBox<TipoProducto> comboBoxTipoProducto;
+	private JComboBox<TipoProductoInventario> comboBoxTipoProducto;
 	private JTextField cajaNombre;
 	private JComboBox<UnidadMedida> comboBoxUnidadMedida;
 	private JTextField cajaMarca;
