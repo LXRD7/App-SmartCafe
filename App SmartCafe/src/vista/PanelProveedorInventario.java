@@ -246,17 +246,17 @@ public class PanelProveedorInventario extends JPanel {
 		tabla.setGridColor(new Color(255, 255, 255));
 		tabla.setBackground(new Color(240, 248, 255));
 		tabla.setBounds(687, 388, 307, -258);
-		add(tabla);
-		
-//		proveedores = serviceProveedor.getProveedores();
-//		for (Proveedor p : proveedores) {
-//			modelo.addRow(new Object[] {p.getClaveProveedor(),p.getRazonSocial(),p.getCalle().toString(),p.getTelefono(),p.getEmail().toString()});
-//		}
+//		add(tabla);
 		
 		encabezado = tabla.getTableHeader();
 		encabezado.setBackground(colorPrincipal);
 		encabezado.setForeground(colorSecundario);
 		encabezado.setFont(new Font("Noto Sans", Font.BOLD, 16));
+		
+//		proveedores = serviceProveedor.getProveedores();
+//		for (Proveedor p : proveedores) {
+//			modelo.addRow(new Object[] {p.getClaveProveedor(),p.getRazonSocial(),p.getCalle().toString(),p.getTelefono(),p.getEmail().toString()});
+//		}
 
 		scrollPane = new JScrollPane(tabla);
 		scrollPane.setBounds(661, 154, 800, 332);
