@@ -192,13 +192,13 @@ public class PanelResurtirInventario extends JPanel {
 				resurtir.setNumResurtir(Integer.parseInt(cajaNumeroResurtir.getText()));
 				resurtir.setFechaResurtir(LocalDate.now());
 				resurtir.setPrecioUnidad(Integer.parseInt(cajaPrecioUnidad.getText()));
-				
+
 				int año=dateChooserFechaCaducidad.getCalendar().get(Calendar.YEAR);
 				int mes=dateChooserFechaCaducidad.getCalendar().get(Calendar.DAY_OF_MONTH);
 				int dia=dateChooserFechaCaducidad.getCalendar().get(Calendar.MARCH);
 				String fecha=año+"-"+mes+"-"+dia+"-";
 				resurtir.setFechaCaducidad(LocalDate.parse(fecha));
-				
+
 				resurtir.setLote(Integer.parseInt(cajaLote.getText()));
 				resurtir.setBaja(Integer.parseInt(cajaBaja.getText()));
 
@@ -234,7 +234,7 @@ public class PanelResurtirInventario extends JPanel {
 				cajaBaja.setEditable(true);
 			}
 		});
-		
+
 		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
 		botonEliminar.addActionListener(new ActionListener() {
 
@@ -251,7 +251,7 @@ public class PanelResurtirInventario extends JPanel {
 
 			}
 		});
-		
+
 		modelo = new DefaultTableModel() {
 			@Override
 			public boolean isCellEditable(int row, int column) {
@@ -261,7 +261,7 @@ public class PanelResurtirInventario extends JPanel {
 		String[] columnas = new String[] {"NumeroResurtido","FechaResurtir","PrecioUnidad","FechaCaducidad","Lote","Baja"};
 		modelo.setColumnIdentifiers(columnas);
 		tabla = new JTable(modelo);
-		
+
 		tabla.addMouseListener(new MouseAdapter() 
 		{
 			public void mouseClicked(MouseEvent e) 
@@ -278,16 +278,16 @@ public class PanelResurtirInventario extends JPanel {
 					cajaPrecioUnidad.setEditable(false);
 					cajaPrecioUnidad.setText(p.getPrecioUnidad()+"");
 					dateChooserFechaCaducidad.setFocusable(false);
-//					dateChooserFechaCaducidad.setToolTipText(p.getFechaCaducidad());
+					//					dateChooserFechaCaducidad.setToolTipText(p.getFechaCaducidad());
 					cajaLote.setEditable(false);
 					cajaLote.setText(p.getLote()+"");
 					cajaBaja.setEditable(false);
 					cajaBaja.setText(p.getBaja()+"");
-					
+
 				}
 			}
 		});
-		
+
 		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		tabla.setFont(new Font("Noto Sans", Font.PLAIN, 16));
 		tabla.setForeground(colorSecundario);
@@ -296,17 +296,17 @@ public class PanelResurtirInventario extends JPanel {
 		tabla.setGridColor(new Color(255, 255, 255));
 		tabla.setBackground(new Color(240, 248, 255));
 		tabla.setBounds(687, 388, 307, -258);
-		
+
 		encabezado = tabla.getTableHeader();
 		encabezado.setBackground(colorPrincipal);
 		encabezado.setForeground(colorSecundario);
 		encabezado.setFont(new Font("Noto Sans", Font.BOLD, 16));
-		
+
 		resurtidos = serviceResurtir.getResurtidos();
 		for (Resurtir p : resurtidos) {
 			modelo.addRow(new Object[] {p.getNumResurtir(),p.getFechaResurtir(),p.getPrecioUnidad(),p.getFechaCaducidad(),p.getLote(),p.getBaja()});
 		}
-		
+
 		scrollPane = new JScrollPane(tabla);
 		scrollPane.setBounds(670, 140, 800, 332);
 		add(scrollPane);
