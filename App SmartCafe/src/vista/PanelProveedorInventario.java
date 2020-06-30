@@ -160,10 +160,9 @@ public class PanelProveedorInventario extends JPanel {
 		cajaEmail.setColumns(10);
 
 		panelOpcionesGenerales = new PanelOpcionesGenerales();
-
-
 		panelOpcionesGenerales.setBounds(510, 154, 135, 217);
 		add(panelOpcionesGenerales);
+		
 		botonNuevo = panelOpcionesGenerales.getBotonNuevo();
 		botonNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
