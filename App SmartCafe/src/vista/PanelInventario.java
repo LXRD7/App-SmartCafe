@@ -24,7 +24,8 @@ public class PanelInventario extends JPanel {
 
 	private PanelProductoInventario panelProductoInventario;
 	private PanelProveedorInventario panelProveedorInventario;
-
+	private PanelResurtirInventario panelResurtirInventario;
+	
 	public PanelInventario() {
 		setOpaque(false);
 		panelMenuInventario = new PanelMenuInventario();
@@ -32,7 +33,12 @@ public class PanelInventario extends JPanel {
 		
 		panelProductoInventario = new PanelProductoInventario();
 		panelProductoInventario.setOpaque(false);
+		
 		panelProveedorInventario = new PanelProveedorInventario();
+		panelProveedorInventario.setOpaque(false);
+		
+		panelResurtirInventario= new PanelResurtirInventario();
+		panelResurtirInventario.setOpaque(false);
 		
 		setLayout(new BorderLayout(0, 0));
 
@@ -59,6 +65,20 @@ public class PanelInventario extends JPanel {
 				removeAll();
 				add(panelMenuInventario,BorderLayout.WEST);
 				add(panelProveedorInventario,BorderLayout.CENTER);
+				setVisible(true);
+				revalidate();
+				repaint();
+			}
+		});
+		
+		botonResurtir = panelMenuInventario.getBotonResurtir();
+		botonResurtir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {				
+				removeAll();
+				add(panelMenuInventario,BorderLayout.WEST);
+				add(panelResurtirInventario,BorderLayout.CENTER);
 				setVisible(true);
 				revalidate();
 				repaint();

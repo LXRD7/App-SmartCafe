@@ -1,26 +1,36 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-import api.ServiceResurtir;
-import modelo.Resurtir;
-import java.awt.Dimension;
-import java.awt.Font;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.LineBorder;
-
 import com.toedter.calendar.JDateChooser;
+
+import api.ServiceResurtir;
+import modelo.Proveedor;
+import modelo.Resurtir;
+import services.ServiceProveedorImpl;
+import services.ServiceResurtirImpl;
 
 public class PanelResurtirInventario extends JPanel {
 
@@ -42,7 +52,7 @@ public class PanelResurtirInventario extends JPanel {
 	private Color colorFuente = Color.WHITE;
 
 	private boolean editando;
-	List<Resurtir> resurtidos;
+
 	private JTextField cajaNumeroResurtir;
 	private JTextField cajaPrecioUnidad;
 	private JTextField cajaLote;
@@ -54,9 +64,14 @@ public class PanelResurtirInventario extends JPanel {
 	private JLabel textoNumeroResurtir;
 	private JDateChooser dateChooserFechaCaducidad;
 
+	List<Resurtir> resurtidos;
+
+
 	public PanelResurtirInventario() {
 		setPreferredSize(new Dimension(1000, 500));
 		setLayout(null);
+
+		serviceResurtir = new ServiceResurtirImpl();
 
 		textoNumeroResurtir = new JLabel("Número Resurtir");
 		textoNumeroResurtir.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -146,9 +161,170 @@ public class PanelResurtirInventario extends JPanel {
 		cajaBaja.setBounds(346, 320, 160, 35);
 		add(cajaBaja);
 		cajaBaja.setColumns(10);
-		
+
 		panelOpcionesGenerales = new PanelOpcionesGenerales();
 		panelOpcionesGenerales.setBounds(525, 140, 135, 217);
 		add(panelOpcionesGenerales);
+
+		botonNuevo = panelOpcionesGenerales.getBotonNuevo();
+		botonNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editando=false;
+				cajaNumeroResurtir.setEditable(true);
+				cajaNumeroResurtir.setText("");
+				cajaPrecioUnidad.setEditable(true);
+				cajaPrecioUnidad.setText("");
+				dateChooserFechaCaducidad.setFocusable(true);
+				dateChooserFechaCaducidad.setDate(null);
+				cajaLote.setEditable(true);
+				cajaLote.setText("");
+				cajaBaja.setEditable(true);
+				cajaBaja.setText("");
+			}
+		});
+
+		botonGuardar = panelOpcionesGenerales.getBotonGuardar();
+		botonGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				serviceResurtir = new ServiceResurtirImpl();
+				Resurtir resurtir = new Resurtir();
+				resurtir.setNumResurtir(Integer.parseInt(cajaNumeroResurtir.getText()));
+				resurtir.setFechaResurtir(LocalDate.now());
+				resurtir.setPrecioUnidad(Integer.parseInt(cajaPrecioUnidad.getText()));
+				
+				int año=dateChooserFechaCaducidad.getCalendar().get(Calendar.YEAR);
+				int mes=dateChooserFechaCaducidad.getCalendar().get(Calendar.DAY_OF_MONTH);
+				int dia=dateChooserFechaCaducidad.getCalendar().get(Calendar.MARCH);
+				String fecha=año+"-"+mes+"-"+dia+"-";
+				resurtir.setFechaCaducidad(LocalDate.parse(fecha));
+				
+				resurtir.setLote(Integer.parseInt(cajaLote.getText()));
+				resurtir.setBaja(Integer.parseInt(cajaBaja.getText()));
+
+				if(editando) {
+					serviceResurtir.modificarResurtir(resurtir);
+					JOptionPane.showMessageDialog(null, "Resurtido Modificado");
+					modelo.removeRow(tabla.getSelectedRow());
+					modelo.addRow(new Object[] {resurtir.getNumResurtir(),resurtir.getFechaResurtir(),resurtir.getPrecioUnidad(),resurtir.getFechaCaducidad(),resurtir.getLote(),resurtir.getBaja()});
+					modelo.fireTableDataChanged();
+				}
+				else {
+					if(!serviceResurtir.existeResurtir(resurtir.getNumResurtir())) {
+						serviceResurtir.registrarResurtir(resurtir);
+						modelo.addRow(new Object[] {resurtir.getNumResurtir(),resurtir.getFechaResurtir(),resurtir.getPrecioUnidad(),resurtir.getFechaCaducidad(),resurtir.getLote(),resurtir.getBaja()});
+						JOptionPane.showMessageDialog(null, "Resurtido Registrado.");
+						modelo.fireTableDataChanged();
+					}
+					else
+						JOptionPane.showMessageDialog(null, "El número de resurtido ingresado ya existe");
+				}
+			}
+		});
+
+		botonEditar = panelOpcionesGenerales.getBotonEditar();
+		botonEditar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				editando=true;
+				cajaNumeroResurtir.setEditable(true);
+				cajaPrecioUnidad.setEditable(true);
+				dateChooserFechaCaducidad.setFocusable(true);
+				cajaLote.setEditable(true);
+				cajaBaja.setEditable(true);
+			}
+		});
+		
+		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
+		botonEliminar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				int numResurtir = Integer.parseInt(cajaNumeroResurtir.getText());
+				if(serviceResurtir.existeResurtir(numResurtir) && tabla.getSelectedRow() != -1) {
+					serviceResurtir.eliminarResurtir(numResurtir);
+					JOptionPane.showMessageDialog(null, "Resurtido Eliminado.");
+					modelo.removeRow(tabla.getSelectedRow());
+				}
+				else
+					JOptionPane.showMessageDialog(null, "El Resurtido no existe");
+
+			}
+		});
+		
+		modelo = new DefaultTableModel() {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		String[] columnas = new String[] {"NumeroResurtido","FechaResurtir","PrecioUnidad","FechaCaducidad","Lote","Baja"};
+		modelo.setColumnIdentifiers(columnas);
+		tabla = new JTable(modelo);
+		
+		tabla.addMouseListener(new MouseAdapter() 
+		{
+			public void mouseClicked(MouseEvent e) 
+			{
+				int fila = tabla.rowAtPoint(e.getPoint());
+				int columna = tabla.columnAtPoint(e.getPoint());
+				if (fila > -1) {
+					editando=false;
+					Resurtir p = serviceResurtir.getResurtir(Integer.parseInt(modelo.getValueAt(fila, 0).toString()));
+					cajaNumeroResurtir.setEditable(false);
+					cajaNumeroResurtir.setText(p.getNumResurtir()+"");
+					//Falta poder editar el campo FechaResurtir
+					//
+					cajaPrecioUnidad.setEditable(false);
+					cajaPrecioUnidad.setText(p.getPrecioUnidad()+"");
+					dateChooserFechaCaducidad.setFocusable(false);
+//					dateChooserFechaCaducidad.setToolTipText(p.getFechaCaducidad());
+					cajaLote.setEditable(false);
+					cajaLote.setText(p.getLote()+"");
+					cajaBaja.setEditable(false);
+					cajaBaja.setText(p.getBaja()+"");
+					
+				}
+			}
+		});
+		
+		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		tabla.setFont(new Font("Noto Sans", Font.PLAIN, 16));
+		tabla.setForeground(colorSecundario);
+		tabla.setRowHeight(30);
+		tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tabla.setGridColor(new Color(255, 255, 255));
+		tabla.setBackground(new Color(240, 248, 255));
+		tabla.setBounds(687, 388, 307, -258);
+		
+		encabezado = tabla.getTableHeader();
+		encabezado.setBackground(colorPrincipal);
+		encabezado.setForeground(colorSecundario);
+		encabezado.setFont(new Font("Noto Sans", Font.BOLD, 16));
+		
+		resurtidos = serviceResurtir.getResurtidos();
+		for (Resurtir p : resurtidos) {
+			modelo.addRow(new Object[] {p.getNumResurtir(),p.getFechaResurtir(),p.getPrecioUnidad(),p.getFechaCaducidad(),p.getLote(),p.getBaja()});
+		}
+		
+		scrollPane = new JScrollPane(tabla);
+		scrollPane.setBounds(670, 140, 800, 332);
+		add(scrollPane);
+
+	}
+	public JButton getBotonNuevo() {
+		return panelOpcionesGenerales.getBotonNuevo();
+	}
+
+	public JButton getBotonGuardar() {
+		return panelOpcionesGenerales.getBotonGuardar();
+	}
+
+	public JButton getBotonEditar() {
+		return panelOpcionesGenerales.getBotonEditar();
+	}
+
+	public JButton getBotonEliminar() {
+		return panelOpcionesGenerales.getBotonEliminar();
 	}
 }
