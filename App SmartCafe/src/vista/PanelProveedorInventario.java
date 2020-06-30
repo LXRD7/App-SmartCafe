@@ -27,10 +27,11 @@ import javax.swing.table.JTableHeader;
 import api.ServiceProveedor;
 import modelo.ProductoInventario;
 import modelo.Proveedor;
+import services.ServiceProductoInventarioImpl;
 import services.ServiceProveedorImpl;
 
 public class PanelProveedorInventario extends JPanel {
-	
+
 	private ServiceProveedor serviceProveedor;
 
 	private JTextField cajaClave;
@@ -60,7 +61,7 @@ public class PanelProveedorInventario extends JPanel {
 	private Color colorFuente = Color.WHITE;
 
 	private boolean editando;
-	
+
 	List<Proveedor> proveedores;
 
 	public PanelProveedorInventario() {
@@ -68,6 +69,8 @@ public class PanelProveedorInventario extends JPanel {
 
 		setPreferredSize(new Dimension(1000, 500));
 		setLayout(null);
+		
+		serviceProveedor = new ServiceProveedorImpl();
 
 		textoClave = new JLabel("Clave ");
 		textoClave.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -214,7 +217,7 @@ public class PanelProveedorInventario extends JPanel {
 		modelo.setColumnIdentifiers(columnas);
 
 		tabla = new JTable(modelo);
-		
+
 		tabla.addMouseListener(new MouseAdapter() 
 		{
 			public void mouseClicked(MouseEvent e) 
@@ -237,7 +240,7 @@ public class PanelProveedorInventario extends JPanel {
 				}
 			}
 		});
-		
+
 		tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		tabla.setFont(new Font("Noto Sans", Font.PLAIN, 16));
 		tabla.setForeground(colorSecundario);
@@ -246,22 +249,22 @@ public class PanelProveedorInventario extends JPanel {
 		tabla.setGridColor(new Color(255, 255, 255));
 		tabla.setBackground(new Color(240, 248, 255));
 		tabla.setBounds(687, 388, 307, -258);
-//		add(tabla);
-		
+		//		add(tabla);
+
 		encabezado = tabla.getTableHeader();
 		encabezado.setBackground(colorPrincipal);
 		encabezado.setForeground(colorSecundario);
 		encabezado.setFont(new Font("Noto Sans", Font.BOLD, 16));
-		
-//		proveedores = serviceProveedor.getProveedores();
-//		for (Proveedor p : proveedores) {
-//			modelo.addRow(new Object[] {p.getClaveProveedor(),p.getRazonSocial(),p.getCalle().toString(),p.getTelefono(),p.getEmail().toString()});
-//		}
 
+				proveedores = serviceProveedor.getProveedores();
+				for (Proveedor p : proveedores) {
+					modelo.addRow(new Object[] {p.getClaveProveedor(),p.getRazonSocial(),p.getCalle().toString(),p.getTelefono(),p.getEmail().toString()});
+				}
+		
 		scrollPane = new JScrollPane(tabla);
 		scrollPane.setBounds(661, 154, 800, 332);
 		add(scrollPane);
-		
+
 	}
 	public JButton getBotonNuevo() {
 		return panelOpcionesGenerales.getBotonNuevo();
