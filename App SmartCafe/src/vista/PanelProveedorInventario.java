@@ -162,7 +162,7 @@ public class PanelProveedorInventario extends JPanel {
 		panelOpcionesGenerales = new PanelOpcionesGenerales();
 
 
-		panelOpcionesGenerales.setBounds(529, 154, 135, 217);
+		panelOpcionesGenerales.setBounds(510, 154, 135, 217);
 		add(panelOpcionesGenerales);
 		botonNuevo = panelOpcionesGenerales.getBotonNuevo();
 		botonNuevo.addActionListener(new ActionListener() {
@@ -192,18 +192,55 @@ public class PanelProveedorInventario extends JPanel {
 				proveedor.setTelefono(cajaTelefono.getText());
 				proveedor.setEmail(cajaEmail.getText());
 
-				if(!serviceProveedor.existeProveedor(proveedor.getClaveProveedor()))
-					serviceProveedor.registrarProveedor(proveedor);
-				else
-					JOptionPane.showMessageDialog(null, "La clave del proveedor ingresada ya existe");
-			}	
-
+				if(editando) {
+					serviceProveedor.modificarProveedor(proveedor);
+					JOptionPane.showMessageDialog(null, "Proveedor Modificado");
+					modelo.removeRow(tabla.getSelectedRow());
+					modelo.addRow(new Object[] {proveedor.getClaveProveedor(),proveedor.getRazonSocial(),proveedor.getCalle().toString(),proveedor.getTelefono(),proveedor.getEmail()});
+					modelo.fireTableDataChanged();
+				}
+				else {
+					if(!serviceProveedor.existeProveedor(proveedor.getClaveProveedor())) {
+						serviceProveedor.registrarProveedor(proveedor);
+						modelo.addRow(new Object[] {proveedor.getClaveProveedor(),proveedor.getRazonSocial(),proveedor.getCalle().toString(),proveedor.getTelefono(),proveedor.getEmail()});
+						JOptionPane.showMessageDialog(null, "Proveedor Registrado.");
+						modelo.fireTableDataChanged();
+					}
+					else
+						JOptionPane.showMessageDialog(null, "La clave del proveedor ingresada ya existe");
+				}
+			}
 		});
 
 		botonEditar = panelOpcionesGenerales.getBotonEditar();
+		botonEditar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				editando=true;
+				cajaClave.setEditable(true);
+				cajaRazonSocial.setEditable(true);
+				cajaCalle.setEditable(true);
+				cajaTelefono.setEditable(true);
+				cajaEmail.setEditable(true);
+			}
+		});
 
 		botonEliminar = panelOpcionesGenerales.getBotonEliminar();
+		botonEliminar.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				int claveProveedor = Integer.parseInt(cajaClave.getText());
+				if(serviceProveedor.existeProveedor(claveProveedor) && tabla.getSelectedRow() != -1) {
+					serviceProveedor.eliminarProveedor(claveProveedor);
+					JOptionPane.showMessageDialog(null, "Proveedor Eliminado.");
+					modelo.removeRow(tabla.getSelectedRow());
+				}
+				else
+					JOptionPane.showMessageDialog(null, "El proveedor no existe");
+
+			}
+		});
 
 
 
