@@ -7,10 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Calendar;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -29,9 +28,7 @@ import javax.swing.table.JTableHeader;
 import com.toedter.calendar.JDateChooser;
 
 import api.ServiceResurtir;
-import modelo.Proveedor;
 import modelo.Resurtir;
-import services.ServiceProveedorImpl;
 import services.ServiceResurtirImpl;
 
 public class PanelResurtirInventario extends JPanel {
@@ -67,6 +64,10 @@ public class PanelResurtirInventario extends JPanel {
 	private JDateChooser dateChooserFechaCaducidad;
 
 	List<Resurtir> resurtidos;
+	private JTextField cajaClaveProveedor;
+	private JTextField cajaCodigoBarras;
+	private JLabel textoClaveProveedor;
+	private JLabel textoCodigoDeBarras;
 
 
 	public PanelResurtirInventario() {
@@ -81,7 +82,7 @@ public class PanelResurtirInventario extends JPanel {
 		textoNumeroResurtir.setPreferredSize(new Dimension(106, 16));
 		textoNumeroResurtir.setForeground(colorFuente);
 		textoNumeroResurtir.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoNumeroResurtir.setBounds(184, 137, 150, 35);
+		textoNumeroResurtir.setBounds(174, 137, 160, 35);
 		add(textoNumeroResurtir);
 
 		cajaNumeroResurtir = new JTextField();
@@ -89,7 +90,7 @@ public class PanelResurtirInventario extends JPanel {
 		cajaNumeroResurtir.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaNumeroResurtir.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaNumeroResurtir.setBackground(new Color(175, 193, 11));
-		cajaNumeroResurtir.setBounds(346, 142, 160, 35);
+		cajaNumeroResurtir.setBounds(352, 137, 160, 35);
 		add(cajaNumeroResurtir);
 		cajaNumeroResurtir.setColumns(10);
 
@@ -99,7 +100,7 @@ public class PanelResurtirInventario extends JPanel {
 		textoPrecioUnidad.setPreferredSize(new Dimension(106, 16));
 		textoPrecioUnidad.setForeground(colorFuente);
 		textoPrecioUnidad.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoPrecioUnidad.setBounds(184, 180, 150, 35);
+		textoPrecioUnidad.setBounds(174, 184, 160, 35);
 		add(textoPrecioUnidad);
 
 		cajaPrecioUnidad = new JTextField();
@@ -107,7 +108,7 @@ public class PanelResurtirInventario extends JPanel {
 		cajaPrecioUnidad.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaPrecioUnidad.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaPrecioUnidad.setBackground(new Color(175, 193, 11));
-		cajaPrecioUnidad.setBounds(346, 185, 160, 35);
+		cajaPrecioUnidad.setBounds(352, 184, 160, 35);
 		add(cajaPrecioUnidad);
 		cajaPrecioUnidad.setColumns(10);
 
@@ -117,7 +118,7 @@ public class PanelResurtirInventario extends JPanel {
 		textoFechaCaducidad.setPreferredSize(new Dimension(106, 16));
 		textoFechaCaducidad.setForeground(colorFuente);
 		textoFechaCaducidad.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoFechaCaducidad.setBounds(184, 227, 150, 35);
+		textoFechaCaducidad.setBounds(174, 227, 160, 35);
 		add(textoFechaCaducidad);
 
 		dateChooserFechaCaducidad = new JDateChooser();
@@ -125,7 +126,7 @@ public class PanelResurtirInventario extends JPanel {
 		dateChooserFechaCaducidad.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		dateChooserFechaCaducidad.setBorder(new LineBorder(colorSecundario,1,true));
 		dateChooserFechaCaducidad.setBackground(new Color(175,193,11));
-		dateChooserFechaCaducidad.setBounds(346, 231, 160, 35);
+		dateChooserFechaCaducidad.setBounds(352, 227, 160, 35);
 		add(dateChooserFechaCaducidad);
 
 		textoLote = new JLabel("Lote");
@@ -134,7 +135,7 @@ public class PanelResurtirInventario extends JPanel {
 		textoLote.setPreferredSize(new Dimension(106, 16));
 		textoLote.setForeground(colorFuente);
 		textoLote.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoLote.setBounds(184, 273, 150, 35);
+		textoLote.setBounds(174, 274, 160, 35);
 		add(textoLote);
 
 		cajaLote = new JTextField();
@@ -142,7 +143,7 @@ public class PanelResurtirInventario extends JPanel {
 		cajaLote.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaLote.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaLote.setBackground(new Color(175, 193, 11));
-		cajaLote.setBounds(346, 278, 160, 35);
+		cajaLote.setBounds(352, 274, 160, 35);
 		add(cajaLote);
 		cajaLote.setColumns(10);
 
@@ -152,7 +153,7 @@ public class PanelResurtirInventario extends JPanel {
 		textoBaja.setPreferredSize(new Dimension(106, 16));
 		textoBaja.setForeground(colorFuente);
 		textoBaja.setFont(new Font("Droid Sans", Font.BOLD, 16));
-		textoBaja.setBounds(184, 315, 150, 35);
+		textoBaja.setBounds(174, 322, 160, 35);
 		add(textoBaja);
 
 		cajaBaja = new JTextField();
@@ -160,7 +161,7 @@ public class PanelResurtirInventario extends JPanel {
 		cajaBaja.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		cajaBaja.setBorder(new LineBorder(colorSecundario, 1, true));
 		cajaBaja.setBackground(new Color(175, 193, 11));
-		cajaBaja.setBounds(346, 320, 160, 35);
+		cajaBaja.setBounds(352, 322, 160, 35);
 		add(cajaBaja);
 		cajaBaja.setColumns(10);
 
@@ -194,18 +195,12 @@ public class PanelResurtirInventario extends JPanel {
 				resurtir.setNumResurtir(Integer.parseInt(cajaNumeroResurtir.getText()));
 				resurtir.setFechaResurtir(LocalDate.now());
 				resurtir.setPrecioUnidad(Integer.parseInt(cajaPrecioUnidad.getText()));
-
-				int año=dateChooserFechaCaducidad.getCalendar().get(Calendar.YEAR);
-				int mes=dateChooserFechaCaducidad.getCalendar().get(Calendar.DAY_OF_MONTH);
-				int dia=dateChooserFechaCaducidad.getCalendar().get(Calendar.MARCH);
-//				DateFormat f=new SimpleDateFormat("dd-MM-yyyy");
-				String fecha=año+"-"+mes+"-"+dia+"-";
-//				String fecha2=f.format(fecha);
-				resurtir.setFechaCaducidad(LocalDate.parse(fecha));
-				
-				
+				Date fecha = dateChooserFechaCaducidad.getDate();
+				resurtir.setFechaCaducidad(fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 				resurtir.setLote(Integer.parseInt(cajaLote.getText()));
 				resurtir.setBaja(Integer.parseInt(cajaBaja.getText()));
+				resurtir.setCodigoBarras(cajaCodigoBarras.getText());
+				resurtir.setClaveProveedor(Integer.parseInt(cajaClaveProveedor.getText()));
 
 				if(editando) {
 					serviceResurtir.modificarResurtir(resurtir);
@@ -263,7 +258,7 @@ public class PanelResurtirInventario extends JPanel {
 				return false;
 			}
 		};
-		String[] columnas = new String[] {"NumeroResurtido","FechaResurtir","PrecioUnidad","FechaCaducidad","Lote","Baja"};
+		String[] columnas = new String[] {"NumeroResurtido","FechaResurtir","PrecioUnidad","FechaCaducidad","Lote","Baja","CodigoBarras","ClaveProveedor"};
 		modelo.setColumnIdentifiers(columnas);
 		tabla = new JTable(modelo);
 
@@ -315,6 +310,42 @@ public class PanelResurtirInventario extends JPanel {
 		scrollPane = new JScrollPane(tabla);
 		scrollPane.setBounds(670, 140, 800, 332);
 		add(scrollPane);
+		
+		cajaClaveProveedor = new JTextField();
+		cajaClaveProveedor.setForeground(new Color(75, 44, 14));
+		cajaClaveProveedor.setFont(new Font("Droid Sans", Font.PLAIN, 16));
+		cajaClaveProveedor.setColumns(10);
+		cajaClaveProveedor.setBorder(new LineBorder(colorSecundario, 1, true));
+		cajaClaveProveedor.setBackground(new Color(175, 193, 11));
+		cajaClaveProveedor.setBounds(352, 369, 160, 35);
+		add(cajaClaveProveedor);
+		
+		textoClaveProveedor = new JLabel("Clave del Proveedor");
+		textoClaveProveedor.setPreferredSize(new Dimension(106, 16));
+		textoClaveProveedor.setMinimumSize(new Dimension(106, 16));
+		textoClaveProveedor.setHorizontalAlignment(SwingConstants.RIGHT);
+		textoClaveProveedor.setForeground(Color.WHITE);
+		textoClaveProveedor.setFont(new Font("Droid Sans", Font.BOLD, 16));
+		textoClaveProveedor.setBounds(174, 369, 160, 35);
+		add(textoClaveProveedor);
+		
+		cajaCodigoBarras = new JTextField();
+		cajaCodigoBarras.setForeground(new Color(75, 44, 14));
+		cajaCodigoBarras.setFont(new Font("Droid Sans", Font.PLAIN, 16));
+		cajaCodigoBarras.setColumns(10);
+		cajaCodigoBarras.setBorder(new LineBorder(colorSecundario, 1, true));
+		cajaCodigoBarras.setBackground(new Color(175, 193, 11));
+		cajaCodigoBarras.setBounds(352, 416, 160, 35);
+		add(cajaCodigoBarras);
+		
+		textoCodigoDeBarras = new JLabel("Codigo de Barras");
+		textoCodigoDeBarras.setPreferredSize(new Dimension(106, 16));
+		textoCodigoDeBarras.setMinimumSize(new Dimension(106, 16));
+		textoCodigoDeBarras.setHorizontalAlignment(SwingConstants.RIGHT);
+		textoCodigoDeBarras.setForeground(Color.WHITE);
+		textoCodigoDeBarras.setFont(new Font("Droid Sans", Font.BOLD, 16));
+		textoCodigoDeBarras.setBounds(174, 416, 160, 35);
+		add(textoCodigoDeBarras);
 
 	}
 	public JButton getBotonNuevo() {

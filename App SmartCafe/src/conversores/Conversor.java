@@ -59,7 +59,7 @@ public class Conversor {
 			throw new IllegalArgumentException("Unexpected value: " + unidadMedida);
 		}
 	}
-	public static LocalDate convertirAFecha(String fecha) {
-		return LocalDate.parse(fecha);
+	public static LocalDate convertirAFecha(java.sql.Date fecha) {
+		return fecha.toLocalDate();
 	}
 }

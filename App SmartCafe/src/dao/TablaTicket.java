@@ -96,7 +96,7 @@ public class TablaTicket {
 			while (rs.next()) {
 				Ticket p = new Ticket();
 				p.setClaveTicket(rs.getInt("cve_tic"));
-				p.setFecha(Conversor.convertirAFecha(rs.getString("fecha_tic")));
+				p.setFecha(Conversor.convertirAFecha(rs.getDate("fecha_tic")));
 				p.setDescripcion(rs.getString("descripcion_tic"));
 				p.setTotal(rs.getInt("total_tic"));
 				lista.add(p);
@@ -114,7 +114,7 @@ public class TablaTicket {
 			if (rs.next()) {
 				Ticket p = new Ticket();
 				p.setClaveTicket(rs.getInt("cve_tic"));
-				p.setFecha(Conversor.convertirAFecha(rs.getString("fecha_tic")));
+				p.setFecha(Conversor.convertirAFecha(rs.getDate("fecha_tic")));
 				p.setDescripcion(rs.getString("descripcion_tic"));
 				p.setTotal(rs.getInt("total_tic"));
 				return p;

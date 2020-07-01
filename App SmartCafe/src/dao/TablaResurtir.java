@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import modelo.Resurtir;
 public class TablaResurtir {
 	private Connection conexion;
 	private Statement statement;
-
+	
 	public TablaResurtir(Connection conexion) {
 		this.conexion = conexion;
 		try {
@@ -39,10 +40,10 @@ public class TablaResurtir {
 		}
 	}
 
-	public String modificarResurtir(Resurtir p){
+	public String modificarResurtir(Resurtir r){
 		String sql2 ="SET FOREIGN_KEY_CHECKS=0";
 		String sql3 ="SET FOREIGN_KEY_CHECKS=1";
-		String sql = "UPDATE resurtir SET fecha_res='"+p.getFechaResurtir()+"', ppu_res='"+p.getPrecioUnidad()+"', fcaducidad_res='"+p.getFechaCaducidad()+"',lote_res='"+p.getLote()+"',baja_res='"+p.getBaja()+ "' WHERE num_res='"+p.getNumResurtir();	
+		String sql = "UPDATE resurtir SET fecha_res='"+java.sql.Date.valueOf(r.getFechaResurtir())+"', ppu_res='"+r.getPrecioUnidad()+"', fcaducidad_res='"+java.sql.Date.valueOf(r.getFechaCaducidad())+"',lote_res='"+r.getLote()+"',baja_res='"+r.getBaja()+ "' WHERE num_res='"+r.getNumResurtir();	
 		try{
 			statement.executeUpdate(sql2);
 			int n = statement.executeUpdate(sql);
@@ -94,14 +95,14 @@ public class TablaResurtir {
 			ResultSet rs = statement.executeQuery(sql);
 			List<Resurtir> lista = new ArrayList<Resurtir>();
 			while (rs.next()) {
-				Resurtir p = new Resurtir();
-				p.setNumResurtir(rs.getInt("num_res"));
-				p.setFechaResurtir(Conversor.convertirAFecha(rs.getString("fecha_res")));
-				p.setPrecioUnidad(rs.getInt("ppu_res"));
-				p.setFechaCaducidad(Conversor.convertirAFecha(rs.getString("fcaducidad_res")));
-				p.setLote(rs.getInt("lote_res"));
-				p.setBaja(rs.getInt("baja_res"));
-				lista.add(p);
+				Resurtir r = new Resurtir();
+				r.setNumResurtir(rs.getInt("num_res"));
+				r.setFechaResurtir(Conversor.convertirAFecha(rs.getDate("fecha_res")));
+				r.setPrecioUnidad(rs.getInt("ppu_res"));
+				r.setFechaCaducidad(Conversor.convertirAFecha(rs.getDate("fcaducidad_res")));
+				r.setLote(rs.getInt("lote_res"));
+				r.setBaja(rs.getInt("baja_res"));
+				lista.add(r);
 			} 
 			return lista;
 		}catch(SQLException e){
@@ -114,14 +115,14 @@ public class TablaResurtir {
 		try{
 			ResultSet rs = statement.executeQuery(sql);
 			if (rs.next()) {
-				Resurtir p = new Resurtir();
-				p.setNumResurtir(rs.getInt("num_res"));
-				p.setFechaResurtir(Conversor.convertirAFecha(rs.getString("fecha_res")));
-				p.setPrecioUnidad(rs.getInt("ppu_res"));
-				p.setFechaCaducidad(Conversor.convertirAFecha(rs.getString("fcaducidad_res")));
-				p.setLote(rs.getInt("lote_res"));
-				p.setBaja(rs.getInt("baja_res"));
-				return p;
+				Resurtir r = new Resurtir();
+				r.setNumResurtir(rs.getInt("num_res"));
+				r.setFechaResurtir(Conversor.convertirAFecha(rs.getDate("fecha_res")));
+				r.setPrecioUnidad(rs.getInt("ppu_res"));
+				r.setFechaCaducidad(Conversor.convertirAFecha(rs.getDate("fcaducidad_res")));
+				r.setLote(rs.getInt("lote_res"));
+				r.setBaja(rs.getInt("baja_res"));
+				return r;
 			} else {
 				return null;
 			}
@@ -131,8 +132,8 @@ public class TablaResurtir {
 		}
 	}
 
-	public String registrarResurtir(Resurtir p){
-		String sql = "insert into resurtir values('"+p.getNumResurtir()+"','"+p.getFechaResurtir()+"','"+p.getPrecioUnidad()+"','"+p.getFechaCaducidad()+"','"+p.getLote()+"','"+p.getBaja()+"')";
+	public String registrarResurtir(Resurtir r){
+		String sql = "insert into resurtir values(null"+",'"+r.getFechaResurtir()+"',"+r.getPrecioUnidad()+",'"+r.getFechaCaducidad()+"',"+r.getLote()+","+r.getBaja()+",'"+r.getCodigoBarras()+"',"+r.getClaveProveedor()+")";
 		try {
 			statement.executeUpdate(sql);
 			return "Resurtir registrado.";

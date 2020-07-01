@@ -96,7 +96,7 @@ public class TablaEstatus {
 			while (rs.next()) {
 				Estatus p = new Estatus();
 				p.setNumStatus(rs.getInt("num_sta"));
-				p.setFecha(Conversor.convertirAFecha(rs.getString("fecha_sta")));
+				p.setFecha(Conversor.convertirAFecha(rs.getDate("fecha_sta")));
 				p.setEstatus(rs.getString("status_sta"));
 				lista.add(p);
 			} 
@@ -113,7 +113,7 @@ public class TablaEstatus {
 			if (rs.next()) {
 				Estatus p = new Estatus();
 				p.setNumStatus(rs.getInt("num_sta"));
-				p.setFecha(Conversor.convertirAFecha(rs.getString("fecha_sta")));
+				p.setFecha(Conversor.convertirAFecha(rs.getDate("fecha_sta")));
 				p.setEstatus(rs.getString("status_sta"));
 				return p;
 			} else {

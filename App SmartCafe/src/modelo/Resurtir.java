@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Resurtir {
 	private int numResurtir;
@@ -9,7 +10,21 @@ public class Resurtir {
 	private LocalDate fechaCaducidad;
 	private int lote;
 	private int baja;
+	private String codigoBarras;
+	private int claveProveedor;
 	
+	public String getCodigoBarras() {
+		return codigoBarras;
+	}
+	public void setCodigoBarras(String codigoBarras) {
+		this.codigoBarras = codigoBarras;
+	}
+	public int getClaveProveedor() {
+		return claveProveedor;
+	}
+	public void setClaveProveedor(int claveProveedor) {
+		this.claveProveedor = claveProveedor;
+	}
 	public int getNumResurtir() {
 		return numResurtir;
 	}
