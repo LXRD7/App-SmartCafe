@@ -10,6 +10,6 @@
 	<classpathentry kind="lib" path="librerias/jgoodies-forms-1.8.0.jar"/>
 	<classpathentry kind="lib" path="librerias/mariadb-java-client-2.6.0.jar"/>
 	<classpathentry kind="lib" path="librerias/mysql-connector-java-5.1.48.jar"/>
-	<classpathentry kind="lib" path="librerias/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="librerias/jcalendar-1.3.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
