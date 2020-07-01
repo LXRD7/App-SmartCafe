@@ -122,6 +122,7 @@ public class PanelResurtirInventario extends JPanel {
 
 		dateChooserFechaCaducidad = new JDateChooser();
 		dateChooserFechaCaducidad.setForeground(colorSecundario);
+		dateChooserFechaCaducidad.setDateFormatString("yyyy-dd-MM");
 		dateChooserFechaCaducidad.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		dateChooserFechaCaducidad.setBorder(new LineBorder(colorSecundario,1,true));
 		dateChooserFechaCaducidad.setBackground(new Color(175,193,11));
@@ -198,12 +199,9 @@ public class PanelResurtirInventario extends JPanel {
 				int año=dateChooserFechaCaducidad.getCalendar().get(Calendar.YEAR);
 				int mes=dateChooserFechaCaducidad.getCalendar().get(Calendar.DAY_OF_MONTH);
 				int dia=dateChooserFechaCaducidad.getCalendar().get(Calendar.MARCH);
-//				DateFormat f=new SimpleDateFormat("dd-MM-yyyy");
 				String fecha=año+"-"+mes+"-"+dia+"-";
-//				String fecha2=f.format(fecha);
+				
 				resurtir.setFechaCaducidad(LocalDate.parse(fecha));
-				
-				
 				resurtir.setLote(Integer.parseInt(cajaLote.getText()));
 				resurtir.setBaja(Integer.parseInt(cajaBaja.getText()));
 
