@@ -6,7 +6,7 @@ import java.util.Date;
 public class Resurtir {
 	private int numResurtir;
 	private LocalDate fechaResurtir;
-	private int precioUnidad;
+	private Double precioUnidad;
 	private LocalDate fechaCaducidad;
 	private int lote;
 	private int baja;
@@ -37,10 +37,10 @@ public class Resurtir {
 	public void setFechaResurtir(LocalDate fechaResurtir) {
 		this.fechaResurtir = fechaResurtir;
 	}
-	public int getPrecioUnidad() {
+	public Double getPrecioUnidad() {
 		return precioUnidad;
 	}
-	public void setPrecioUnidad(int precioUnidad) {
+	public void setPrecioUnidad(Double precioUnidad) {
 		this.precioUnidad = precioUnidad;
 	}
 	public LocalDate getFechaCaducidad() {

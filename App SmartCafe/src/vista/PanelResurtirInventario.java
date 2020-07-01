@@ -194,7 +194,7 @@ public class PanelResurtirInventario extends JPanel {
 				Resurtir resurtir = new Resurtir();
 				resurtir.setNumResurtir(Integer.parseInt(cajaNumeroResurtir.getText()));
 				resurtir.setFechaResurtir(LocalDate.now());
-				resurtir.setPrecioUnidad(Integer.parseInt(cajaPrecioUnidad.getText()));
+				resurtir.setPrecioUnidad(Double.parseDouble(cajaPrecioUnidad.getText()));
 				Date fecha = dateChooserFechaCaducidad.getDate();
 				resurtir.setFechaCaducidad(fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 				resurtir.setLote(Integer.parseInt(cajaLote.getText()));
@@ -212,7 +212,7 @@ public class PanelResurtirInventario extends JPanel {
 				else {
 					if(!serviceResurtir.existeResurtir(resurtir.getNumResurtir())) {
 						serviceResurtir.registrarResurtir(resurtir);
-						modelo.addRow(new Object[] {resurtir.getNumResurtir(),resurtir.getFechaResurtir(),resurtir.getPrecioUnidad(),resurtir.getFechaCaducidad(),resurtir.getLote(),resurtir.getBaja()});
+						modelo.addRow(new Object[] {resurtir.getNumResurtir(),resurtir.getFechaResurtir(),resurtir.getPrecioUnidad(),resurtir.getFechaCaducidad(),resurtir.getLote(),resurtir.getBaja(),resurtir.getCodigoBarras(),resurtir.getClaveProveedor()});
 						JOptionPane.showMessageDialog(null, "Resurtido Registrado.");
 						modelo.fireTableDataChanged();
 					}
@@ -303,8 +303,8 @@ public class PanelResurtirInventario extends JPanel {
 		encabezado.setFont(new Font("Noto Sans", Font.BOLD, 16));
 
 		resurtidos = serviceResurtir.getResurtidos();
-		for (Resurtir p : resurtidos) {
-			modelo.addRow(new Object[] {p.getNumResurtir(),p.getFechaResurtir(),p.getPrecioUnidad(),p.getFechaCaducidad(),p.getLote(),p.getBaja()});
+		for (Resurtir r : resurtidos) {
+			modelo.addRow(new Object[] {r.getNumResurtir(),r.getFechaResurtir(),r.getPrecioUnidad(),r.getFechaCaducidad(),r.getLote(),r.getBaja(),r.getCodigoBarras(),r.getClaveProveedor()});
 		}
 
 		scrollPane = new JScrollPane(tabla);

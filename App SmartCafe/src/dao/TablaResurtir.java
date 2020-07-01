@@ -98,10 +98,12 @@ public class TablaResurtir {
 				Resurtir r = new Resurtir();
 				r.setNumResurtir(rs.getInt("num_res"));
 				r.setFechaResurtir(Conversor.convertirAFecha(rs.getDate("fecha_res")));
-				r.setPrecioUnidad(rs.getInt("ppu_res"));
+				r.setPrecioUnidad(rs.getDouble("ppu_res"));
 				r.setFechaCaducidad(Conversor.convertirAFecha(rs.getDate("fcaducidad_res")));
 				r.setLote(rs.getInt("lote_res"));
 				r.setBaja(rs.getInt("baja_res"));
+				r.setCodigoBarras(rs.getString("cve_pin"));
+				r.setClaveProveedor(rs.getInt("cve_prov"));
 				lista.add(r);
 			} 
 			return lista;
@@ -118,10 +120,12 @@ public class TablaResurtir {
 				Resurtir r = new Resurtir();
 				r.setNumResurtir(rs.getInt("num_res"));
 				r.setFechaResurtir(Conversor.convertirAFecha(rs.getDate("fecha_res")));
-				r.setPrecioUnidad(rs.getInt("ppu_res"));
+				r.setPrecioUnidad(rs.getDouble("ppu_res"));
 				r.setFechaCaducidad(Conversor.convertirAFecha(rs.getDate("fcaducidad_res")));
 				r.setLote(rs.getInt("lote_res"));
 				r.setBaja(rs.getInt("baja_res"));
+				r.setCodigoBarras(rs.getString("cve_pin"));
+				r.setClaveProveedor(rs.getInt("cve_prov"));
 				return r;
 			} else {
 				return null;
