@@ -122,7 +122,7 @@ public class PanelResurtirInventario extends JPanel {
 
 		dateChooserFechaCaducidad = new JDateChooser();
 		dateChooserFechaCaducidad.setForeground(colorSecundario);
-		dateChooserFechaCaducidad.setDateFormatString("yyyy-dd-MM");
+		dateChooserFechaCaducidad.setDateFormatString("YYYY-MM-dd");
 		dateChooserFechaCaducidad.setFont(new Font("Droid Sans", Font.PLAIN, 16));
 		dateChooserFechaCaducidad.setBorder(new LineBorder(colorSecundario,1,true));
 		dateChooserFechaCaducidad.setBackground(new Color(175,193,11));
